@@ -1,7 +1,17 @@
-import { all, takeLeading, put, call } from "redux-saga/effects";
+import { eventChannel } from 'redux-saga'
+import { all, takeLeading, put, call, take } from "redux-saga/effects";
 import { ACTIONS, fetchAuthSuccess, authInitSuccess } from "./index";
 
 const { FETCH_AUTH, AUTH_INIT_SUCCESS } = ACTIONS;
+
+function onAuthChange(auth) {
+  return eventChannel(emitter => {
+      auth.isSignedIn.listen(value => emitter(value));
+      // The subscriber must return an unsubscribe function
+      return () => ({})
+    }
+  )
+}
 
 const performAuthInit = async () => {
   return new Promise(resolve => {
@@ -32,7 +42,6 @@ export function* fetchAuth() {
 }
 
 export function* authIsLoggedIn(auth) {
-  console.log('authIsLoggedIn called')
   const basicProfile = auth.currentUser.get().getBasicProfile();
 
   const userDetails = {
@@ -47,35 +56,19 @@ export function* authIsLoggedIn(auth) {
   yield put(fetchAuthSuccess(userDetails));
 }
 
-export function* authNotLoggedIn() {
-  console.log('authNotLoggedIn');
-  yield put(fetchAuthSuccess({ caca: true }));
-}
-
 export function* authInitSuccessSaga() {
-  console.log('authInitSuccessSaga')
   const auth = yield call(performFetchAuth);
-  const loggedIn = auth.isSignedIn.get();
-  console.log({ loggedIn })
+  let loggedIn = auth.isSignedIn.get();
 
   if (loggedIn) {
-    console.log('if')
     yield call(authIsLoggedIn, auth);
   } else {
-    console.log('else')
-    const test = authNotLoggedIn();
+    const authChannel = yield call(onAuthChange, auth);
     auth.signIn();
-    auth.isSignedIn.listen(() => {
-      console.log('Callback')
-      let result = test.next(); //.bind(test)
-      console.log('result: ', result)
-      while(result.done === false) {
-        result = test.next();
-        console.log({ result })
-      }
-    });
-
-    // function*() { yield put(authInitSuccess()) }
+    loggedIn = yield take(authChannel)
+    if (loggedIn) {
+      yield call(authIsLoggedIn, auth);
+    }
   }
 }
 
