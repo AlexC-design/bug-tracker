@@ -1,8 +1,11 @@
 {
     "version": 3,
-    "mappings": "AAAA,AAAA,IAAI,CAAC;EACD,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EAEV,WAAW,EAAE,sBAAsB;EAEnC,KAAK,EAAE,KAAK;EACZ,eAAe,EAAE,IAAI;EACrB,UAAU,EAAE,iCAAiC;EAC7C,MAAM,EAAE,KAAK;CAMd;;AAfH,AAWI,IAXA,CAWA,CAAC,CAAC;EACA,KAAK,EAAE,OAAO;EACd,eAAe,EAAE,OAAO;CACzB",
+    "mappings": "AAGA,AAAA,IAAI,CAAC;EACH,MAAM,EAAE,CAAC;EACT,OAAO,EAAE,CAAC;EAEV,WAAW,EAAE,sBAAsB;EAEnC,KAAK,EAAE,KAAK;EACZ,eAAe,EAAE,IAAI;EACrB,UAAU,EAAE,iCAA0D;EACtE,MAAM,EAAE,KAAK;CAMd;;AAfD,AAWE,IAXE,CAWF,CAAC,CAAC;EACA,KAAK,EAAE,OAAO;EACd,eAAe,EAAE,OAAO;CACzB",
     "sources": [
-        "app.scss"
+        "app.scss",
+        "../sass/variables/variables.scss",
+        "../sass/functions/functions.scss",
+        "../sass/variables/variables.scss"
     ],
     "names": [],
     "file": "app.css"

@@ -1,17 +1,19 @@
+@import "../sass/variables/variables.scss";
+@import "../sass/functions/functions.scss";
+
 body {
-    margin: 0;
-    padding: 0;
-  
-    font-family: Montserrat, sans-serif;
-  
-    color: white;
-    text-decoration: none;
-    background: linear-gradient(#44454d, #1d1d23);
-    height: 100vh;
-  
-    a {
-      color: inherit;
-      text-decoration: inherit;
-    }
+  margin: 0;
+  padding: 0;
+
+  font-family: Montserrat, sans-serif;
+
+  color: white;
+  text-decoration: none;
+  background: linear-gradient(color(primary-light), color(primary-dark));
+  height: 100vh;
+
+  a {
+    color: inherit;
+    text-decoration: inherit;
   }
-  
+}

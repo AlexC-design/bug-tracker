@@ -1,0 +1,42 @@
+@import "../../../sass/variables/variables.scss";
+@import "../../../sass/functions/functions.scss";
+
+.login-page-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+
+  .google-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+
+    width: 500px;
+    height: 50px;
+    margin: auto;
+    border: none;
+    border-radius: 10px;
+    font-size: large;
+    font-weight: 500;
+    background-color: color(accent1);
+    color: white;
+
+    img {
+      width: 25px;
+      height: auto;
+    }
+
+    span {
+      width: 25px;
+    }
+
+    &:hover {
+      // box-shadow: 3px 3px 5px 6px black;
+
+      // transition: all 1s linear;
+    }
+  }
+}

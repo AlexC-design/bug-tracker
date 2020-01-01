@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import gLogo from "../../../assets/svg/g-logo.svg";
 
 export default class GoogleAuth extends Component {
   componentDidMount() {
@@ -8,9 +9,11 @@ export default class GoogleAuth extends Component {
 
   render() {
     return (
-      <div>
-        <div>Google Auth</div>
-      </div>
+      <button className="google-button">
+        <img src={gLogo} alt="google-logo" />
+        Sign In with Google
+        <span></span>
+      </button>
     );
   }
 }
