@@ -7,20 +7,12 @@ import rootSaga from "./sagas";
 
 export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
-const middlewares = [sagaMiddleware, routerMiddleware(history)];
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-const store = createStore(
+export const store = createStore(
   reducers(history),
-  composeEnhancers(applyMiddleware(...middlewares))
+  composeEnhancers(applyMiddleware(sagaMiddleware, routerMiddleware(history)))
 );
 
 sagaMiddleware.run(rootSaga);
-
-const config = {
-  store,
-  history
-};
-
-export default config;
