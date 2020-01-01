@@ -31,8 +31,8 @@ export function* fetchAuth() {
   }
 }
 
-export function* authInitSuccessSaga() {
-  const auth = yield call(performFetchAuth);
+export function* authIsLoggedIn(auth) {
+  console.log('authIsLoggedIn called')
   const basicProfile = auth.currentUser.get().getBasicProfile();
 
   const userDetails = {
@@ -44,8 +44,38 @@ export function* authInitSuccessSaga() {
     userGivenName: basicProfile.getGivenName()
   };
 
-  if (auth) {
-    yield put(fetchAuthSuccess(userDetails));
+  yield put(fetchAuthSuccess(userDetails));
+}
+
+export function* authNotLoggedIn() {
+  console.log('authNotLoggedIn');
+  yield put(fetchAuthSuccess({ caca: true }));
+}
+
+export function* authInitSuccessSaga() {
+  console.log('authInitSuccessSaga')
+  const auth = yield call(performFetchAuth);
+  const loggedIn = auth.isSignedIn.get();
+  console.log({ loggedIn })
+
+  if (loggedIn) {
+    console.log('if')
+    yield call(authIsLoggedIn, auth);
+  } else {
+    console.log('else')
+    const test = authNotLoggedIn();
+    auth.signIn();
+    auth.isSignedIn.listen(() => {
+      console.log('Callback')
+      let result = test.next(); //.bind(test)
+      console.log('result: ', result)
+      while(result.done === false) {
+        result = test.next();
+        console.log({ result })
+      }
+    });
+
+    // function*() { yield put(authInitSuccess()) }
   }
 }
 
