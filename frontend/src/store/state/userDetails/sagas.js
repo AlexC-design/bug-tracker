@@ -46,7 +46,6 @@ export function* authInitSuccessSaga() {
 
   if (auth) {
     yield put(fetchAuthSuccess(userDetails));
-  } else {
   }
 }
 

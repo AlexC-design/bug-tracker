@@ -1,6 +1,6 @@
 const FETCH_AUTH = "FETCH_AUTH";
 const FETCH_AUTH_SUCCESS = "FETCH_AUTH_SUCCESS";
-const AUTH_INIT_SUCCESS = 'AUTH_INIT_SUCCESS'
+const AUTH_INIT_SUCCESS = "AUTH_INIT_SUCCESS";
 
 export const ACTIONS = {
   FETCH_AUTH,
@@ -12,11 +12,11 @@ export const fetchAuth = () => ({
   type: FETCH_AUTH
 });
 
-export const fetchAuthSuccess = auth => ({
+export const fetchAuthSuccess = userDetails => ({
   type: FETCH_AUTH_SUCCESS,
-  payload: auth
+  payload: userDetails
 });
 
 export const authInitSuccess = () => ({
-    type: AUTH_INIT_SUCCESS
-})
+  type: AUTH_INIT_SUCCESS
+});
