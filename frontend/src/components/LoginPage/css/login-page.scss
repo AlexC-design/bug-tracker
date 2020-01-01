@@ -5,7 +5,130 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   height: 100vh;
+
+  // ---- LOGO ----
+
+  .logo {
+    display: flex;
+    margin-bottom: 7em;
+
+    h1 {
+      margin: 0;
+      font-size: 3em;
+    }
+
+    .red-dot {
+      margin-left: 10px;
+      margin-top: 5px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50px;
+      background-color: darken(color(accent1), 20%);
+
+      box-shadow: 0px 0px 0px 0px color(accent1);
+
+      animation: light-up 3s ease-in-out 1s forwards;
+
+      @keyframes light-up {
+        from {
+          background-color: darken(color(accent1), 20%);
+          box-shadow: 0px 0px 0px 0px color(accent1);
+        }
+        2% {
+          background-color: color(accent1);
+          box-shadow: 0px 0px 5px 1px color(accent1);
+        }
+        5% {
+          background-color: darken(color(accent1), 10%);
+          box-shadow: 0px 0px 0px 0px color(accent1);
+        }
+        12% {
+          background-color: color(accent1);
+          box-shadow: 0px 0px 5px 3px color(accent1);
+        }
+        15% {
+          background-color: darken(color(accent1), 10%);
+          box-shadow: 0px 0px 0px 0px color(accent1);
+        }
+        18% {
+          background-color: color(accent1);
+          box-shadow: 0px 0px 8px 4px color(accent1);
+        }
+        10% {
+          background-color: darken(color(accent1), 5%);
+          box-shadow: 0px 0px 0px 0px color(accent1);
+        }
+        25% {
+          background-color: color(accent1);
+          box-shadow: 0px 0px 15px 7px color(accent1);
+        }
+        to {
+          background-color: color(accent1);
+          box-shadow: 0px 0px 10px 5px color(accent1);
+        }
+      }
+    }
+  }
+
+  // ---- GUEST LOGIN ----
+
+  .guest-login-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5em;
+
+    .guest-name-input {
+      width: calc(500px - 3em);
+      height: 50px;
+      border: 1px solid white;
+      border-radius: 10px;
+      font-size: large;
+      font-weight: 500;
+      background-color: transparent;
+      color: white;
+      margin-bottom: 2em;
+      padding: 0 1.5em;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .guest-login-button {
+      width: 250px;
+      height: 50px;
+      border: none;
+      border-radius: 10px;
+      font-size: large;
+      font-weight: 500;
+      background-color: color(secondary-light);
+      color: white;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        background-color: darken(color(secondary-light), 10%);
+      }
+
+      &:active {
+        background-color: darken(color(secondary-light), 5%);
+      }
+    }
+  }
+
+  // ---- or ----
+
+  p {
+    margin-bottom: 5em;
+  }
+
+  // ---- GOOGLE BUTTON ----
 
   .google-button {
     display: flex;
@@ -16,7 +139,6 @@
 
     width: 500px;
     height: 50px;
-    margin: auto;
     border: none;
     border-radius: 10px;
     font-size: large;
@@ -34,9 +156,15 @@
     }
 
     &:hover {
-      // box-shadow: 3px 3px 5px 6px black;
+      background-color: darken(color(accent1), 10%);
+    }
 
-      // transition: all 1s linear;
+    &:active {
+      background-color: darken(color(accent1), 5%);
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 }
