@@ -27,112 +27,112 @@
   font-size: 3em;
 }
 
-.login-page-container .logo .red-dot {
+.login-page-container .logo .green-dot {
   margin-left: 10px;
   margin-top: 5px;
   width: 16px;
   height: 16px;
   border-radius: 50px;
-  background-color: #97190f;
-  -webkit-box-shadow: 0px 0px 0px 0px #e93223;
-          box-shadow: 0px 0px 0px 0px #e93223;
+  background-color: #009900;
+  -webkit-box-shadow: 0px 0px 0px 0px lime;
+          box-shadow: 0px 0px 0px 0px lime;
   -webkit-animation: light-up 3s ease-in-out 1s forwards;
           animation: light-up 3s ease-in-out 1s forwards;
 }
 
 @-webkit-keyframes light-up {
   from {
-    background-color: #97190f;
-    -webkit-box-shadow: 0px 0px 0px 0px #e93223;
-            box-shadow: 0px 0px 0px 0px #e93223;
+    background-color: #009900;
+    -webkit-box-shadow: 0px 0px 0px 0px lime;
+            box-shadow: 0px 0px 0px 0px lime;
   }
   2% {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 5px 1px #e93223;
-            box-shadow: 0px 0px 5px 1px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 5px 1px lime;
+            box-shadow: 0px 0px 5px 1px lime;
   }
   5% {
-    background-color: #c52114;
-    -webkit-box-shadow: 0px 0px 0px 0px #e93223;
-            box-shadow: 0px 0px 0px 0px #e93223;
+    background-color: #00cc00;
+    -webkit-box-shadow: 0px 0px 0px 0px lime;
+            box-shadow: 0px 0px 0px 0px lime;
   }
   12% {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 5px 3px #e93223;
-            box-shadow: 0px 0px 5px 3px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 5px 3px lime;
+            box-shadow: 0px 0px 5px 3px lime;
   }
   15% {
-    background-color: #c52114;
-    -webkit-box-shadow: 0px 0px 0px 0px #e93223;
-            box-shadow: 0px 0px 0px 0px #e93223;
+    background-color: #00cc00;
+    -webkit-box-shadow: 0px 0px 0px 0px lime;
+            box-shadow: 0px 0px 0px 0px lime;
   }
   18% {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 8px 4px #e93223;
-            box-shadow: 0px 0px 8px 4px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 8px 4px lime;
+            box-shadow: 0px 0px 8px 4px lime;
   }
   10% {
-    background-color: #dc2516;
-    -webkit-box-shadow: 0px 0px 0px 0px #e93223;
-            box-shadow: 0px 0px 0px 0px #e93223;
+    background-color: #00e600;
+    -webkit-box-shadow: 0px 0px 0px 0px lime;
+            box-shadow: 0px 0px 0px 0px lime;
   }
   25% {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 15px 7px #e93223;
-            box-shadow: 0px 0px 15px 7px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 15px 7px lime;
+            box-shadow: 0px 0px 15px 7px lime;
   }
   to {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 10px 5px #e93223;
-            box-shadow: 0px 0px 10px 5px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 10px 5px lime;
+            box-shadow: 0px 0px 10px 5px lime;
   }
 }
 
 @keyframes light-up {
   from {
-    background-color: #97190f;
-    -webkit-box-shadow: 0px 0px 0px 0px #e93223;
-            box-shadow: 0px 0px 0px 0px #e93223;
+    background-color: #009900;
+    -webkit-box-shadow: 0px 0px 0px 0px lime;
+            box-shadow: 0px 0px 0px 0px lime;
   }
   2% {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 5px 1px #e93223;
-            box-shadow: 0px 0px 5px 1px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 5px 1px lime;
+            box-shadow: 0px 0px 5px 1px lime;
   }
   5% {
-    background-color: #c52114;
-    -webkit-box-shadow: 0px 0px 0px 0px #e93223;
-            box-shadow: 0px 0px 0px 0px #e93223;
+    background-color: #00cc00;
+    -webkit-box-shadow: 0px 0px 0px 0px lime;
+            box-shadow: 0px 0px 0px 0px lime;
   }
   12% {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 5px 3px #e93223;
-            box-shadow: 0px 0px 5px 3px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 5px 3px lime;
+            box-shadow: 0px 0px 5px 3px lime;
   }
   15% {
-    background-color: #c52114;
-    -webkit-box-shadow: 0px 0px 0px 0px #e93223;
-            box-shadow: 0px 0px 0px 0px #e93223;
+    background-color: #00cc00;
+    -webkit-box-shadow: 0px 0px 0px 0px lime;
+            box-shadow: 0px 0px 0px 0px lime;
   }
   18% {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 8px 4px #e93223;
-            box-shadow: 0px 0px 8px 4px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 8px 4px lime;
+            box-shadow: 0px 0px 8px 4px lime;
   }
   10% {
-    background-color: #dc2516;
-    -webkit-box-shadow: 0px 0px 0px 0px #e93223;
-            box-shadow: 0px 0px 0px 0px #e93223;
+    background-color: #00e600;
+    -webkit-box-shadow: 0px 0px 0px 0px lime;
+            box-shadow: 0px 0px 0px 0px lime;
   }
   25% {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 15px 7px #e93223;
-            box-shadow: 0px 0px 15px 7px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 15px 7px lime;
+            box-shadow: 0px 0px 15px 7px lime;
   }
   to {
-    background-color: #e93223;
-    -webkit-box-shadow: 0px 0px 10px 5px #e93223;
-            box-shadow: 0px 0px 10px 5px #e93223;
+    background-color: lime;
+    -webkit-box-shadow: 0px 0px 10px 5px lime;
+            box-shadow: 0px 0px 10px 5px lime;
   }
 }
 

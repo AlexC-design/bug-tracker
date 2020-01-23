@@ -19,54 +19,54 @@
       font-size: 3em;
     }
 
-    .red-dot {
+    .green-dot {
       margin-left: 10px;
       margin-top: 5px;
       width: 16px;
       height: 16px;
       border-radius: 50px;
-      background-color: darken(color(accent1), 20%);
+      background-color: darken(lime, 20%);
 
-      box-shadow: 0px 0px 0px 0px color(accent1);
+      box-shadow: 0px 0px 0px 0px lime;
 
       animation: light-up 3s ease-in-out 1s forwards;
 
       @keyframes light-up {
         from {
-          background-color: darken(color(accent1), 20%);
-          box-shadow: 0px 0px 0px 0px color(accent1);
+          background-color: darken(lime, 20%);
+          box-shadow: 0px 0px 0px 0px lime;
         }
         2% {
-          background-color: color(accent1);
-          box-shadow: 0px 0px 5px 1px color(accent1);
+          background-color: lime;
+          box-shadow: 0px 0px 5px 1px lime;
         }
         5% {
-          background-color: darken(color(accent1), 10%);
-          box-shadow: 0px 0px 0px 0px color(accent1);
+          background-color: darken(lime, 10%);
+          box-shadow: 0px 0px 0px 0px lime;
         }
         12% {
-          background-color: color(accent1);
-          box-shadow: 0px 0px 5px 3px color(accent1);
+          background-color: lime;
+          box-shadow: 0px 0px 5px 3px lime;
         }
         15% {
-          background-color: darken(color(accent1), 10%);
-          box-shadow: 0px 0px 0px 0px color(accent1);
+          background-color: darken(lime, 10%);
+          box-shadow: 0px 0px 0px 0px lime;
         }
         18% {
-          background-color: color(accent1);
-          box-shadow: 0px 0px 8px 4px color(accent1);
+          background-color: lime;
+          box-shadow: 0px 0px 8px 4px lime;
         }
         10% {
-          background-color: darken(color(accent1), 5%);
-          box-shadow: 0px 0px 0px 0px color(accent1);
+          background-color: darken(lime, 5%);
+          box-shadow: 0px 0px 0px 0px lime;
         }
         25% {
-          background-color: color(accent1);
-          box-shadow: 0px 0px 15px 7px color(accent1);
+          background-color: lime;
+          box-shadow: 0px 0px 15px 7px lime;
         }
         to {
-          background-color: color(accent1);
-          box-shadow: 0px 0px 10px 5px color(accent1);
+          background-color: lime;
+          box-shadow: 0px 0px 10px 5px lime;
         }
       }
     }
