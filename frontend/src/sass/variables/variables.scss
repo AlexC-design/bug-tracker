@@ -8,3 +8,27 @@ $colors: (
   accent3: #00e0ff,
   accent4: #5f9e65
 );
+
+@function color($color-name) {
+  @return map-get($colors, $color-name);
+}
+
+// --- MEDIA QUERYS ---
+
+@mixin width1600 {
+  @media (max-width: 1600px) {
+    @content;
+  }
+}
+
+@mixin width1200 {
+  @media (max-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin width600 {
+  @media (max-width: 600px) {
+    @content;
+  }
+}
