@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import gLogo from "../../../assets/svg/g-logo.svg";
 
+import "./css/google-auth.css";
+
 export default class GoogleAuth extends Component {
   componentDidMount() {
     const { fetchAuth } = this.props;

@@ -1,0 +1,46 @@
+.google-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 20px;
+  width: 500px;
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: 500;
+  background-color: #e93223;
+  color: white;
+}
+
+.google-button img {
+  width: 25px;
+  height: auto;
+}
+
+.google-button span {
+  width: 25px;
+}
+
+.google-button:hover {
+  background-color: #c52114;
+}
+
+.google-button:active {
+  background-color: #dc2516;
+}
+
+.google-button:focus {
+  outline: none;
+}
+/*# sourceMappingURL=google-auth.css.map */

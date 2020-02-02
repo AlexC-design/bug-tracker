@@ -7,70 +7,6 @@
   align-items: center;
   height: 100vh;
 
-  // ---- LOGO ----
-
-  .logo {
-    display: flex;
-    margin-bottom: 7em;
-
-    h1 {
-      margin: 0;
-      font-size: 3em;
-    }
-
-    .green-dot {
-      margin-left: 10px;
-      margin-top: 5px;
-      width: 16px;
-      height: 16px;
-      border-radius: 50px;
-      background-color: darken(lime, 20%);
-
-      box-shadow: 0px 0px 0px 0px lime;
-
-      animation: light-up 3s ease-in-out 1s forwards;
-
-      @keyframes light-up {
-        from {
-          background-color: darken(lime, 20%);
-          box-shadow: 0px 0px 0px 0px lime;
-        }
-        2% {
-          background-color: lime;
-          box-shadow: 0px 0px 5px 1px lime;
-        }
-        5% {
-          background-color: darken(lime, 10%);
-          box-shadow: 0px 0px 0px 0px lime;
-        }
-        12% {
-          background-color: lime;
-          box-shadow: 0px 0px 5px 3px lime;
-        }
-        15% {
-          background-color: darken(lime, 10%);
-          box-shadow: 0px 0px 0px 0px lime;
-        }
-        18% {
-          background-color: lime;
-          box-shadow: 0px 0px 8px 4px lime;
-        }
-        10% {
-          background-color: darken(lime, 5%);
-          box-shadow: 0px 0px 0px 0px lime;
-        }
-        25% {
-          background-color: lime;
-          box-shadow: 0px 0px 15px 7px lime;
-        }
-        to {
-          background-color: lime;
-          box-shadow: 0px 0px 10px 5px lime;
-        }
-      }
-    }
-  }
-
   // ---- GUEST LOGIN ----
 
   .guest-login-container {
@@ -125,45 +61,5 @@
 
   p {
     margin-bottom: 5em;
-  }
-
-  // ---- GOOGLE BUTTON ----
-
-  .google-button {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 20px;
-
-    width: 500px;
-    height: 50px;
-    border: none;
-    border-radius: 10px;
-    font-size: large;
-    font-weight: 500;
-    background-color: color(accent1);
-    color: white;
-
-    img {
-      width: 25px;
-      height: auto;
-    }
-
-    span {
-      width: 25px;
-    }
-
-    &:hover {
-      background-color: darken(color(accent1), 10%);
-    }
-
-    &:active {
-      background-color: darken(color(accent1), 5%);
-    }
-
-    &:focus {
-      outline: none;
-    }
   }
 }
