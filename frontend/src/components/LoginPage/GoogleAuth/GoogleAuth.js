@@ -4,14 +4,13 @@ import gLogo from "../../../assets/svg/g-logo.svg";
 import "./css/google-auth.css";
 
 export default class GoogleAuth extends Component {
-  componentDidMount() {
-    const { fetchAuth } = this.props;
-    fetchAuth();
-  }
+  componentDidMount() {}
 
   render() {
+    const { fetchAuth } = this.props;
+
     return (
-      <button className="google-button">
+      <button onClick={fetchAuth} className="google-button">
         <img src={gLogo} alt="google-logo" />
         Sign In with Google
         <span></span>
