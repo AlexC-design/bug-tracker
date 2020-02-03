@@ -1,3 +1,3 @@
-import GuestLogin from "./GuestLogin";
+import GuestLogin from "./connect";
 
 export default GuestLogin;
