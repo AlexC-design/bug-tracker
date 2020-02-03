@@ -4,12 +4,15 @@ import { ACTIONS, fetchAuthSuccess, authInitSuccess } from "./index";
 
 const { FETCH_AUTH, AUTH_INIT_SUCCESS } = ACTIONS;
 
-function onAuthChange(auth) {
-  return eventChannel(emitter => {
-    auth.isSignedIn.listen(value => emitter(value));
-    // The subscriber must return an unsubscribe function
-    return () => ({});
-  });
+//
+
+export function* fetchAuth() {
+  if (window.gapi.client) {
+    yield put(authInitSuccess());
+  } else {
+    yield call(performAuthInit);
+    yield put(authInitSuccess());
+  }
 }
 
 const performAuthInit = async () => {
@@ -25,20 +28,31 @@ const performAuthInit = async () => {
   });
 };
 
-const performFetchAuth = async () => {
+//
+
+export function* authInitSuccessSaga() {
   const auth = window.gapi.auth2.getAuthInstance();
+  const loggedIn = auth.isSignedIn.get();
 
-  return auth;
-};
-
-export function* fetchAuth() {
-  if (window.gapi.client) {
-    yield put(authInitSuccess());
+  if (loggedIn) {
+    yield call(authIsLoggedIn, auth);
   } else {
-    yield call(performAuthInit);
-    yield put(authInitSuccess());
+    const authChannel = yield call(onAuthChange, auth);
+    auth.signIn();
+    yield take(authChannel);
+    yield call(authIsLoggedIn, auth);
   }
 }
+
+function onAuthChange(auth) {
+  return eventChannel(emitter => {
+    auth.isSignedIn.listen(value => emitter(value));
+    // The subscriber must return an unsubscribe function
+    return () => ({});
+  });
+}
+
+//
 
 export function* authIsLoggedIn(auth) {
   const basicProfile = auth.currentUser.get().getBasicProfile();
@@ -55,21 +69,7 @@ export function* authIsLoggedIn(auth) {
   yield put(fetchAuthSuccess(userDetails));
 }
 
-export function* authInitSuccessSaga() {
-  const auth = yield call(performFetchAuth);
-  let loggedIn = auth.isSignedIn.get();
-
-  if (loggedIn) {
-    yield call(authIsLoggedIn, auth);
-  } else {
-    const authChannel = yield call(onAuthChange, auth);
-    auth.signIn();
-    loggedIn = yield take(authChannel);
-    if (loggedIn) {
-      yield call(authIsLoggedIn, auth);
-    }
-  }
-}
+//
 
 function* watchFetchAuth() {
   yield takeLeading(FETCH_AUTH, fetchAuth);
