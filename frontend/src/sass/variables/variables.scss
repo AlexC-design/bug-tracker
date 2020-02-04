@@ -15,20 +15,26 @@ $colors: (
 
 // --- MEDIA QUERYS ---
 
-@mixin width1600 {
-  @media (max-width: 1600px) {
+@mixin width1920 {
+  @media (max-width: 1920px) {
     @content;
   }
 }
 
-@mixin width1200 {
-  @media (max-width: 1200px) {
+@mixin width1366 {
+  @media (max-width: 1366px) {
     @content;
   }
 }
 
-@mixin width600 {
-  @media (max-width: 600px) {
+@mixin width768 {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin width360 {
+  @media (max-width: 360px) {
     @content;
   }
 }
