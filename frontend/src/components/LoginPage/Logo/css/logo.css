@@ -5,6 +5,12 @@
   margin-bottom: 7em;
 }
 
+@media (max-width: 768px) {
+  .logo {
+    margin-bottom: 3em;
+  }
+}
+
 .logo h1 {
   margin: 0;
   font-size: 3em;

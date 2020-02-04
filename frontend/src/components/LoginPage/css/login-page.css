@@ -32,6 +32,12 @@
   margin-bottom: 5em;
 }
 
+@media (max-width: 768px) {
+  .login-page-container .guest-login-container {
+    margin-bottom: 2em;
+  }
+}
+
 .login-page-container .guest-login-container .guest-name-input {
   width: calc(500px - 3em);
   height: 50px;
@@ -47,6 +53,14 @@
 
 .login-page-container .guest-login-container .guest-name-input:focus {
   outline: none;
+}
+
+@media (max-width: 768px) {
+  .login-page-container .guest-login-container .guest-name-input {
+    width: 58vw;
+    margin-bottom: 3em;
+    font-size: medium;
+  }
 }
 
 .login-page-container .guest-login-container .guest-login-button {
@@ -74,5 +88,11 @@
 
 .login-page-container p {
   margin-bottom: 5em;
+}
+
+@media (max-width: 768px) {
+  .login-page-container p {
+    margin-bottom: 3em;
+  }
 }
 /*# sourceMappingURL=login-page.css.map */

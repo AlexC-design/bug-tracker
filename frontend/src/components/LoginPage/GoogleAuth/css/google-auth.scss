@@ -16,6 +16,28 @@
   background-color: color(accent1);
   color: white;
 
+  &.sign-out {
+    display: block;
+    text-align: center;
+    background-color: darken(color(accent1), 10%);
+
+    &:hover {
+      background-color: darken(color(accent1), 20%);
+    }
+
+    &:active {
+      background-color: darken(color(accent1), 15%);
+    }
+  }
+
+  @include width768 {
+    width: 75vw;
+  }
+
+  @include width360 {
+    width: 80vw;
+  }
+
   img {
     width: 25px;
     height: auto;
@@ -31,41 +53,6 @@
 
   &:active {
     background-color: darken(color(accent1), 5%);
-  }
-
-  &:focus {
-    outline: none;
-  }
-}
-
-.sign-out-button {
-  text-align: center;
-  padding: 0 20px;
-
-  width: 400px;
-  height: 50px;
-  border: none;
-  border-radius: 10px;
-  font-size: large;
-  font-weight: 500;
-  background-color: darken(color(accent1), 10%);
-  color: white;
-
-  img {
-    width: 25px;
-    height: auto;
-  }
-
-  span {
-    width: 25px;
-  }
-
-  &:hover {
-    background-color: darken(color(accent1), 20%);
-  }
-
-  &:active {
-    background-color: darken(color(accent1), 15%);
   }
 
   &:focus {

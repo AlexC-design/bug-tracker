@@ -17,7 +17,7 @@ export default class GoogleAuth extends Component {
       );
     } else if (userDetails.isSignedIn && userDetails.isSignedIn === true) {
       return (
-        <button onClick={signOut} className="sign-out-button">
+        <button onClick={signOut} className="google-button sign-out">
           Sign Out
           <span></span>
         </button>

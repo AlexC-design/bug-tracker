@@ -4,6 +4,10 @@
   display: flex;
   margin-bottom: 7em;
 
+  @include width768 {
+    margin-bottom: 3em;
+  }
+
   h1 {
     margin: 0;
     font-size: 3em;

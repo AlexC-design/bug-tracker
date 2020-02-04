@@ -23,6 +23,32 @@
   color: white;
 }
 
+.google-button.sign-out {
+  display: block;
+  text-align: center;
+  background-color: #c52114;
+}
+
+.google-button.sign-out:hover {
+  background-color: #97190f;
+}
+
+.google-button.sign-out:active {
+  background-color: #ae1d11;
+}
+
+@media (max-width: 768px) {
+  .google-button {
+    width: 75vw;
+  }
+}
+
+@media (max-width: 360px) {
+  .google-button {
+    width: 80vw;
+  }
+}
+
 .google-button img {
   width: 25px;
   height: auto;
@@ -41,40 +67,6 @@
 }
 
 .google-button:focus {
-  outline: none;
-}
-
-.sign-out-button {
-  text-align: center;
-  padding: 0 20px;
-  width: 400px;
-  height: 50px;
-  border: none;
-  border-radius: 10px;
-  font-size: large;
-  font-weight: 500;
-  background-color: #c52114;
-  color: white;
-}
-
-.sign-out-button img {
-  width: 25px;
-  height: auto;
-}
-
-.sign-out-button span {
-  width: 25px;
-}
-
-.sign-out-button:hover {
-  background-color: #97190f;
-}
-
-.sign-out-button:active {
-  background-color: #ae1d11;
-}
-
-.sign-out-button:focus {
   outline: none;
 }
 /*# sourceMappingURL=google-auth.css.map */

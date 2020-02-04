@@ -16,6 +16,10 @@
     align-items: center;
     margin-bottom: 5em;
 
+    @include width768 {
+      margin-bottom: 2em;
+    }
+
     .guest-name-input {
       width: calc(500px - 3em);
       height: 50px;
@@ -30,6 +34,12 @@
 
       &:focus {
         outline: none;
+      }
+
+      @include width768 {
+        width: 58vw;
+        margin-bottom: 3em;
+        font-size: medium;
       }
     }
 
@@ -61,5 +71,9 @@
 
   p {
     margin-bottom: 5em;
+
+    @include width768 {
+      margin-bottom: 3em;
+    }
   }
 }
