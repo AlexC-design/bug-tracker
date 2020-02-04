@@ -1,10 +1,8 @@
 import { combineReducers } from "redux";
-import { connectRouter } from "connected-react-router";
 import userDetails from "./state/userDetails/reducer";
 
-const reducers = history =>
+const reducers = () =>
   combineReducers({
-    router: connectRouter(history),
     userDetails
   });
 
