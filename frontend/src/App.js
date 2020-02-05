@@ -5,7 +5,7 @@ import { store } from "./store/configureStore";
 
 import LoginPage from "./components/LoginPage/LoginPage";
 import ProjectsPage from "./components/ProjectsPage/ProjectsPage";
-import Navbar from "./components/Navbar/Navbar";
+import Navbar from "./components/Navbar";
 
 import "./css/app.css";
 
