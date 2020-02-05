@@ -1,9 +1,10 @@
 import React from "react";
 import { Provider } from "react-redux";
 import { HashRouter, Route } from "react-router-dom";
+import { store } from "./store/configureStore";
 
 import LoginPage from "./components/LoginPage/LoginPage";
-import { store } from "./store/configureStore";
+import ProjectsPage from "./components/ProjectsPage/ProjectsPage";
 
 import "./css/app.css";
 
@@ -12,7 +13,8 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <HashRouter basename="/">
-          <Route to="/" exact component={LoginPage} />
+          <Route to="/home" exact component={LoginPage} />
+          <Route to="/projects" exact component={ProjectsPage} />
         </HashRouter>
       </Provider>
     );

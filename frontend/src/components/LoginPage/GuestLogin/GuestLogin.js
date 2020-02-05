@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export default class GuestLogin extends Component {
   constructor(props) {
@@ -40,7 +41,9 @@ export default class GuestLogin extends Component {
       return (
         <div className="guest-login-container">
           <h2 className="guest-name">Hi, {userDetails.userGivenName}</h2>
-          <button className="guest-login-button">Go to Projects</button>
+          <Link to="/projects" className="guest-login-button">
+            Go to Projects
+          </Link>
         </div>
       );
     }
