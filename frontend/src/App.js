@@ -13,8 +13,8 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <HashRouter basename="/">
-          <Route to="/home" exact component={LoginPage} />
-          <Route to="/projects" exact component={ProjectsPage} />
+          <Route path="/" exact component={LoginPage} />
+          <Route path="/projects" exact component={ProjectsPage} />
         </HashRouter>
       </Provider>
     );
