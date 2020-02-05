@@ -5,6 +5,7 @@ import { store } from "./store/configureStore";
 
 import LoginPage from "./components/LoginPage/LoginPage";
 import ProjectsPage from "./components/ProjectsPage/ProjectsPage";
+import Navbar from "./components/Navbar/Navbar";
 
 import "./css/app.css";
 
@@ -13,6 +14,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <HashRouter basename="/">
+          <Navbar />
           <Route path="/" exact component={LoginPage} />
           <Route path="/projects" exact component={ProjectsPage} />
         </HashRouter>
