@@ -20,8 +20,10 @@ export default class Navbar extends Component {
     return (
       <div className="navbar">
         <div
-          className={`navbar-title ${
-            this.state.page.includes("projects") ? "centered" : "left-aligned"
+          className={`navbar__title navbar__title${
+            this.state.page.includes("projects")
+              ? "--centered"
+              : "--left-aligned"
           }`}
         >
           Title
@@ -29,7 +31,7 @@ export default class Navbar extends Component {
         {!this.state.page.includes("projects") && (
           <NavbarOptions isAdmin={true} />
         )}
-        <img src={userIcon} className="navbar-user" />
+        <img src={userIcon} className="navbar__user" />
       </div>
     );
   }

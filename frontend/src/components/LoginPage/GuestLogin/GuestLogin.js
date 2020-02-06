@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
+import "./css/guest-login.css";
+
 export default class GuestLogin extends Component {
   constructor(props) {
     super(props);
@@ -22,16 +24,16 @@ export default class GuestLogin extends Component {
 
     if (!userDetails.isSignedIn) {
       return (
-        <form className="guest-login-container" onSubmit={this.handleSubmit}>
+        <form className="guest-login" onSubmit={this.handleSubmit}>
           <input
-            className="guest-name-input"
+            className="guest-login__input"
             type="text"
             value={this.state.value}
             placeholder="...Type your guest name here"
             onChange={this.handleChange}
           />
           <input
-            className="guest-login-button"
+            className="guest-login__button"
             type="submit"
             value="Log In as Guest"
           />
@@ -39,9 +41,9 @@ export default class GuestLogin extends Component {
       );
     } else {
       return (
-        <div className="guest-login-container">
-          <h2 className="guest-name">Hi, {userDetails.userGivenName}</h2>
-          <Link to="/projects" className="guest-login-button">
+        <div className="guest-login">
+          <h2 className="guest-login__name">Hi, {userDetails.userGivenName}</h2>
+          <Link to="/projects" className="guest-login__button">
             Go to Projects
           </Link>
         </div>

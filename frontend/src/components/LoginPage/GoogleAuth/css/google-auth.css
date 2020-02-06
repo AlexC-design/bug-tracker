@@ -1,4 +1,5 @@
 .google-button {
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -21,20 +22,6 @@
   font-weight: 500;
   background-color: #e93223;
   color: white;
-}
-
-.google-button.sign-out {
-  display: block;
-  text-align: center;
-  background-color: #c52114;
-}
-
-.google-button.sign-out:hover {
-  background-color: #97190f;
-}
-
-.google-button.sign-out:active {
-  background-color: #ae1d11;
 }
 
 @media (max-width: 768px) {
@@ -68,5 +55,19 @@
 
 .google-button:focus {
   outline: none;
+}
+
+.google-button--sign-out {
+  display: block;
+  text-align: center;
+  background-color: #c52114;
+}
+
+.google-button--sign-out:hover {
+  background-color: #97190f;
+}
+
+.google-button--sign-out:active {
+  background-color: #ae1d11;
 }
 /*# sourceMappingURL=google-auth.css.map */

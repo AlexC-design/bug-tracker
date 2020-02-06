@@ -1,6 +1,7 @@
 @import "../../../../sass/variables/variables.scss";
 
 .google-button {
+  cursor: pointer;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -15,20 +16,6 @@
   font-weight: 500;
   background-color: color(accent1);
   color: white;
-
-  &.sign-out {
-    display: block;
-    text-align: center;
-    background-color: darken(color(accent1), 10%);
-
-    &:hover {
-      background-color: darken(color(accent1), 20%);
-    }
-
-    &:active {
-      background-color: darken(color(accent1), 15%);
-    }
-  }
 
   @include width768 {
     width: 75vw;
@@ -57,5 +44,19 @@
 
   &:focus {
     outline: none;
+  }
+
+  &--sign-out {
+    display: block;
+    text-align: center;
+    background-color: darken(color(accent1), 10%);
+
+    &:hover {
+      background-color: darken(color(accent1), 20%);
+    }
+
+    &:active {
+      background-color: darken(color(accent1), 15%);
+    }
   }
 }
