@@ -1,13 +1,11 @@
-import { connect } from "react-redux";
-// import { getUserDetails } from "../../../store/state/userDetails/sagas";
+import { key } from "../../../config/key";
 import { getUserDetails } from "../../../store/state/userDetails/index";
 
 export const performClientInit = dispatch => {
   window.gapi.load("client:auth2", () => {
     window.gapi.client
       .init({
-        clientId:
-          "29791915032-i3nlh62ukf6f5bp1aom5ko8iaq1be011.apps.googleusercontent.com",
+        clientId: key,
         scope: "email profile"
       })
       .then(() => {
