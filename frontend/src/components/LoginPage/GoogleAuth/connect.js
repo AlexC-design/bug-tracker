@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
-import { fetchAuth } from "../../../store/state/userDetails";
-import { signOut } from "../../../store/state/userDetails/actions";
+import { signIn, signOut } from "../../../store/state/userDetails";
+import { performClientInit } from "../../../components/LoginPage/GoogleAuth/performClientInit";
 
 import GoogleAuth from "./GoogleAuth";
 
 const mapDispatchToProps = dispatch => ({
-  fetchAuth: () => dispatch(fetchAuth()),
-  signOut: () => dispatch(signOut())
+  signIn: () => dispatch(signIn()),
+  signOut: () => dispatch(signOut()),
+  performClientInit: () => performClientInit(dispatch)
 });
 
 const mapStateToProps = state => {

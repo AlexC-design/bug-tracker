@@ -1,26 +1,30 @@
-const FETCH_AUTH = "FETCH_AUTH";
-const FETCH_AUTH_SUCCESS = "FETCH_AUTH_SUCCESS";
-const AUTH_INIT_SUCCESS = "AUTH_INIT_SUCCESS";
+const LOAD_USER_DETAILS = "LOAD_USER_DETAILS";
+const SIGN_IN = "SIGN_IN";
 const CLEAR_USER_DETAILS = "CLEAR_USER_DETAILS";
+const GET_USER_DETAILS = "GET_USER_DETAILS";
 
 export const ACTIONS = {
-  FETCH_AUTH,
-  FETCH_AUTH_SUCCESS,
-  AUTH_INIT_SUCCESS,
+  LOAD_USER_DETAILS,
+  SIGN_IN,
+  GET_USER_DETAILS,
   CLEAR_USER_DETAILS
 };
 
-export const fetchAuth = () => ({
-  type: FETCH_AUTH
+export const signIn = () => ({
+  type: SIGN_IN
 });
 
-export const authInitSuccess = () => ({
-  type: AUTH_INIT_SUCCESS
+export const getUserDetails = auth => ({
+  type: GET_USER_DETAILS,
+  payload: auth
 });
 
-export const fetchAuthSuccess = userDetails => ({
-  type: FETCH_AUTH_SUCCESS,
+export const loadUserDetails = userDetails => ({
+  type: LOAD_USER_DETAILS,
   payload: userDetails
 });
 
-export const clearUserDetails = () => ({ type: CLEAR_USER_DETAILS });
+export const signOut = () => dispatch => {
+  window.gapi.auth2.getAuthInstance().signOut();
+  dispatch({ type: CLEAR_USER_DETAILS });
+};

@@ -1,47 +1,20 @@
 import { eventChannel } from "redux-saga";
 import { all, takeLeading, put, call, take } from "redux-saga/effects";
-import { ACTIONS, fetchAuthSuccess, authInitSuccess } from "./index";
+import { ACTIONS, loadUserDetails } from "./index";
 
-const { FETCH_AUTH, AUTH_INIT_SUCCESS } = ACTIONS;
-
-//
-
-export function* fetchAuth() {
-  if (window.gapi.client) {
-    yield put(authInitSuccess());
-  } else {
-    yield call(performAuthInit);
-    yield put(authInitSuccess());
-  }
-}
-
-const performAuthInit = async () => {
-  return new Promise(resolve => {
-    return window.gapi.load("client:auth2", async () => {
-      await window.gapi.client.init({
-        clientId:
-          "29791915032-i3nlh62ukf6f5bp1aom5ko8iaq1be011.apps.googleusercontent.com",
-        scope: "email profile"
-      });
-      resolve();
-    });
-  });
-};
+const { SIGN_IN, GET_USER_DETAILS } = ACTIONS;
 
 //
 
-export function* authInitSuccessSaga() {
+export function* signIn() {
+  console.log('sign in')
   const auth = window.gapi.auth2.getAuthInstance();
-  const loggedIn = auth.isSignedIn.get();
 
-  if (loggedIn) {
-    yield call(authIsLoggedIn, auth);
-  } else {
-    const authChannel = yield call(onAuthChange, auth);
-    auth.signIn();
-    yield take(authChannel);
-    yield call(authIsLoggedIn, auth);
-  }
+  const authChannel = yield call(onAuthChange, auth);
+
+  auth.signIn();
+  yield take(authChannel);
+  yield call(getUserDetails, auth);
 }
 
 function onAuthChange(auth) {
@@ -54,7 +27,9 @@ function onAuthChange(auth) {
 
 //
 
-export function* authIsLoggedIn(auth) {
+export function* getUserDetails() {
+  const auth = window.gapi.auth2.getAuthInstance();
+
   const basicProfile = auth.currentUser.get().getBasicProfile();
 
   const userDetails = {
@@ -66,19 +41,19 @@ export function* authIsLoggedIn(auth) {
     userGivenName: basicProfile.getGivenName()
   };
 
-  yield put(fetchAuthSuccess(userDetails));
+  yield put(loadUserDetails(userDetails));
 }
 
 //
 
-function* watchFetchAuth() {
-  yield takeLeading(FETCH_AUTH, fetchAuth);
+function* watchSignIn() {
+  yield takeLeading(SIGN_IN, signIn);
 }
 
-function* watchAuthInitSuccess() {
-  yield takeLeading(AUTH_INIT_SUCCESS, authInitSuccessSaga);
+function* watchGetUserDetails() {
+  yield takeLeading(GET_USER_DETAILS, getUserDetails);
 }
 
 export default function* rootSaga() {
-  yield all([watchFetchAuth(), watchAuthInitSuccess()]);
+  yield all([watchGetUserDetails(), watchSignIn()]);
 }
