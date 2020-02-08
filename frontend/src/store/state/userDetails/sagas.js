@@ -7,7 +7,6 @@ const { SIGN_IN, GET_USER_DETAILS } = ACTIONS;
 //
 
 export function* signIn() {
-  console.log('sign in')
   const auth = window.gapi.auth2.getAuthInstance();
 
   const authChannel = yield call(onAuthChange, auth);
