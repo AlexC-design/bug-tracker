@@ -1,0 +1,48 @@
+@import "../../../../../sass/variables/variables.scss";
+
+.project-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 20%;
+
+  background-color: color(primary-dark);
+
+  border-radius: 0 0 10px 10px;
+
+  &__project-icon {
+    margin-left: 5%;
+  }
+
+  &__project-name {
+    font-size: 1.5em;
+    width: 50%;
+    text-align: left;
+  }
+
+  &__delete-button {
+    position: relative;
+    padding: 0;
+    margin: 0 5%;
+    height: 45px;
+    width: 45px;
+    border: none;
+    background-color: color(accent1);
+
+    border-radius: 100px;
+
+    transform: rotate(45deg);
+
+    &__cross {
+      width: 27px;
+      height: 27px;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+  }
+}

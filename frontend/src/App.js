@@ -14,7 +14,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <HashRouter basename="/">
-          <Navbar />
+          {/* <Navbar /> */}
           <Route path="/" exact component={LoginPage} />
           <Route path="/projects" exact component={ProjectsPage} />
         </HashRouter>

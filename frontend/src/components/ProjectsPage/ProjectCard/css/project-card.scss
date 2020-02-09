@@ -4,6 +4,10 @@ $cardWidth: 500px;
 $cardHeight: 350px;
 
 .project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
   position: relative;
 
   width: $cardWidth;

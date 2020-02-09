@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import keyIcon from "../../../../assets/svg/key-icon.svg";
 import plusSign from "../../../../assets/svg/plus-icon.svg";
 
+import "./css/project-bar.css";
+
 export default class ProjectBar extends Component {
   render() {
     return (
