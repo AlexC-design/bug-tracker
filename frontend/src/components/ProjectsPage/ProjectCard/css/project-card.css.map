@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAKA,AAAA,aAAa,CAAC;EACZ,QAAQ,EAAE,QAAQ;EAElB,KAAK,EANK,KAAK;EAOf,MAAM,EANK,KAAK;EAQhB,gBAAgB,ECVD,OAAO;EDYtB,MAAM,EAAE,eAAe;EACvB,aAAa,EAAE,IAAI;CACpB",
     "sources": [
-        "project-card.scss"
+        "project-card.scss",
+        "../../../../sass/variables/variables.scss"
     ],
     "names": [],
     "file": "project-card.css"

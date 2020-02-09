@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAAA,AAAA,cAAc,CAAC;EACb,SAAS,EAAE,IAAI;EACf,MAAM,EAAE,IAAI;EAEZ,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,WAAW,EAAE,MAAM;CAYpB;;AAlBD,AAQE,cARY,CAQZ,mBAAmB,CAAC;EAClB,SAAS,EAAE,MAAM;EAEjB,OAAO,EAAE,IAAI;EACb,qBAAqB,EAAE,cAAc;EACrC,YAAY,EAAE,IAAI;EAClB,eAAe,EAAE,KAAK;EAEtB,eAAe,EAAE,aAAa;CAC/B",
     "sources": [
         "projects-page.scss"
     ],

@@ -1,0 +1,16 @@
+@import "../../../../sass/variables/variables.scss";
+
+$cardWidth: 500px;
+$cardHeight: 350px;
+
+.project-card {
+  position: relative;
+
+  width: $cardWidth;
+  height: $cardHeight;
+
+  background-color: color(primary-light);
+
+  border: solid 2px white;
+  border-radius: 10px;
+}

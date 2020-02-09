@@ -1,1 +1,9 @@
-/* No CSS *//*# sourceMappingURL=project-card.css.map */
+.project-card {
+  position: relative;
+  width: 500px;
+  height: 350px;
+  background-color: #44454d;
+  border: solid 2px white;
+  border-radius: 10px;
+}
+/*# sourceMappingURL=project-card.css.map */

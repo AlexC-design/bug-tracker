@@ -9,37 +9,40 @@ $line-long: calc(#{$button-size} * 0.65); //width for horizontal
   $buttonSize: $button-size;
   @return calc((#{$buttonSize}/ 2) - (#{$property} / 2));
 }
+.create-project-container {
+  position: fixed;
+  right: 10vw;
+  bottom: 10vh;
 
-.create-button {
-  position: relative;
-  top: 100px;
-  left: 500px;
-  border: none;
-  border-radius: 100px;
-  background-color: color(secondary-light);
+  .create-button {
+    position: relative;
+    border: none;
+    border-radius: 100px;
+    background-color: color(secondary-light);
 
-  width: $button-size;
-  height: $button-size;
+    width: $button-size;
+    height: $button-size;
 
-  &__plus {
-    position: absolute;
-    border-radius: 20px;
-    background-color: white;
+    &__plus {
+      position: absolute;
+      border-radius: 20px;
+      background-color: white;
 
-    &--vertical {
-      top: center($line-long);
-      left: center($line-small);
+      &--vertical {
+        top: center($line-long);
+        left: center($line-small);
 
-      width: $line-small;
-      height: $line-long;
-    }
+        width: $line-small;
+        height: $line-long;
+      }
 
-    &--horizontal {
-      top: center($line-small);
-      left: center($line-long);
+      &--horizontal {
+        top: center($line-small);
+        left: center($line-long);
 
-      width: $line-long;
-      height: $line-small;
+        width: $line-long;
+        height: $line-small;
+      }
     }
   }
 }

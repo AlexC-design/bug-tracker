@@ -14,7 +14,7 @@ export default class CreateProjectButton extends Component {
 
   render() {
     return (
-      <div className="create-poject-container">
+      <div className="create-project-container">
         <button className={`create-button`} onClick={this.createProject}>
           <div className="create-button__plus create-button__plus--vertical" />
           <div className="create-button__plus create-button__plus--horizontal" />
