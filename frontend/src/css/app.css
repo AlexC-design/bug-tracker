@@ -4,13 +4,21 @@ body {
   font-family: Montserrat, sans-serif;
   color: white;
   text-decoration: none;
-  background: -webkit-gradient(linear, left top, left bottom, from(#44454d), to(#1d1d23));
-  background: linear-gradient(#44454d, #1d1d23);
   height: 100vh;
 }
 
 body a {
   color: inherit;
   text-decoration: inherit;
+}
+
+body .app-background {
+  position: fixed;
+  background: -webkit-gradient(linear, left top, left bottom, from(#44454d), to(#1d1d23));
+  background: linear-gradient(#44454d, #1d1d23);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  z-index: -1;
 }
 /*# sourceMappingURL=app.css.map */

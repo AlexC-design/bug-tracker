@@ -17,6 +17,7 @@ export default class App extends React.Component {
           {/* <Navbar /> */}
           <Route path="/" exact component={LoginPage} />
           <Route path="/projects" exact component={ProjectsPage} />
+          <div className="app-background"/>
         </HashRouter>
       </Provider>
     );

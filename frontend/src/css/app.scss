@@ -8,11 +8,20 @@ body {
 
   color: white;
   text-decoration: none;
-  background: linear-gradient(color(primary-light), color(primary-dark));
   height: 100vh;
 
   a {
     color: inherit;
     text-decoration: inherit;
+  }
+
+  .app-background {
+    position: fixed;
+    background: linear-gradient(color(primary-light), color(primary-dark));
+    width: 100vw;
+    height: 100vh;
+    
+    top: 0;
+    z-index: -1;
   }
 }
