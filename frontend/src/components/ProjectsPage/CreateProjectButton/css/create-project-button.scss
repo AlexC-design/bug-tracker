@@ -2,8 +2,8 @@
 
 $button-size: 70px;
 
-$line-small: calc(#{$button-size} * 0.15); //width for vertical
-$line-long: calc(#{$button-size} * 0.7); //width for horizontal
+$line-small: calc(#{$button-size} * 0.12); //width for vertical
+$line-long: calc(#{$button-size} * 0.65); //width for horizontal
 
 @function center($property) {
   $buttonSize: $button-size;
