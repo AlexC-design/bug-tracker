@@ -1,0 +1,31 @@
+.create-button {
+  position: relative;
+  top: 100px;
+  left: 500px;
+  border: none;
+  border-radius: 100px;
+  background-color: #6f6f85;
+  width: 70px;
+  height: 70px;
+}
+
+.create-button__plus {
+  position: absolute;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.create-button__plus--vertical {
+  top: calc((70px/ 2) - (calc(70px * 0.7) / 2));
+  left: calc((70px/ 2) - (calc(70px * 0.15) / 2));
+  width: calc(70px * 0.15);
+  height: calc(70px * 0.7);
+}
+
+.create-button__plus--horizontal {
+  top: calc((70px/ 2) - (calc(70px * 0.15) / 2));
+  left: calc((70px/ 2) - (calc(70px * 0.7) / 2));
+  width: calc(70px * 0.7);
+  height: calc(70px * 0.15);
+}
+/*# sourceMappingURL=create-project-button.css.map */

@@ -53,7 +53,7 @@
   border-radius: 10px;
   font-size: large;
   font-weight: 500;
-  background-color: #7c7c7c;
+  background-color: #6f6f85;
   color: white;
   text-align: center;
   display: -webkit-box;
@@ -72,10 +72,10 @@
 }
 
 .guest-login__button:hover {
-  background-color: #636363;
+  background-color: #585869;
 }
 
 .guest-login__button:active {
-  background-color: #6f6f6f;
+  background-color: #636377;
 }
 /*# sourceMappingURL=guest-login.css.map */

@@ -1,0 +1,45 @@
+@import "../../../../sass/variables/variables.scss";
+
+$button-size: 70px;
+
+$line-small: calc(#{$button-size} * 0.15); //width for vertical
+$line-long: calc(#{$button-size} * 0.7); //width for horizontal
+
+@function center($property) {
+  $buttonSize: $button-size;
+  @return calc((#{$buttonSize}/ 2) - (#{$property} / 2));
+}
+
+.create-button {
+  position: relative;
+  top: 100px;
+  left: 500px;
+  border: none;
+  border-radius: 100px;
+  background-color: color(secondary-light);
+
+  width: $button-size;
+  height: $button-size;
+
+  &__plus {
+    position: absolute;
+    border-radius: 20px;
+    background-color: white;
+
+    &--vertical {
+      top: center($line-long);
+      left: center($line-small);
+
+      width: $line-small;
+      height: $line-long;
+    }
+
+    &--horizontal {
+      top: center($line-small);
+      left: center($line-long);
+
+      width: $line-long;
+      height: $line-small;
+    }
+  }
+}
