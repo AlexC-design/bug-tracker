@@ -7,7 +7,7 @@ export default class ProjectCard extends Component {
   render() {
     return (
       <div className="project-card">
-        <ProjectBar />
+        <ProjectBar projectName={this.props.projectName} />
       </div>
     );
   }

@@ -9,7 +9,9 @@ export default class ProjectBar extends Component {
     return (
       <div className="project-bar">
         <img src={keyIcon} className="project-bar__project-icon" />
-        <div className="project-bar__project-name">Project Name</div>
+        <div className="project-bar__project-name">
+          {this.props.projectName}
+        </div>
         <button className="project-bar__delete-button">
           <img src={plusSign} className="project-bar__delete-button__cross" />
         </button>
