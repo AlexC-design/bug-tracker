@@ -15,7 +15,7 @@ router.get("/", (req, res) => {
 //access  Public
 router.post("/", (req, res) => {
   const newProject = new Project({
-    projectName: req.body.projectName
+    project_name: req.body.project_name
   });
 
   newProject.save().then(project => res.json(project));
