@@ -25,8 +25,7 @@ router.post("/", (req, res) => {
 //descr   Delete a project
 //access  Public
 router.delete("/:id", (req, res) => {
-  Project
-    .findById(req.params.id)
+  Project.findById(req.params.id)
     .then(project => project.remove().then(() => res.json({ success: true })))
     .catch(err => res.status(404).json({ sucess: false }));
 });
