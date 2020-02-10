@@ -15,10 +15,14 @@ export const getProjects = () => dispatch => {
   );
 };
 
-export const createProject = projectDetails => ({
-  type: CREATE_PROJECT,
-  payload: projectDetails
-});
+export const createProject = project => dispatch => {
+  axios.post("api/projects", project).then(res =>
+    dispatch({
+      type: CREATE_PROJECT,
+      payload: res.data
+    })
+  );
+};
 
 export const deleteProject = projectId => ({
   type: DELETE_PROJECT,

@@ -1,21 +1,28 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createProject } from "../../../store/state/projects/index";
 
 import "./css/create-project-button.css";
 
-export default class CreateProjectButton extends Component {
+class CreateProjectButton extends Component {
   constructor(props) {
     super(props);
   }
 
-  createProject = () => {
+  createNewProject = () => {
     let projectName = prompt("enter name");
-    alert(projectName);
+
+    const newProject = {
+      projectName
+    };
+
+    this.props.createProject(newProject);
   };
 
   render() {
     return (
       <div className="create-project-container">
-        <button className={`create-button`} onClick={this.createProject}>
+        <button className={`create-button`} onClick={this.createNewProject}>
           <div className="create-button__plus create-button__plus--vertical" />
           <div className="create-button__plus create-button__plus--horizontal" />
         </button>
@@ -23,3 +30,5 @@ export default class CreateProjectButton extends Component {
     );
   }
 }
+
+export default connect(null, { createProject })(CreateProjectButton);
