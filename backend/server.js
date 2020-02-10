@@ -1,7 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 
-const users = require("./routes/api/users");
+const projects = require("./routes/api/projects");
 
 const app = express();
 
@@ -14,6 +14,6 @@ mongoose
   .then(() => console.log("MongoDB connect"))
   .catch(err => console.log(err));
 
-app.use("/api/users", users);
+app.use("/api/projects", projects);
 
 app.listen(5000, () => console.log("Server started on port 5000"));
