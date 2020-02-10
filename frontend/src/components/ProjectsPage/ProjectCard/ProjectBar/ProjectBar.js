@@ -8,12 +8,16 @@ export default class ProjectBar extends Component {
   render() {
     return (
       <div className="project-bar">
-        <img src={keyIcon} className="project-bar__project-icon" />
+        <img src={keyIcon} className="project-bar__project-icon" alt="key" />
         <div className="project-bar__project-name">
           {this.props.projectName}
         </div>
         <button className="project-bar__delete-button">
-          <img src={plusSign} className="project-bar__delete-button__cross" />
+          <img
+            src={plusSign}
+            className="project-bar__delete-button__cross"
+            alt="plus"
+          />
         </button>
       </div>
     );

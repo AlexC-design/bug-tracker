@@ -5,10 +5,6 @@ import { createProject } from "../../../store/state/projects/index";
 import "./css/create-project-button.css";
 
 class CreateProjectButton extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   createNewProject = () => {
     let projectName = prompt("enter name");
 

@@ -31,7 +31,7 @@ export default class Navbar extends Component {
         {!this.state.page.includes("projects") && (
           <NavbarOptions isAdmin={true} />
         )}
-        <img src={userIcon} className="navbar__user" />
+        <img src={userIcon} className="navbar__user" alt="user" />
       </div>
     );
   }
