@@ -8,12 +8,12 @@ import "./css/project-bar.css";
 
 class ProjectBar extends Component {
   render() {
-    const { projectName, _id } = this.props.project;
+    const { project_name, _id } = this.props.project;
 
     return (
       <div className="project-bar">
         <img src={keyIcon} className="project-bar__project-icon" alt="key" />
-        <div className="project-bar__project-name">{projectName}</div>
+        <div className="project-bar__project-name">{project_name}</div>
         <button
           onClick={() => this.props.deleteProject(_id)}
           className="project-bar__delete-button"

@@ -9,7 +9,7 @@ class CreateProjectButton extends Component {
     let projectName = prompt("enter name");
 
     const newProject = {
-      projectName
+      project_name: projectName
     };
 
     this.props.createProject(newProject);
