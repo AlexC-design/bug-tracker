@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         projects: state.projects.filter(
-          project => project.id !== action.payload
+          project => project._id !== action.payload
         )
       };
     case PROJECTS_LOADING:

@@ -17,7 +17,7 @@ class ProjectsPage extends Component {
       <div className="projects-page">
         <div className="projects-container">
           {this.props.projects.projects.map(project => (
-            <ProjectCard projectName={project.projectName} />
+            <ProjectCard project={project} key={project._id} />
           ))}
         </div>
         <CreateProjectButton />

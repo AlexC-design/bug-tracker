@@ -24,10 +24,14 @@ export const createProject = project => dispatch => {
   );
 };
 
-export const deleteProject = projectId => ({
-  type: DELETE_PROJECT,
-  payload: projectId
-});
+export const deleteProject = id => dispatch => {
+  axios.delete(`api/projects/${id}`).then(res =>
+    dispatch({
+      type: DELETE_PROJECT,
+      payload: id
+    })
+  );
+};
 
 export const setProjectsLoading = () => ({
   type: PROJECTS_LOADING
