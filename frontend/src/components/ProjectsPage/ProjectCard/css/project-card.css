@@ -13,7 +13,7 @@
   width: 500px;
   height: 350px;
   background-color: #44454d;
-  border: solid 2px white;
+  border: solid 2px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
 }
 /*# sourceMappingURL=project-card.css.map */
