@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import NavbarOptions from "./NavbarOptions/NavbarOptions";
 import userIcon from "../../assets/svg/user-icon.svg";
 
+import "./css/navbar.css";
+
 export default class Navbar extends Component {
   constructor(props) {
     super(props);
