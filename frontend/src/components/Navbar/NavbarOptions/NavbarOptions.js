@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 
+import "./css/navbar-options.css";
+
 export default class NavbarOptions extends Component {
   render() {
     const { isAdmin } = this.props;
 
     return (
-      <div>
-        {isAdmin && <div>Members</div>}
-        <div>Created</div>
-        {isAdmin && <div>Unassigned</div>}
+      <div className="navbar-options">
+        {isAdmin && <div className="navbar-options__members">Members</div>}
+        <div className="navbar-options__created">Created</div>
+        {isAdmin && (
+          <div className="navbar-options__unassigned">Unassigned</div>
+        )}
       </div>
     );
   }

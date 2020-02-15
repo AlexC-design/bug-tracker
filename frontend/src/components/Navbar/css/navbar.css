@@ -6,9 +6,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -16,8 +16,29 @@
   top: 0;
   left: 0;
   height: 50px;
-  width: 100%;
+  width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
+  font-size: 1.2em;
   z-index: 20;
+}
+
+.navbar__title {
+  margin-left: 4vw;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.navbar__title--left-aligned {
+  margin-right: auto;
+}
+
+.navbar__title--centered {
+  margin-right: calc(50% - 4vw - 30px);
+}
+
+.navbar__user {
+  height: 30px;
+  width: 30px;
+  margin-right: 4vw;
 }
 /*# sourceMappingURL=navbar.css.map */

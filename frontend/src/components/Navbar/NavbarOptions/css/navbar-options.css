@@ -1,1 +1,15 @@
-/* No CSS *//*# sourceMappingURL=navbar-options.css.map */
+.navbar-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-right: 2vw;
+}
+
+.navbar-options > * {
+  margin-right: 3vw;
+}
+/*# sourceMappingURL=navbar-options.css.map */
