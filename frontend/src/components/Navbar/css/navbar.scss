@@ -16,6 +16,14 @@
 
   z-index: 20;
 
+  &--hidden {
+    visibility: hidden;
+  }
+
+  &--visible {
+    visibility: visible;
+  }
+
   &__title {
     margin-left: 4vw;
     font-weight: bold;
@@ -26,7 +34,7 @@
     }
 
     &--centered {
-      margin-right: calc(50% - 4vw - 30px);
+      margin-right: calc(50% - 4vw - 75px);
     }
   }
 

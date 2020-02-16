@@ -18,18 +18,28 @@ export default class Navbar extends Component {
     });
   }
 
+  renderTitle() {
+    if (this.state.page.includes("projects")) {
+      return (
+        <div className="navbar__title navbar__title--centered">Projects</div>
+      );
+    } else {
+      return (
+        <div className="navbar__title navbar__title--left-aligned">
+          SelectedProject
+        </div>
+      );
+    }
+  }
+
   render() {
     return (
-      <div className="navbar">
-        <div
-          className={`navbar__title navbar__title${
-            this.state.page.includes("projects")
-              ? "--centered"
-              : "--left-aligned"
-          }`}
-        >
-          Title
-        </div>
+      <div
+        className={`navbar navbar--${
+          this.state.page === "/" ? "hidden" : "visible"
+        }`}
+      >
+        {this.renderTitle()}
         {!this.state.page.includes("projects") && (
           <NavbarOptions isAdmin={true} />
         )}
