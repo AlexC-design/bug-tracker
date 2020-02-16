@@ -44,5 +44,20 @@ $line-long: calc(#{$button-size} * 0.55); //width for horizontal
         height: $line-small;
       }
     }
+
+    &:hover {
+      background-color: darken(color(secondary-light), 10%);
+      
+      cursor: pointer;
+    }
+    
+    &:active {
+      background-color: lighten(color(secondary-light), 10%);
+
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }

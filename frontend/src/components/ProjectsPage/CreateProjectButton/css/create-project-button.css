@@ -32,4 +32,17 @@
   width: calc(70px * 0.55);
   height: calc(70px * 0.07);
 }
+
+.create-project-container .create-button:hover {
+  background-color: #585869;
+  cursor: pointer;
+}
+
+.create-project-container .create-button:active {
+  background-color: #8a8a9d;
+}
+
+.create-project-container .create-button:focus {
+  outline: none;
+}
 /*# sourceMappingURL=create-project-button.css.map */
