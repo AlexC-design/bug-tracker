@@ -14,7 +14,7 @@
 
   &__project-icon {
     margin-left: 5%;
-    
+
     transform: scale(0.8);
   }
 
@@ -36,6 +36,20 @@
     border-radius: 100px;
 
     transform: rotate(45deg);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      background-color: darken(color(accent1), 10%);
+
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: lighten(color(accent1), 5%);
+    }
 
     &__cross {
       width: 20px;

@@ -17,4 +17,12 @@ $cardHeight: 350px;
 
   border: solid 2px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
+  
+  &:hover {
+    border: solid 2px rgba(255, 255, 255, 0.4);
+  }
+
+  &:active {
+    border: solid 2px rgba(255, 255, 255, 0.8);
+  }
 }

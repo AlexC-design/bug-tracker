@@ -43,6 +43,19 @@
           transform: rotate(45deg);
 }
 
+.project-bar__delete-button:focus {
+  outline: none;
+}
+
+.project-bar__delete-button:hover {
+  background-color: #c52114;
+  cursor: pointer;
+}
+
+.project-bar__delete-button:active {
+  background-color: #eb483a;
+}
+
 .project-bar__delete-button__cross {
   width: 20px;
   height: 20px;

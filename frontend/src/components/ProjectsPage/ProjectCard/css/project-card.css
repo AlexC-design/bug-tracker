@@ -16,4 +16,12 @@
   border: solid 2px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
 }
+
+.project-card:hover {
+  border: solid 2px rgba(255, 255, 255, 0.4);
+}
+
+.project-card:active {
+  border: solid 2px rgba(255, 255, 255, 0.8);
+}
 /*# sourceMappingURL=project-card.css.map */
