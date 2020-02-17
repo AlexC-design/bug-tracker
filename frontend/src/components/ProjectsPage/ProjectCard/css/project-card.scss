@@ -20,6 +20,8 @@ $cardHeight: 350px;
   
   &:hover {
     border: solid 2px rgba(255, 255, 255, 0.4);
+
+    cursor: pointer;
   }
 
   &:active {

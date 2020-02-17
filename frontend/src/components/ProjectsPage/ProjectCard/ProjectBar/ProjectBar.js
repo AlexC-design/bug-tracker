@@ -7,6 +7,11 @@ import { deleteProject } from "../../../../store/state/projects";
 import "./css/project-bar.css";
 
 class ProjectBar extends Component {
+  onDeleteProject(id, event) {
+    this.props.deleteProject(id);
+    event.stopPropagation();
+  }
+
   render() {
     const { project_name, _id } = this.props.project;
 
@@ -15,7 +20,7 @@ class ProjectBar extends Component {
         <img src={keyIcon} className="project-bar__project-icon" alt="key" />
         <div className="project-bar__project-name">{project_name}</div>
         <button
-          onClick={() => this.props.deleteProject(_id)}
+          onClick={event => this.onDeleteProject(_id, event)}
           className="project-bar__delete-button"
         >
           <img
