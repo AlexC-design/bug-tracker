@@ -4,6 +4,7 @@ import { getProjects } from "../../store/state/projects/";
 
 import ProjectCard from "./ProjectCard/ProjectCard";
 import CreateProjectButton from "./CreateProjectButton/CreateProjectButton";
+import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 import "./css/projects-page.css";
 
@@ -13,16 +14,24 @@ class ProjectsPage extends Component {
   }
 
   render() {
-    return (
-      <div className="projects-page">
-        <div className="projects-container">
-          {this.props.projects.projects.map(project => (
-            <ProjectCard project={project} key={project._id} />
-          ))}
+    if (!this.props.projects.loading) {
+      return (
+        <div className="projects-page">
+          <div className="projects-container">
+            {this.props.projects.projects.map(project => (
+              <ProjectCard project={project} key={project._id} />
+            ))}
+          </div>
+          <CreateProjectButton />
         </div>
-        <CreateProjectButton />
-      </div>
-    );
+      );
+    } else {
+      return (
+        <div className="projects-page">
+          <LoadingAnimation />
+        </div>
+      );
+    }
   }
 }
 
