@@ -48,5 +48,15 @@
   height: 30px;
   width: 30px;
   margin-right: 4vw;
+  opacity: 0.8;
+}
+
+.navbar__user:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.navbar__user--active {
+  opacity: 0.5;
 }
 /*# sourceMappingURL=navbar.css.map */

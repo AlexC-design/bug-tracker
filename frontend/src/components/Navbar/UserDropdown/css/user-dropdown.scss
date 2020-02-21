@@ -1,0 +1,37 @@
+@import "../../../../sass/variables/variables.scss";
+
+.user-dropdown {
+  position: absolute;
+  top: 60px;
+  right: calc(4vw - 10px);
+  padding: 20px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+
+  background-color: color(primary-dark);
+
+  border-radius: 10px;
+
+  &--hidden {
+      opacity: 0;
+  }
+
+  & * {
+    text-align: right;
+    min-width: calc(100% - 70px - 10px);
+    padding: 10px 35px;
+    margin: 10px 5px;
+
+    &:hover {
+      background-color: lighten(color(primary-dark), 20%);
+    }
+
+    &:active {
+      color: color(primary-dark);
+      background-color: lighten(color(primary-dark), 50%);
+    }
+  }
+}
