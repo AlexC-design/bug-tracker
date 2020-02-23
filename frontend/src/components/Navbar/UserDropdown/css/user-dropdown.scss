@@ -11,12 +11,17 @@
   justify-content: center;
   align-items: flex-end;
 
-  background-color: color(primary-dark);
+  background: (
+    linear-gradient(
+      rgba(color(primary-dark), 0.9),
+      lighten(rgba(color(primary-dark), 0.9), 5%)
+    )
+  );
 
   border-radius: 10px;
 
   &--hidden {
-      opacity: 0;
+    opacity: 0;
   }
 
   & * {

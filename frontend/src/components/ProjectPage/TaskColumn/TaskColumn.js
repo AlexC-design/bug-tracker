@@ -8,6 +8,7 @@ import "./css/task-column.css";
 export const TaskColumn = () => {
   return (
     <div className="task-column">
+      <div className="task-column__title">High Priority</div>
       <SimpleBarReact>
         <TaskCard />
         <TaskCard />

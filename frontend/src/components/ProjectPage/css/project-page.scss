@@ -1,5 +1,7 @@
 .project-page {
   margin: 70px 4vw 0;
-
   max-height: calc(100vh - 70px);
+
+  display: flex;
+  flex-direction: row;
 }

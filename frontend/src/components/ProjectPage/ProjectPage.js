@@ -8,6 +8,9 @@ export default class ProjectPage extends Component {
     return (
       <div className="project-page">
         <TaskColumn />
+        <TaskColumn />
+        <TaskColumn />
+        <TaskColumn />
       </div>
     );
   }
