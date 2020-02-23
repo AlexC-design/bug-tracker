@@ -4,9 +4,21 @@
   width: 400px;
   margin: 0 5px;
 
+  mask-image: linear-gradient(
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 1),
+    transparent
+  );
+
   &__title {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     opacity: 0.8;
   }
 

@@ -50,7 +50,7 @@
     width: 30px;
     margin-right: 4vw;
 
-    opacity: 0.8;
+    opacity: 0.5;
 
     &:hover {
       opacity: 1;
@@ -59,7 +59,7 @@
     }
 
     &--active {
-      opacity: 0.5;
+      opacity: 0.8;
     }
   }
 }

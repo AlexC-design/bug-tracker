@@ -54,7 +54,7 @@
   height: 30px;
   width: 30px;
   margin-right: 4vw;
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .navbar__user:hover {
@@ -63,6 +63,6 @@
 }
 
 .navbar__user--active {
-  opacity: 0.5;
+  opacity: 0.8;
 }
 /*# sourceMappingURL=navbar.css.map */

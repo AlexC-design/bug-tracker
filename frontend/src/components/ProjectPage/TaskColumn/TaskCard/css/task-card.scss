@@ -1,9 +1,9 @@
 @import "../../../../../sass/variables/variables.scss";
 
 .task-card {
-  margin: 15px;
+  margin: 0 15px 15px;
   border-radius: 10px;
-  background-color: color(secondary-dark);
+  background-color: rgba(color(primary-dark), 0.9);
 
   &__details {
     display: flex;
