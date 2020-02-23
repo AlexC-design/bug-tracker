@@ -18,7 +18,7 @@ class ProjectsPage extends Component {
     if (!this.props.projects.loading) {
       return (
         <div className="projects-page">
-          <SimpleBarReact>
+          <SimpleBarReact autoHide={false}>
             <div className="projects-container">
               {this.props.projects.projects.map(project => (
                 <ProjectCard project={project} key={project._id} />
