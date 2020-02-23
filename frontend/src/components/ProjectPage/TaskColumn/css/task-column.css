@@ -1,1 +1,4 @@
-/* No CSS *//*# sourceMappingURL=task-column.css.map */
+.task-column .simplebar-wrapper {
+  max-height: calc(100vh - 75px);
+}
+/*# sourceMappingURL=task-column.css.map */
