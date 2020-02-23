@@ -2,7 +2,7 @@
 
 .task-column {
   width: 400px;
-  margin: 0 5px;
+  margin: 0 5px 0 0;
 
   mask-image: linear-gradient(
     rgba(0, 0, 0, 1),
@@ -20,6 +20,23 @@
     text-align: center;
     margin-bottom: 10px;
     opacity: 0.8;
+  }
+
+  &__completed {
+    background-color: color(accent4);
+    border-radius: 10px;
+    margin: 0 10px;
+
+    .task-card {
+      margin: 0 10px 15px;
+      background-color: rgba(color(primary-dark), 0.8);
+    }
+
+    &__title {
+      text-align: center;
+      margin-bottom: 20px;
+      padding-top: 20px;
+    }
   }
 
   .simplebar-wrapper {

@@ -7,10 +7,10 @@ export default class ProjectPage extends Component {
   render() {
     return (
       <div className="project-page">
-        <TaskColumn />
-        <TaskColumn />
-        <TaskColumn />
-        <TaskColumn />
+        <TaskColumn priority="High Priority" />
+        <TaskColumn priority="Mid Priority" />
+        <TaskColumn priority="Low Priority" />
+        <TaskColumn priority="Trivial" />
       </div>
     );
   }

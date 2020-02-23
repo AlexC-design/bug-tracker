@@ -1,6 +1,6 @@
 .task-column {
   width: 400px;
-  margin: 0 5px;
+  margin: 0 5px 0 0;
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), to(transparent));
   -webkit-mask-image: linear-gradient(black, black, black, black, black, black, black, black, transparent);
           mask-image: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), to(transparent));
@@ -11,6 +11,23 @@
   text-align: center;
   margin-bottom: 10px;
   opacity: 0.8;
+}
+
+.task-column__completed {
+  background-color: #5f9e65;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+.task-column__completed .task-card {
+  margin: 0 10px 15px;
+  background-color: rgba(29, 29, 35, 0.8);
+}
+
+.task-column__completed__title {
+  text-align: center;
+  margin-bottom: 20px;
+  padding-top: 20px;
 }
 
 .task-column .simplebar-wrapper {

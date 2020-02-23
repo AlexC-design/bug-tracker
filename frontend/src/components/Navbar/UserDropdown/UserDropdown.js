@@ -10,11 +10,11 @@ export const UserDropdown = ({ visible }) => {
         visible ? "visible" : "hidden"
       }`}
     >
-      <Link to="/" className="user-dropdown__login">
-        Login Page
-      </Link>
       <Link to="/projects" className="user-dropdown__projects">
         Projects Page
+      </Link>
+      <Link to="/" className="user-dropdown__login">
+        Login Page
       </Link>
     </div>
   );
