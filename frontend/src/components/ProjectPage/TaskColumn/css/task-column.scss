@@ -1,3 +1,5 @@
+@import "../../../../sass/variables/variables.scss";
+
 .task-column {
   width: 400px;
   margin: 0 5px;
@@ -5,9 +7,18 @@
   &__title {
     text-align: center;
     margin-bottom: 20px;
+    opacity: 0.8;
   }
 
   .simplebar-wrapper {
     max-height: calc(100vh - 75px);
+  }
+
+  .simplebar-track.simplebar-vertical {
+    .simplebar-scrollbar {
+      &::before {
+        background-color: lighten(color(primary-light), 20%);
+      }
+    }
   }
 }

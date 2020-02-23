@@ -11,5 +11,11 @@
 
 .navbar-options > * {
   margin-right: 3vw;
+  opacity: 0.5;
+}
+
+.navbar-options > *:hover {
+  opacity: 0.7;
+  cursor: pointer;
 }
 /*# sourceMappingURL=navbar-options.css.map */

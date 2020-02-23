@@ -6,5 +6,12 @@
 
   & > * {
     margin-right: 3vw;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 0.7;
+
+      cursor: pointer;
+    }
   }
 }

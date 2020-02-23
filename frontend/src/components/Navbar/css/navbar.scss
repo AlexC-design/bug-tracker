@@ -28,6 +28,7 @@
     margin-left: 4vw;
     font-weight: 500;
     font-size: 1.2em;
+    opacity: 0.5;
 
     &--left-aligned {
       margin-right: auto;
@@ -35,6 +36,12 @@
 
     &--centered {
       margin-right: calc(50% - 4vw - 75px);
+    }
+
+    &:hover {
+      opacity: 0.7;
+
+      cursor: pointer;
     }
   }
 
