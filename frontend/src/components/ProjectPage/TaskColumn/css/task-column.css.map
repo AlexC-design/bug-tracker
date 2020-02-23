@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAAA,AACE,YADU,CACV,kBAAkB,CAAC;EACjB,UAAU,EAAE,kBAAkB;CAC/B",
+    "mappings": "AAAA,AAAA,YAAY,CAAC;EACX,SAAS,EAAE,KAAK;EAChB,MAAM,EAAE,KAAK;CAKd;;AAPD,AAIE,YAJU,CAIV,kBAAkB,CAAC;EACjB,UAAU,EAAE,kBAAkB;CAC/B",
     "sources": [
         "task-column.scss"
     ],
