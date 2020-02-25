@@ -7,16 +7,25 @@ export default class GuestLogin extends Component {
   constructor(props) {
     super(props);
     this.state = { value: "" };
-
-    this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({ value: event.target.value });
-  }
+  };
 
   handleSubmit = event => {
     event.preventDefault();
+
+    let guestName =
+      this.state.value !== ""
+        ? this.state.value
+        : `Guest${Math.floor(Math.random() * 9000 + 1000)}`;
+
+    let newGuest = {
+      guest_name: guestName
+    };
+
+    this.props.createGuest(newGuest);
   };
 
   render() {
