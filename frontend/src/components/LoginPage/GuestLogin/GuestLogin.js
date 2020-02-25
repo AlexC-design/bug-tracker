@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 import "./css/guest-login.css";
 
@@ -16,6 +17,7 @@ export default class GuestLogin extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
+    //creating guest name
     let guestName =
       this.state.value !== ""
         ? this.state.value
@@ -25,7 +27,16 @@ export default class GuestLogin extends Component {
       guest_name: guestName
     };
 
-    this.props.createGuest(newGuest);
+    //creating user in db and loading user details in redux
+    axios.post("api/guests", newGuest).then(res => {
+      let userDetails = {
+        isSignedIn: true,
+        guestName: res.data.guest_name,
+        guestId: res.data._id
+      };
+
+      this.props.loadUserDetails(userDetails);
+    });
   };
 
   render() {
@@ -51,7 +62,9 @@ export default class GuestLogin extends Component {
     } else {
       return (
         <div className="guest-login">
-          <h2 className="guest-login__name">Hi, {userDetails.userGivenName}</h2>
+          <h2 className="guest-login__name">
+            Hi, {userDetails.userGivenName || userDetails.guestName}
+          </h2>
           <Link to="/projects" className="guest-login__button">
             Go to Projects
           </Link>
