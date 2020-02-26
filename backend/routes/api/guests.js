@@ -13,6 +13,12 @@ router.post("/", (req, res) => {
   newGuest.save().then(guest => res.json(guest));
 });
 
+//route   GET api/guests
+//descr   Get all guests
+router.get("/", (req, res) => {
+  Guest.find().then(guest => res.json(guest));
+});
+
 //route   DELETE api/guests
 //descr   Delete a guest
 router.delete("/:id", (req, res) => {
