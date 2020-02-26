@@ -13,4 +13,12 @@ router.post("/", (req, res) => {
   newGuest.save().then(guest => res.json(guest));
 });
 
+//route   DELETE api/guests
+//descr   Delete a guest
+router.delete("/:id", (req, res) => {
+  Guest.findById(req.params.id)
+    .then(guest => guest.remove().then(() => res.json({ success: true })))
+    .catch(err => res.status(404).json({ sucess: false }));
+});
+
 module.exports = router;
