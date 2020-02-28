@@ -37,7 +37,7 @@ export default class Navbar extends Component {
     } else {
       return (
         <div className="navbar__title navbar__title--left-aligned">
-          SelectedProject
+          {this.props.projectName}
         </div>
       );
     }
