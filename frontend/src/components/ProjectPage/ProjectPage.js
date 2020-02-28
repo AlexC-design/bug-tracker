@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import { connect } from "react-redux";
 import { TaskColumn } from "./TaskColumn/TaskColumn";
 import { selectProject } from "../../store/state/selectedProject";
@@ -17,10 +16,6 @@ class ProjectPage extends Component {
 
   componentDidMount() {
     this.props.selectProject(this.props.match.params.id);
-  }
-
-  componentDidUpdate() {
-    console.log(this.props.selectedProject);
   }
 
   render() {
