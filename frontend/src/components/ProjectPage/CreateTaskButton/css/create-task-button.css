@@ -1,0 +1,52 @@
+.create-task-container {
+  position: fixed;
+  right: 10vw;
+  bottom: 10vh;
+}
+
+.create-task-container .create-button {
+  position: relative;
+  border: none;
+  border-radius: 100px;
+  background-color: #6f6f85;
+  -webkit-box-shadow: 0 0 10px 5px rgba(15, 16, 18, 0.5);
+          box-shadow: 0 0 10px 5px rgba(15, 16, 18, 0.5);
+  width: 70px;
+  height: 70px;
+}
+
+.create-task-container .create-button__plus {
+  position: absolute;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.create-task-container .create-button__plus--vertical {
+  top: calc((70px/ 2) - (calc(70px * 0.55) / 2));
+  left: calc((70px/ 2) - (calc(70px * 0.07) / 2));
+  width: calc(70px * 0.07);
+  height: calc(70px * 0.55);
+}
+
+.create-task-container .create-button__plus--horizontal {
+  top: calc((70px/ 2) - (calc(70px * 0.07) / 2));
+  left: calc((70px/ 2) - (calc(70px * 0.55) / 2));
+  width: calc(70px * 0.55);
+  height: calc(70px * 0.07);
+}
+
+.create-task-container .create-button:hover {
+  background-color: #585869;
+  -webkit-box-shadow: 0 0 10px 5px rgba(15, 16, 18, 0.65);
+          box-shadow: 0 0 10px 5px rgba(15, 16, 18, 0.65);
+  cursor: pointer;
+}
+
+.create-task-container .create-button:active {
+  background-color: #8a8a9d;
+}
+
+.create-task-container .create-button:focus {
+  outline: none;
+}
+/*# sourceMappingURL=create-task-button.css.map */

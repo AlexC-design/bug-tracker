@@ -4,6 +4,7 @@ import { TaskColumn } from "./TaskColumn/TaskColumn";
 import { selectProject } from "../../store/state/selectedProject";
 
 import "./css/project-page.css";
+import { CreateTaskButton } from "./CreateTaskButton/CreateTaskButton";
 
 class ProjectPage extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class ProjectPage extends Component {
         <TaskColumn priority="Mid Priority" />
         <TaskColumn priority="Low Priority" />
         <TaskColumn priority="Trivial" />
+        <CreateTaskButton />
       </div>
     );
   }
