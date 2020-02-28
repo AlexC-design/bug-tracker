@@ -1,9 +1,28 @@
 import React, { Component } from "react";
+import axios from "axios";
+import { connect } from "react-redux";
 import { TaskColumn } from "./TaskColumn/TaskColumn";
+import { selectProject } from "../../store/state/selectedProject";
 
 import "./css/project-page.css";
 
-export default class ProjectPage extends Component {
+class ProjectPage extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      selectedProject: ""
+    };
+  }
+
+  componentDidMount() {
+    this.props.selectProject(this.props.match.params.id);
+  }
+
+  componentDidUpdate() {
+    console.log(this.props.selectedProject);
+  }
+
   render() {
     return (
       <div className="project-page">
@@ -15,3 +34,9 @@ export default class ProjectPage extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  selectedProject: state.selectedProject
+});
+
+export default connect(mapStateToProps, { selectProject })(ProjectPage);
