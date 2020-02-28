@@ -9,6 +9,14 @@ router.get("/", (req, res) => {
   Project.find().then(projects => res.json(projects));
 });
 
+//route   GET api/projects/:id
+//descr   Get a project by ID
+router.get("/:id", (req, res) => {
+  Project.findById(req.params.id).then(project => {
+    res.json(project);
+  });
+});
+
 //route   POST api/projects
 //descr   Create new project
 router.post("/", (req, res) => {
