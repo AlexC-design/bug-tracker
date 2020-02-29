@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { TaskColumn } from "./TaskColumn/TaskColumn";
 import { selectProject } from "../../store/state/selectedProject";
+import CreateTaskButton from "./CreateTaskButton/CreateTaskButton";
 
 import "./css/project-page.css";
-import { CreateTaskButton } from "./CreateTaskButton/CreateTaskButton";
 
 class ProjectPage extends Component {
   constructor(props) {
