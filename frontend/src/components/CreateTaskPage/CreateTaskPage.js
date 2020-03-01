@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { SeverityCheckbox } from "./SeverityCheckbox/SeverityCheckbox";
 import { EnvironmentDropdown } from "./EnvironmentDropdown/EnvironmentDropdown";
 
+import "./css/create-task-page.css";
+
 export default class CreateTaskPage extends Component {
   constructor(props) {
     super(props);
@@ -30,10 +32,11 @@ export default class CreateTaskPage extends Component {
         <form className="task-creation__left">
           <div className="task-creation__left__top">
             <label className="task-creation__left__top__name">
-              Name:
+              <span>Name</span>
               <input
                 name="taskName"
                 type="text"
+                autoComplete="off"
                 value={this.state.taskName}
                 onChange={this.handleInputChange}
               />
@@ -50,19 +53,21 @@ export default class CreateTaskPage extends Component {
             </div>
           </div>
           <label className="task-creation__left__summary">
-            Summary:
+            <span>Summary</span>
             <input
               name="taskSummary"
               type="text"
+              autoComplete="off"
               value={this.state.taskSummary}
               onChange={this.handleInputChange}
             />
           </label>
           <label className="task-creation__left__description">
-            Description:
-            <input
+            <span>Description</span>
+            <textarea
               name="taskDescription"
               type="text"
+              autoComplete="off"
               value={this.state.taskDescription}
               onChange={this.handleInputChange}
             />
