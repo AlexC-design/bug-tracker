@@ -1,7 +1,7 @@
 .projects-page {
-  // max-width: 90vw;
-  // margin: 100px auto;
-  // min-height: calc(100vh - 200px);
+  max-width: 90vw;
+  margin: 50px auto;
+  min-height: calc(100vh - 200px);
 
   display: flex;
   flex-direction: column;
@@ -20,7 +20,7 @@
 
       .projects-container {
         max-width: 1200px;
-        margin-top: 100px;
+        margin-top: 50px;
         margin-bottom: 100px;
 
         display: grid;
@@ -34,6 +34,6 @@
   }
 
   .simplebar-track.simplebar-vertical {
-    top: 50px;
+    top: 0px;
   }
 }
