@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { SeverityCheckbox } from "./SeverityCheckbox/SeverityCheckbox";
 
 export default class CreateTaskPage extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ export default class CreateTaskPage extends Component {
     return (
       <form className="task-creation">
         <div className="task-creation__top">
-          <label>
+          <label className="task-creation__top__name">
             Name:
             <input
               name="taskName"
@@ -35,7 +36,33 @@ export default class CreateTaskPage extends Component {
               onChange={this.handleInputChange}
             />
           </label>
+          <div className="task-creation__top__severity">
+            <div className="task-creation__top__severity__label">Severity</div>
+            <div className="task-creation__top__severity__checkboxes">
+              <SeverityCheckbox severity="High" />
+              <SeverityCheckbox severity="Medium" />
+              <SeverityCheckbox severity="Low" />
+            </div>
+          </div>
         </div>
+        <label className="task-creation__summary">
+          Summary:
+          <input
+            name="taskSummary"
+            type="text"
+            value={this.state.taskSummary}
+            onChange={this.handleInputChange}
+          />
+        </label>
+        <label className="task-creation__description">
+          Description:
+          <input
+            name="taskDescription"
+            type="text"
+            value={this.state.taskDescription}
+            onChange={this.handleInputChange}
+          />
+        </label>
       </form>
     );
   }
