@@ -6,13 +6,12 @@
   border-radius: 8px;
   background-color: color(primary-light);
 
-  padding: 5px 5px;
+  padding: 0 5px;
 
   width: 200px;
 
   &__top {
     padding: 10px 15px;
-    border-radius: 8px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -21,15 +20,34 @@
 
     &__arrow {
       transform: scale(0.8);
+
+      &--reversed {
+        transform: scaleX(0.8) scaleY(-0.8);
+      }
     }
   }
 
   &__options {
-    margin-top: 50px;
+    margin: 50px 0 0 0;
+    opacity: 1;
+    height: 400px;
+
+    transform-origin: top;
+
+    transition: all 0.2s ease-out, opacity 0.2s 0.1s ease-out;
+
+    &--contracted {
+      margin: 0;
+      height: 0;
+      opacity: 0;
+
+      transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out;
+    }
 
     & * {
-      border-radius: 8px;
+      border-radius: 4px;
       padding: 10px 15px;
+      margin-bottom: 5px;
 
       &:hover {
         cursor: pointer;

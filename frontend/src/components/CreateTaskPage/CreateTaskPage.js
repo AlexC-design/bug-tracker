@@ -12,12 +12,15 @@ export default class CreateTaskPage extends Component {
       taskSeverity: "medium",
       taskSummary: "",
       taskDescription: "",
-      environment: "select"
+      environment: "Select"
     };
   }
 
   selectSeverity = severity => {
     this.setState({ taskSeverity: severity });
+  };
+  selectEnvironment = environment => {
+    this.setState({ environment });
   };
 
   handleInputChange = event => {
@@ -90,7 +93,10 @@ export default class CreateTaskPage extends Component {
           </label>
         </form>
         <div className="task-creation__right">
-          <EnvironmentDropdown />
+          <EnvironmentDropdown
+            selectEnvironment={this.selectEnvironment}
+            environment={this.state.environment}
+          />
         </div>
       </div>
     );
