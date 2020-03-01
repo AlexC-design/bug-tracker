@@ -1,0 +1,44 @@
+@import "../../../../sass/variables/variables.scss";
+
+.environment-dropdown {
+  margin-top: 10px;
+  border: solid 2px #e5e5e5;
+  border-radius: 8px;
+  background-color: color(primary-light);
+
+  padding: 5px 5px;
+
+  width: 200px;
+
+  &__top {
+    padding: 10px 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    &__arrow {
+      transform: scale(0.8);
+    }
+  }
+
+  &__options {
+    margin-top: 50px;
+
+    & * {
+      border-radius: 8px;
+      padding: 10px 15px;
+
+      &:hover {
+        cursor: pointer;
+        background-color: color(secondary-light);
+      }
+    }
+  }
+}
+
+label {
+  font-weight: 500;
+}

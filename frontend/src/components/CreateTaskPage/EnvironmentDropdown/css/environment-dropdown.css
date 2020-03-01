@@ -1,1 +1,48 @@
-/* No CSS *//*# sourceMappingURL=environment-dropdown.css.map */
+.environment-dropdown {
+  margin-top: 10px;
+  border: solid 2px #e5e5e5;
+  border-radius: 8px;
+  background-color: #44454d;
+  padding: 5px 5px;
+  width: 200px;
+}
+
+.environment-dropdown__top {
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  cursor: pointer;
+}
+
+.environment-dropdown__top__arrow {
+  -webkit-transform: scale(0.8);
+          transform: scale(0.8);
+}
+
+.environment-dropdown__options {
+  margin-top: 50px;
+}
+
+.environment-dropdown__options * {
+  border-radius: 8px;
+  padding: 10px 15px;
+}
+
+.environment-dropdown__options *:hover {
+  cursor: pointer;
+  background-color: #6f6f85;
+}
+
+label {
+  font-weight: 500;
+}
+/*# sourceMappingURL=environment-dropdown.css.map */
