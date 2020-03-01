@@ -5,6 +5,8 @@
   flex-direction: row;
   align-items: center;
 
+  cursor: pointer;
+
   &__checkbox {
     height: 15px;
     width: 15px;
@@ -15,5 +17,40 @@
 
   &__label {
     margin-left: 5px;
+  }
+
+  &--selected {
+    .severity-checkbox__checkbox {
+      transition: all 0.2s ease-out;
+
+      &--Low {
+        background-color: color(accent3);
+        box-shadow: 0 0 10px 0px color(accent3);
+      }
+      &--Medium {
+        background-color: color(accent2);
+        box-shadow: 0 0 10px 0px color(accent2);
+      }
+      &--High {
+        background-color: color(accent1);
+        box-shadow: 0 0 10px 0px color(accent1);
+      }
+    }
+  }
+
+  &-- {
+    &:hover {
+      .severity-checkbox__checkbox {
+        &--Low {
+          background-color: rgba(color(accent3), 0.3);
+        }
+        &--Medium {
+          background-color: rgba(color(accent2), 0.3);
+        }
+        &--High {
+          background-color: rgba(color(accent1), 0.3);
+        }
+      }
+    }
   }
 }

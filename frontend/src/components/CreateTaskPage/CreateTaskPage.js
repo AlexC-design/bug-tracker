@@ -16,6 +16,10 @@ export default class CreateTaskPage extends Component {
     };
   }
 
+  selectSeverity = severity => {
+    this.setState({ taskSeverity: severity });
+  };
+
   handleInputChange = event => {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
@@ -46,9 +50,21 @@ export default class CreateTaskPage extends Component {
                 Severity
               </div>
               <div className="task-creation__left__top__severity__checkboxes">
-                <SeverityCheckbox severity="High" />
-                <SeverityCheckbox severity="Medium" />
-                <SeverityCheckbox severity="Low" />
+                <SeverityCheckbox
+                  severity="High"
+                  selectSeverity={this.selectSeverity}
+                  selected={this.state.taskSeverity === "High" ? true : false}
+                />
+                <SeverityCheckbox
+                  severity="Medium"
+                  selectSeverity={this.selectSeverity}
+                  selected={this.state.taskSeverity === "Medium" ? true : false}
+                />
+                <SeverityCheckbox
+                  severity="Low"
+                  selectSeverity={this.selectSeverity}
+                  selected={this.state.taskSeverity === "Low" ? true : false}
+                />
               </div>
             </div>
           </div>
