@@ -1,0 +1,19 @@
+@import "../../../../sass/variables/variables.scss";
+
+.severity-checkbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &__checkbox {
+    height: 15px;
+    width: 15px;
+    border-radius: 50px;
+
+    background-color: color(primary-light);
+  }
+
+  &__label {
+    margin-left: 5px;
+  }
+}

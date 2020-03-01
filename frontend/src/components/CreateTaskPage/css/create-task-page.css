@@ -106,6 +106,13 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  margin-right: 20%;
+  padding: 10px 20px;
+  border: 2px solid #1d1d23;
+  border-radius: 8px;
+  background-color: #1d1d23;
 }
 
 .task-creation__left__summary {
