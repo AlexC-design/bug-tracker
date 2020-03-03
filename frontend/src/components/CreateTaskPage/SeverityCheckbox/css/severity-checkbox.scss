@@ -21,19 +21,22 @@
 
   &--selected {
     .severity-checkbox__checkbox {
-      transition: all 0.2s ease-out;
+      
 
       &--Low {
         background-color: color(accent3);
         box-shadow: 0 0 10px 0px color(accent3);
+        transition: all 0.2s cubic-bezier(0, 2, 0, 2);
       }
       &--Medium {
         background-color: color(accent2);
         box-shadow: 0 0 10px 0px color(accent2);
+        transition: all 0.2s cubic-bezier(0, 5, 0, 5);
       }
       &--High {
         background-color: color(accent1);
         box-shadow: 0 0 10px 0px color(accent1);
+        transition: all 0.2s cubic-bezier(0, 20, 0, 20);
       }
     }
   }

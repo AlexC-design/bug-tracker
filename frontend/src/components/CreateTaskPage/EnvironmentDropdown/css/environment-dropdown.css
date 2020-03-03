@@ -23,13 +23,17 @@
 }
 
 .environment-dropdown__top__arrow {
-  -webkit-transform: scale(0.8);
-          transform: scale(0.8);
+  -webkit-transform: scale(0.8) rotate(0deg);
+          transform: scale(0.8) rotate(0deg);
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: -webkit-transform 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: transform 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: transform 0.4s cubic-bezier(0, -0.6, 0, 1.65), -webkit-transform 0.4s cubic-bezier(0, -0.6, 0, 1.65);
 }
 
 .environment-dropdown__top__arrow--reversed {
-  -webkit-transform: scaleX(0.8) scaleY(-0.8);
-          transform: scaleX(0.8) scaleY(-0.8);
+  -webkit-transform: scale(0.8) rotate(-180deg);
+          transform: scale(0.8) rotate(-180deg);
 }
 
 .environment-dropdown__options {
