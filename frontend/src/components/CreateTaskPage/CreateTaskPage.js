@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { SeverityCheckbox } from "./SeverityCheckbox/SeverityCheckbox";
 import { EnvironmentDropdown } from "./EnvironmentDropdown/EnvironmentDropdown";
+import { TaskButton } from "./TaskButton/TaskButton";
 
 import "./css/create-task-page.css";
 
@@ -97,6 +98,9 @@ export default class CreateTaskPage extends Component {
             selectEnvironment={this.selectEnvironment}
             environment={this.state.environment}
           />
+        </div>
+        <div className="task-creation__bottom">
+          <TaskButton action="Create" />
         </div>
       </div>
     );
