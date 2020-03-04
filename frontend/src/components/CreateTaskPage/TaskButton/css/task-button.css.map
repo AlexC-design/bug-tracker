@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAEA,AAAA,YAAY,CAAC;EACX,OAAO,EAAE,SAAS;EAClB,aAAa,EAAE,IAAI;EACnB,MAAM,EAAE,IAAI;EAEZ,gBAAgB,ECJC,OAAO;EDKxB,KAAK,EAAE,KAAK;EACZ,WAAW,EAAE,GAAG;EAEhB,WAAW,EAAE,sBAAsB;EACnC,SAAS,EAAE,GAAG;CACf",
     "sources": [
-        "task-button.scss"
+        "task-button.scss",
+        "../../../../sass/variables/variables.scss"
     ],
     "names": [],
     "file": "task-button.css"

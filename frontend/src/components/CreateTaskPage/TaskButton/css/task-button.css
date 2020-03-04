@@ -1,1 +1,11 @@
-/* No CSS *//*# sourceMappingURL=task-button.css.map */
+.task-button {
+  padding: 15px 55px;
+  border-radius: 50px;
+  border: none;
+  background-color: #6f6f85;
+  color: white;
+  font-weight: 500;
+  font-family: Montserrat, sans-serif;
+  font-size: 1em;
+}
+/*# sourceMappingURL=task-button.css.map */
