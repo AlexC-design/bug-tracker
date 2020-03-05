@@ -21,8 +21,7 @@
     &__arrow {
       transform: scale(0.8) rotate(0deg);
 
-
-      transition: transform 0.4s cubic-bezier(0.000, -0.600, 0.000, 1.650);
+      transition: transform 0.4s cubic-bezier(0, -0.6, 0, 1.65);
 
       &--reversed {
         transform: scale(0.8) rotate(-180deg);
