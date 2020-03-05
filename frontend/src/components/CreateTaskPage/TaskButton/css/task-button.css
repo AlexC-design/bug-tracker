@@ -1,5 +1,6 @@
 .task-button {
-  padding: 15px 55px;
+  width: 150px;
+  height: 50px;
   border-radius: 50px;
   border: none;
   background-color: #6f6f85;
@@ -7,5 +8,37 @@
   font-weight: 500;
   font-family: Montserrat, sans-serif;
   font-size: 1em;
+}
+
+.task-button:hover {
+  cursor: pointer;
+  background-color: #585869;
+}
+
+.task-button:active {
+  cursor: pointer;
+  background-color: #7c7c92;
+}
+
+.task-button:focus {
+  outline: none;
+}
+
+.task-button--Create {
+  margin-left: auto;
+}
+
+.task-button--Delete {
+  background-color: #eb483a;
+  margin-right: 100px;
+}
+
+.task-button--Delete:hover {
+  background-color: #c52114;
+}
+
+.task-button--Delete:active {
+  cursor: pointer;
+  background-color: #ee5d51;
 }
 /*# sourceMappingURL=task-button.css.map */

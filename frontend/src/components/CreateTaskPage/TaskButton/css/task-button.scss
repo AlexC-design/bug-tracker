@@ -1,7 +1,8 @@
 @import "../../../../sass/variables/variables.scss";
 
 .task-button {
-  padding: 15px 55px;
+  width: 150px;
+  height: 50px;
   border-radius: 50px;
   border: none;
 
@@ -11,4 +12,35 @@
 
   font-family: Montserrat, sans-serif;
   font-size: 1em;
+
+  &:hover {
+    cursor: pointer;
+    background-color: darken(color(secondary-light), 10%);
+  }
+
+  &:active {
+    cursor: pointer;
+    background-color: lighten(color(secondary-light), 5%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &--Create {
+    margin-left: auto;
+  }
+  &--Delete {
+    background-color: lighten(color(accent1), 5%);
+    margin-right: 100px;
+
+    &:hover {
+      background-color: darken(color(accent1), 10%);
+    }
+
+    &:active {
+      cursor: pointer;
+      background-color: lighten(color(accent1), 10%);
+    }
+  }
 }
