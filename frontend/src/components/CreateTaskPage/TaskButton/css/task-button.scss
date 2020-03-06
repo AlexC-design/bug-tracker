@@ -31,7 +31,7 @@
     margin-left: auto;
   }
   &--Cancel {
-    margin-left: 70%;
+    margin-left: calc(100% - 400px);
     background-color: darken(color(secondary-light), 20%);
   }
   &--Delete {

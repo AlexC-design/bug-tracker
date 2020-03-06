@@ -29,7 +29,7 @@
 }
 
 .task-button--Cancel {
-  margin-left: 70%;
+  margin-left: calc(100% - 400px);
   background-color: #41414d;
 }
 
