@@ -28,6 +28,11 @@
   margin-left: auto;
 }
 
+.task-button--Cancel {
+  margin-left: 70%;
+  background-color: #41414d;
+}
+
 .task-button--Delete {
   background-color: #eb483a;
   margin-right: 100px;

@@ -106,8 +106,7 @@ export default class CreateTaskPage extends Component {
         </div>
 
         <div className="task-creation__bottom">
-          {this.state.isAdmin && <TaskButton action="Delete" />}
-          {this.state.isAdmin && <TaskButton action="Edit" />}
+          <TaskButton action="Cancel" />
           <TaskButton action="Create" />
         </div>
       </div>
