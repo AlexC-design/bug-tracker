@@ -26,7 +26,7 @@ class ProjectPage extends Component {
         <TaskColumn priority="Mid Priority" />
         <TaskColumn priority="Low Priority" />
         <TaskColumn priority="Trivial" />
-        <CreateTaskButton />
+        <CreateTaskButton projectId={this.props.match.params.id} />
       </div>
     );
   }

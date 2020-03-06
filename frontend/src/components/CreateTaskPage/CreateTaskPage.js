@@ -1,11 +1,13 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { SeverityCheckbox } from "./SeverityCheckbox/SeverityCheckbox";
 import { EnvironmentDropdown } from "./EnvironmentDropdown/EnvironmentDropdown";
 import { TaskButton } from "./TaskButton/TaskButton";
+import { selectProject } from "../../store/state/selectedProject/index";
 
 import "./css/create-task-page.css";
 
-export default class CreateTaskPage extends Component {
+class CreateTaskPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,6 +18,14 @@ export default class CreateTaskPage extends Component {
       environment: "Select",
       isAdmin: true
     };
+  }
+
+  componentDidMount() {
+    console.log(this.props.selectedProject);
+    if (!this.props.selectedProject.projectName) {
+      console.log("FETCHING");
+      this.props.selectProject(this.props.match.params.id);
+    }
   }
 
   selectSeverity = severity => {
@@ -113,3 +123,9 @@ export default class CreateTaskPage extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  selectedProject: state.selectedProject
+});
+
+export default connect(mapStateToProps, { selectProject })(CreateTaskPage);

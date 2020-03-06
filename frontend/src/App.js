@@ -20,7 +20,7 @@ export default class App extends React.Component {
           <Route path="/" exact component={LoginPage} />
           <Route path="/projects" exact component={ProjectsPage} />
           <Route path="/project/:id" exact component={ProjectPage} />
-          <Route path="/create-task" exact component={CreateTaskPage} />
+          <Route path="/project/:id/create-task" exact component={CreateTaskPage} />
           <div className="app-background" />
         </HashRouter>
       </Provider>

@@ -3,9 +3,9 @@ import React from "react";
 import "./css/create-task-button.css";
 import { withRouter } from "react-router";
 
-const CreateTaskButton = ({ history }) => {
+const CreateTaskButton = ({ history, projectId }) => {
   const handleClick = () => {
-    history.push(`/create-task`);
+    history.push(`/project/${projectId}/create-task`);
   };
 
   return (
