@@ -42,8 +42,9 @@
       margin: 0;
       height: 0;
       opacity: 0;
+      visibility: hidden;
 
-      transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out;
+      transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out, visibility 0.3s 0.3s step-end;
     }
 
     & * {

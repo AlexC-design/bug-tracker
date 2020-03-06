@@ -50,8 +50,9 @@
   margin: 0;
   height: 0;
   opacity: 0;
-  -webkit-transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out;
-  transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out;
+  visibility: hidden;
+  -webkit-transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out, visibility 0.3s 0.3s step-end;
+  transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out, visibility 0.3s 0.3s step-end;
 }
 
 .environment-dropdown__options * {
