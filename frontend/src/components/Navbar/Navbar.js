@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router";
 import NavbarOptions from "./NavbarOptions/NavbarOptions";
 import userIcon from "../../assets/svg/user-icon.svg";
 import { UserDropdown } from "./UserDropdown/UserDropdown";
