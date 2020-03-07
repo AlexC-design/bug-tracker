@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { SeverityCheckbox } from "./SeverityCheckbox/SeverityCheckbox";
 import { EnvironmentDropdown } from "./EnvironmentDropdown/EnvironmentDropdown";
-import { TaskButton } from "./TaskButton/TaskButton";
+import TaskButton from "./TaskButton/TaskButton";
 import { selectProject } from "../../store/state/selectedProject/index";
 
 import "./css/create-task-page.css";
@@ -21,9 +21,7 @@ class CreateTaskPage extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props.selectedProject);
     if (!this.props.selectedProject.projectName) {
-      console.log("FETCHING");
       this.props.selectProject(this.props.match.params.id);
     }
   }
