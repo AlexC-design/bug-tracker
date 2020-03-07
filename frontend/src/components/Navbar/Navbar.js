@@ -24,6 +24,10 @@ export default class Navbar extends Component {
     });
   }
 
+  componentDidUpdate() {
+    console.log(this.props);
+  }
+
   toggleDropdown = () => {
     this.setState({ dropdownVisible: !this.state.dropdownVisible });
   };
@@ -35,7 +39,12 @@ export default class Navbar extends Component {
       );
     } else {
       return (
-        <div className="navbar__title navbar__title--left-aligned">
+        <div
+          onClick={() =>
+            this.props.history.push(`/project/${this.props.projectId}`)
+          }
+          className="navbar__title navbar__title--left-aligned"
+        >
           {this.props.projectName}
         </div>
       );
