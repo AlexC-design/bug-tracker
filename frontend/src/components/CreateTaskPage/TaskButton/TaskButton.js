@@ -1,5 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router";
+import { validateTaskDetails } from "./validateTaskDetails";
 
 import "./css/task-button.css";
 
@@ -9,10 +10,9 @@ const TaskButton = ({ history, action, taskDetails }) => {
       case "Cancel":
         history.goBack();
       case "Create":
+        console.log(validateTaskDetails(taskDetails));
     }
   };
-
-  console.log(taskDetails);
 
   return (
     <button

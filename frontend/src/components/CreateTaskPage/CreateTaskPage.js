@@ -7,7 +7,7 @@ import { selectProject } from "../../store/state/selectedProject/index";
 
 import "./css/create-task-page.css";
 
-const CreateTaskPage = ({ isAdmin = true, selectProject, selectedProject }) => {
+const CreateTaskPage = ({ selectProject, selectedProject }) => {
   const [taskDetails, setTaskDetails] = useState({
     taskName: "",
     taskSeverity: "",
@@ -22,7 +22,9 @@ const CreateTaskPage = ({ isAdmin = true, selectProject, selectedProject }) => {
     }
   }, []);
 
-  // const { isAdmin, ...taskDetails } = this.state;
+  useEffect(() => {
+    console.log(taskDetails);
+  });
 
   const selectSeverity = severity => {
     setTaskDetails({ ...taskDetails, taskSeverity: severity });
@@ -32,12 +34,10 @@ const CreateTaskPage = ({ isAdmin = true, selectProject, selectedProject }) => {
   };
 
   const handleInputChange = event => {
-    const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value;
-    const name = target.name;
+    const name = event.target.name;
     setTaskDetails({
       ...taskDetails,
-      [name]: value
+      [name]: event.target.value
     });
   };
 
@@ -64,9 +64,7 @@ const CreateTaskPage = ({ isAdmin = true, selectProject, selectedProject }) => {
                 <SeverityCheckbox
                   severity="High"
                   selectSeverity={selectSeverity}
-                  selected={
-                    setTaskDetails.taskSeverity === "High" ? true : false
-                  }
+                  selected={taskDetails.taskSeverity === "High" ? true : false}
                 />
                 <SeverityCheckbox
                   severity="Medium"
