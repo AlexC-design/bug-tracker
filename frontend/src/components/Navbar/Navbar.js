@@ -24,10 +24,6 @@ export default class Navbar extends Component {
     });
   }
 
-  componentDidUpdate() {
-    console.log(this.props);
-  }
-
   toggleDropdown = () => {
     this.setState({ dropdownVisible: !this.state.dropdownVisible });
   };
