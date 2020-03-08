@@ -3,7 +3,7 @@ import Logo from "./Logo";
 import GuestLogin from "./GuestLogin";
 import GoogleAuth from "./GoogleAuth";
 import "./css/login-page.css";
-import { DeleteAllGuests } from "./DeleteAllGuests/DeleteAllGuests";
+// import { DeleteAllGuests } from "./DeleteAllGuests/DeleteAllGuests";
 
 export default class LoginPage extends Component {
   render() {

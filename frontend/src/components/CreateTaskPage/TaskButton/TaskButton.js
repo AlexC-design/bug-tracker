@@ -9,8 +9,15 @@ const TaskButton = ({ history, action, taskDetails }) => {
     switch (action) {
       case "Cancel":
         history.goBack();
+        break;
       case "Create":
-        console.log(validateTaskDetails(taskDetails));
+        const validationMessage = validateTaskDetails(taskDetails);
+        validationMessage === "valid"
+          ? console.log("valid")
+          : alert(validationMessage);
+        break;
+      default:
+        console.log(`no action ' ${action} ' defined`);
     }
   };
 

@@ -20,7 +20,7 @@ const CreateTaskPage = ({ selectProject, selectedProject }) => {
     if (selectedProject.projectName) {
       selectProject(this.props.match.params.id);
     }
-  }, []);
+  }, [selectProject, selectedProject.projectName]);
 
   useEffect(() => {
     console.log(taskDetails);

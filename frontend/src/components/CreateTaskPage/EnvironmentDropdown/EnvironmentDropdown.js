@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import dropdownArrow from "../../../assets/svg/dropdown-arrow.svg";
 
 import "./css/environment-dropdown.css";
@@ -25,6 +25,7 @@ export const EnvironmentDropdown = ({ selectEnvironment, environment }) => {
             className={`environment-dropdown__top__arrow environment-dropdown__top__arrow--${
               expanded ? "reversed" : ""
             }`}
+            alt="arrow"
           />
         </div>
         <div
@@ -38,6 +39,7 @@ export const EnvironmentDropdown = ({ selectEnvironment, environment }) => {
                 selectEnvironment(option);
                 toggleDropdown();
               }}
+              key={option}
             >
               {option}
             </div>
