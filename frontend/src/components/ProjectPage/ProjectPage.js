@@ -22,10 +22,10 @@ class ProjectPage extends Component {
   render() {
     return (
       <div className="project-page">
-        <TaskColumn priority="High Priority" />
-        <TaskColumn priority="Mid Priority" />
-        <TaskColumn priority="Low Priority" />
-        <TaskColumn priority="Trivial" />
+        <TaskColumn priority="High Priority" tasks={"tasks"} />
+        <TaskColumn priority="Mid Priority" tasks={"tasks"} />
+        <TaskColumn priority="Low Priority" tasks={"tasks"} />
+        <TaskColumn priority="Trivial" tasks={"tasks"} />
         <CreateTaskButton projectId={this.props.match.params.id} />
       </div>
     );
