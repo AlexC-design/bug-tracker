@@ -36,7 +36,7 @@
       &--High {
         background-color: color(accent1);
         box-shadow: 0 0 10px 0px color(accent1);
-        transition: all 0.2s cubic-bezier(0, 20, 0, 20);
+        transition: all 0.2s cubic-bezier(0, 10, 0, 10);
       }
     }
   }

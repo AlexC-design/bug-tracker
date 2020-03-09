@@ -43,8 +43,8 @@
   background-color: #e93223;
   -webkit-box-shadow: 0 0 10px 0px #e93223;
           box-shadow: 0 0 10px 0px #e93223;
-  -webkit-transition: all 0.2s cubic-bezier(0, 20, 0, 20);
-  transition: all 0.2s cubic-bezier(0, 20, 0, 20);
+  -webkit-transition: all 0.2s cubic-bezier(0, 10, 0, 10);
+  transition: all 0.2s cubic-bezier(0, 10, 0, 10);
 }
 
 .severity-checkbox--:hover .severity-checkbox__checkbox--Low {
