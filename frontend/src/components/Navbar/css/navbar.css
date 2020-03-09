@@ -45,6 +45,10 @@
   opacity: 1;
 }
 
+.navbar__title--left-aligned--active:hover {
+  opacity: 1 !important;
+}
+
 .navbar__title--centered {
   margin-right: calc(50% - 4vw - 75px);
 }
