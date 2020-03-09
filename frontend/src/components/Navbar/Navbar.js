@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { matchPath } from "react-router";
+
 import NavbarOptions from "./NavbarOptions/NavbarOptions";
-import userIcon from "../../assets/svg/user-icon.svg";
 import { UserDropdown } from "./UserDropdown/UserDropdown";
+import userIcon from "../../assets/svg/user-icon.svg";
 
 import "./css/navbar.css";
 
@@ -10,7 +12,11 @@ export default class Navbar extends Component {
     super(props);
     this.state = {
       page: this.props.location.pathname,
-      dropdownVisible: false
+      dropdownVisible: false,
+      matchPathToProject: matchPath(this.props.location.pathname, {
+        path: "/project/:id",
+        exact: true
+      })
     };
   }
 
@@ -20,6 +26,15 @@ export default class Navbar extends Component {
 
       if (this.state.page !== location.pathname) {
         this.setState({ page: location.pathname });
+
+        console.log("changing state");
+        console.log(this.state.matchPathToProject);
+        this.setState({
+          matchPathToProject: matchPath(location.pathname, {
+            path: "/project/:id",
+            exact: true
+          })
+        });
       }
     });
   }
@@ -39,7 +54,12 @@ export default class Navbar extends Component {
           onClick={() =>
             this.props.history.push(`/project/${this.props.projectId}`)
           }
-          className="navbar__title navbar__title--left-aligned"
+          className={`navbar__title navbar__title--left-aligned navbar__title--left-aligned--${
+            this.state.matchPathToProject &&
+            this.state.matchPathToProject.isExact
+              ? "active"
+              : ""
+          }`}
         >
           {this.props.projectName}
         </div>
@@ -56,7 +76,7 @@ export default class Navbar extends Component {
       >
         {this.renderTitle()}
         {!this.state.page.includes("projects") && (
-          <NavbarOptions isAdmin={true} />
+          <NavbarOptions isAdmin={false} />
         )}
         <img
           src={userIcon}
