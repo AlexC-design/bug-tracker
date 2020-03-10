@@ -8,10 +8,10 @@ export default class NavbarOptions extends Component {
 
     return (
       <div className="navbar-options">
-        {isAdmin && <div className="navbar-options__members">Members</div>}
-        <div className="navbar-options__created">Created</div>
+        {isAdmin && <div className="navbar-link navbar-options__members">Members</div>}
+        <div className="navbar-link navbar-options__created">Created</div>
         {isAdmin && (
-          <div className="navbar-options__unassigned">Unassigned</div>
+          <div className="navbar-link navbar-options__unassigned">Unassigned</div>
         )}
       </div>
     );

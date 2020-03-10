@@ -54,7 +54,7 @@ export default class Navbar extends Component {
           onClick={() =>
             this.props.history.push(`/project/${this.props.projectId}`)
           }
-          className={`navbar__title navbar__title--left-aligned navbar__title--left-aligned${
+          className={`navbar-link navbar__title navbar__title--left-aligned navbar__title--left-aligned${
             this.state.matchPathToProject &&
             this.state.matchPathToProject.isExact
               ? "--active"
