@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { matchPath } from "react-router";
 
-import NavbarOptions from "./NavbarOptions/NavbarOptions";
+import { NavbarOptions } from "./NavbarOptions/NavbarOptions";
 import { UserDropdown } from "./UserDropdown/UserDropdown";
 import userIcon from "../../assets/svg/user-icon.svg";
 
