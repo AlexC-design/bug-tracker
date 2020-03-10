@@ -22,15 +22,15 @@ export const EnvironmentDropdown = ({ selectEnvironment, environment }) => {
           </div>
           <img
             src={dropdownArrow}
-            className={`environment-dropdown__top__arrow environment-dropdown__top__arrow--${
-              expanded ? "reversed" : ""
+            className={`environment-dropdown__top__arrow environment-dropdown__top__arrow${
+              expanded ? "--reversed" : ""
             }`}
             alt="arrow"
           />
         </div>
         <div
-          className={`environment-dropdown__options environment-dropdown__options--${
-            expanded ? "expanded" : "contracted"
+          className={`environment-dropdown__options environment-dropdown__options${
+            expanded ? "--expanded" : "--contracted"
           }`}
         >
           {options.map(option => (

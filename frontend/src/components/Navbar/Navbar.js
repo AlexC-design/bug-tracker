@@ -54,10 +54,10 @@ export default class Navbar extends Component {
           onClick={() =>
             this.props.history.push(`/project/${this.props.projectId}`)
           }
-          className={`navbar__title navbar__title--left-aligned navbar__title--left-aligned--${
+          className={`navbar__title navbar__title--left-aligned navbar__title--left-aligned${
             this.state.matchPathToProject &&
             this.state.matchPathToProject.isExact
-              ? "active"
+              ? "--active"
               : ""
           }`}
         >
@@ -81,8 +81,8 @@ export default class Navbar extends Component {
         <img
           src={userIcon}
           onClick={this.toggleDropdown}
-          className={`navbar__user navbar__user--${
-            this.state.dropdownVisible ? "active" : ""
+          className={`navbar__user navbar__user${
+            this.state.dropdownVisible ? "--active" : ""
           }`}
           alt="user"
         />
