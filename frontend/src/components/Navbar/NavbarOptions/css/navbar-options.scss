@@ -7,11 +7,42 @@
   & > * {
     margin-right: 3vw;
     opacity: 0.5;
+    position: relative;
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      margin: 1.2em auto 0;
+      background: white;
+      border-radius: 50px;
+
+      transform: scaleX(0);
+      transition: transform 0.2s cubic-bezier(0, -0.6, 0, 1.65);
+    }
 
     &:hover {
       opacity: 0.7;
 
       cursor: pointer;
+    }
+  }
+
+  &__created,
+  &__members,
+  &__unassigned {
+    &--active {
+      opacity: 1;
+
+      &:after {
+        transform: scaleX(1);
+      }
+
+      &:hover {
+        opacity: 1 !important;
+      }
     }
   }
 }

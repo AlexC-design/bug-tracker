@@ -27,8 +27,6 @@ export default class Navbar extends Component {
       if (this.state.page !== location.pathname) {
         this.setState({ page: location.pathname });
 
-        console.log("changing state");
-        console.log(this.state.matchPathToProject);
         this.setState({
           matchPathToProject: matchPath(location.pathname, {
             path: "/project/:id",
@@ -76,7 +74,7 @@ export default class Navbar extends Component {
       >
         {this.renderTitle()}
         {!this.state.page.includes("projects") && (
-          <NavbarOptions isAdmin={false} />
+          <NavbarOptions isAdmin={true} />
         )}
         <img
           src={userIcon}

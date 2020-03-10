@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { withRouter } from "react-router";
+import { withRouter, matchPath } from "react-router";
 
 import "./css/navbar-options.css";
 
 const NavbarOptions = ({ history, isAdmin, projectId }) => {
+  const [currentPage, setCurrentPage] = useState("other");
+
+  let match;
+  useEffect(() => {
+    history.listen(location => {
+      match = matchPath(location.pathname, {
+        path: "/project/:id/:page",
+        exact: true
+      });
+      match !== null
+        ? setCurrentPage(match.params.page)
+        : setCurrentPage("other");
+    });
+  });
+
   const switchPage = page => {
     history.replace(`/project/${projectId}/${page}`);
   };
@@ -14,21 +29,27 @@ const NavbarOptions = ({ history, isAdmin, projectId }) => {
       {isAdmin && (
         <div
           onClick={() => switchPage("members")}
-          className="navbar-link navbar-options__members"
+          className={`navbar-options__members navbar-options__members${
+            currentPage === "members" ? "--active" : ""
+          }`}
         >
           Members
         </div>
       )}
       <div
         onClick={() => switchPage("created")}
-        className="navbar-link navbar-options__created"
+        className={`navbar-options__created navbar-options__created${
+          currentPage === "created" ? "--active" : ""
+        }`}
       >
         Created
       </div>
       {isAdmin && (
         <div
           onClick={() => switchPage("unassigned")}
-          className="navbar-link navbar-options__unassigned"
+          className={`navbar-options__unassigned navbar-options__unassigned${
+            currentPage === "unassigned" ? "--active" : ""
+          }`}
         >
           Unassigned
         </div>
