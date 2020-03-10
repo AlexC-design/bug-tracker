@@ -51,6 +51,12 @@
 
 .navbar__title--centered {
   margin-right: calc(50% - 4vw - 75px);
+  opacity: 1;
+}
+
+.navbar__title--centered:hover {
+  opacity: 1 !important;
+  cursor: default !important;
 }
 
 .navbar__title:hover {

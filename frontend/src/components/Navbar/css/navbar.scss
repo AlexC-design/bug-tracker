@@ -44,6 +44,12 @@
 
     &--centered {
       margin-right: calc(50% - 4vw - 75px);
+      opacity: 1;
+
+      &:hover {
+        opacity: 1 !important;
+        cursor: default !important;
+      }
     }
 
     &:hover {
