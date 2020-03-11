@@ -9,6 +9,7 @@ import LoginPage from "./components/LoginPage/LoginPage";
 import ProjectsPage from "./components/ProjectsPage/ProjectsPage";
 import ProjectPage from "./components/ProjectPage/ProjectPage";
 import CreateTaskPage from "./components/CreateTaskPage/CreateTaskPage";
+import { MembersPage } from "./components/MembersPage/MembersPage";
 
 import "./css/app.css";
 
@@ -28,6 +29,7 @@ export default class App extends React.Component {
             exact
             component={CreateTaskPage}
           />
+          <Route path="/project/:id/members" exact component={MembersPage} />
           <div className="app-background" />
         </HashRouter>
         {/* </PersistGate> */}
