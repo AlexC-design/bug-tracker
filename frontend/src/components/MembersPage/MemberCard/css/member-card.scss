@@ -2,8 +2,8 @@
 
 .member-card {
   background-color: color(primary-dark);
-  width: 450px;
-  height: 120px;
+  width: 400px;
+  height: 100px;
   border-radius: 200px;
 
   display: flex;
@@ -12,7 +12,9 @@
   align-items: center;
 
   &__icon {
-    margin: 0 20px;
+    margin: 0 10px;
+
+    transform: scale(0.8);
   }
   &__details {
     height: 100%;
