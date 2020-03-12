@@ -36,15 +36,15 @@
 }
 
 .members-page .simplebar-wrapper .simplebar-content .members-container {
-  max-width: 1200px;
+  max-width: 1920px;
   margin-top: 50px;
   margin-bottom: 100px;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[3];
       grid-template-columns: repeat(3, 1fr);
-  grid-row-gap: 50px;
-  grid-column-gap: 150px;
+  grid-row-gap: 30px;
+  grid-column-gap: 50px;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;

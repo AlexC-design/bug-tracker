@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAEA,AAAA,YAAY,CAAC;EACX,gBAAgB,ECDF,OAAO;EDErB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,aAAa,EAAE,KAAK;EAEpB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,aAAa;EAC9B,WAAW,EAAE,MAAM;CAsBpB;;AApBE,AAAD,kBAAO,CAAC;EACN,MAAM,EAAE,MAAM;CACf;;AACA,AAAD,qBAAU,CAAC;EACT,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,MAAM;EACf,UAAU,EAAE,UAAU;EAEtB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,MAAM;EACtB,eAAe,EAAE,YAAY;EAC7B,YAAY,EAAE,IAAI;CAQnB;;AANE,AAAD,2BAAO,CAAC;EACN,WAAW,EAAE,GAAG;CACjB;;AACA,AAAD,2BAAO,CAAC;EACN,OAAO,EAAE,GAAG;CACb",
     "sources": [
-        "member-card.scss"
+        "member-card.scss",
+        "../../../../sass/variables/variables.scss"
     ],
     "names": [],
     "file": "member-card.css"
