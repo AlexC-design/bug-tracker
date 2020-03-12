@@ -1,1 +1,36 @@
-/* No CSS *//*# sourceMappingURL=delete-button.css.map */
+.delete-button {
+  position: relative;
+  padding: 0;
+  margin: 0 5%;
+  height: 35px;
+  width: 35px;
+  border: none;
+  background-color: #e93223;
+  border-radius: 100px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+
+.delete-button:focus {
+  outline: none;
+}
+
+.delete-button:hover {
+  background-color: #c52114;
+  cursor: pointer;
+}
+
+.delete-button:active {
+  background-color: #eb483a;
+}
+
+.delete-button__cross {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+/*# sourceMappingURL=delete-button.css.map */
