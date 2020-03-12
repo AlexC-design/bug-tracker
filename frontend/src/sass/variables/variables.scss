@@ -21,6 +21,18 @@ $colors: (
   }
 }
 
+@mixin width1500 {
+  @media (max-width: 1500px) {
+    @content;
+  }
+}
+
+@mixin width1000 {
+  @media (max-width: 1000px) {
+    @content;
+  }
+}
+
 @mixin width1366 {
   @media (max-width: 1366px) {
     @content;

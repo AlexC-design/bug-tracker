@@ -50,6 +50,20 @@
           justify-content: space-between;
 }
 
+@media (max-width: 1500px) {
+  .members-page .simplebar-wrapper .simplebar-content .members-container {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 1000px) {
+  .members-page .simplebar-wrapper .simplebar-content .members-container {
+    -ms-grid-columns: (1fr)[1];
+        grid-template-columns: repeat(1, 1fr);
+  }
+}
+
 .members-page .simplebar-track.simplebar-vertical {
   top: 0px;
 }
