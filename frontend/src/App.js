@@ -18,21 +18,21 @@ export default class App extends React.Component {
   render() {
     return (
       <Provider store={store}>
-        {/* <PersistGate loading={null} persistor={persistor}> */}
-        <HashRouter basename="/">
-          <Navbar />
-          <Route path="/" exact component={LoginPage} />
-          <Route path="/projects" exact component={ProjectsPage} />
-          <Route path="/project/:id" exact component={ProjectPage} />
-          <Route
-            path="/project/:id/create-task"
-            exact
-            component={CreateTaskPage}
-          />
-          <Route path="/project/:id/members" exact component={MembersPage} />
-          <div className="app-background" />
-        </HashRouter>
-        {/* </PersistGate> */}
+        <PersistGate loading={null} persistor={persistor}>
+          <HashRouter basename="/">
+            <Navbar />
+            <Route path="/" exact component={LoginPage} />
+            <Route path="/projects" exact component={ProjectsPage} />
+            <Route path="/project/:id" exact component={ProjectPage} />
+            <Route
+              path="/project/:id/create-task"
+              exact
+              component={CreateTaskPage}
+            />
+            <Route path="/project/:id/members" exact component={MembersPage} />
+            <div className="app-background" />
+          </HashRouter>
+        </PersistGate>
       </Provider>
     );
   }
