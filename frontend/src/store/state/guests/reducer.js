@@ -1,4 +1,4 @@
-import { GET_GUESTS, GUESTS_LOADING } from "./index";
+import { GET_GUESTS, GUESTS_LOADING, DELETE_GUEST } from "./index";
 
 const initialState = {
   guests: [],
@@ -12,6 +12,11 @@ export default (state = initialState, action) => {
         ...state,
         guests: action.payload,
         loading: false
+      };
+    case DELETE_GUEST:
+      return {
+        ...state,
+        guests: state.guests.filter(guest => guest._id !== action.payload)
       };
     case GUESTS_LOADING:
       return {
