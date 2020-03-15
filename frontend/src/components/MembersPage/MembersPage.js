@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import SimpleBarReact from "simplebar-react";
 
-import { MemberCard } from "./MemberCard/MemberCard";
+import MemberCard from "./MemberCard/MemberCard";
 import { getGuests } from "../../store/state/guests";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
@@ -29,7 +29,11 @@ const MembersPage = ({ guestList, guestsLoading, getGuests }) => {
         <SimpleBarReact>
           <div className="members-container">
             {guestList.map(guest => (
-              <MemberCard name={guest.guest_name} date={guest.register_date} />
+              <MemberCard
+                name={guest.guest_name}
+                date={guest.register_date}
+                id={guest._id}
+              />
             ))}
           </div>
         </SimpleBarReact>
