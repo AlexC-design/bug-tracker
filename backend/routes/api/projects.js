@@ -7,7 +7,7 @@ const Project = require("../../models/Project");
 //descr   Get all projects
 router.get("/", (req, res) => {
   Project.find()
-    .sort({ creation_date: -1 })
+    .sort({ creationDate: -1 })
     .then(projects => res.json(projects));
 });
 
@@ -23,7 +23,7 @@ router.get("/:id", (req, res) => {
 //descr   Create new project
 router.post("/", (req, res) => {
   const newProject = new Project({
-    project_name: req.body.project_name
+    projectName: req.body.projectName
   });
 
   newProject.save().then(project => res.json(project));

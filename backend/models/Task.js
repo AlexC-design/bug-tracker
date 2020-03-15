@@ -2,31 +2,31 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
-  task_name: {
+  taskName: {
     type: String,
     required: true
   },
-  task_severity: {
+  taskSeverity: {
     type: String,
     required: true
   },
-  task_summary: {
+  taskSummary: {
     type: String,
     required: true
   },
-  task_description: {
+  taskDescription: {
     type: String,
     required: true
   },
-  task_environment: {
+  taskEnvironment: {
     type: String,
     required: true
   },
-  task_creator: {
+  taskCreator: {
     _id: { type: String, required: true },
     name: { type: String, required: true }
   },
-  creation_date: {
+  creationDate: {
     type: Date,
     default: Date.now
   }

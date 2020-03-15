@@ -2,11 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const GuestSchema = new Schema({
-  guest_name: {
+  guestName: {
     type: String,
     required: true
   },
-  register_date: {
+  registerDate: {
     type: Date,
     default: Date.now
   }

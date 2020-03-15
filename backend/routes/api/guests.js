@@ -7,7 +7,7 @@ const Guest = require("../../models/Guest");
 //descr   Create a guest
 router.post("/", (req, res) => {
   const newGuest = new Guest({
-    guest_name: req.body.guest_name
+    guest_name: req.body.guestName
   });
 
   newGuest.save().then(guest => res.json(guest));
@@ -17,7 +17,7 @@ router.post("/", (req, res) => {
 //descr   Get all guests
 router.get("/", (req, res) => {
   Guest.find()
-    .sort({ register_date: -1 })
+    .sort({ registerDate: -1 })
     .then(guest => res.json(guest));
 });
 
