@@ -13,7 +13,7 @@ const CreateTaskPage = ({ selectProject, selectedProject }) => {
     taskSeverity: "",
     taskSummary: "",
     taskDescription: "",
-    environment: "Select"
+    taskEnvironment: "Select"
   });
 
   useEffect(() => {
@@ -29,8 +29,8 @@ const CreateTaskPage = ({ selectProject, selectedProject }) => {
   const selectSeverity = severity => {
     setTaskDetails({ ...taskDetails, taskSeverity: severity });
   };
-  const selectEnvironment = environment => {
-    setTaskDetails({ ...taskDetails, environment });
+  const selectEnvironment = taskEnvironment => {
+    setTaskDetails({ ...taskDetails, taskEnvironment });
   };
 
   const handleInputChange = event => {
@@ -105,7 +105,7 @@ const CreateTaskPage = ({ selectProject, selectedProject }) => {
         <div className="task-creation__right">
           <EnvironmentDropdown
             selectEnvironment={selectEnvironment}
-            environment={taskDetails.environment}
+            environment={taskDetails.taskEnvironment}
           />
         </div>
       </div>

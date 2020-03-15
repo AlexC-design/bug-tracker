@@ -5,7 +5,7 @@ export const CREATE_TASK = "CREATE_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const TASKS_LOADING = "TASKS_LOADING";
 
-export const getProjects = () => dispatch => {
+export const getTasks = () => dispatch => {
   dispatch(setTasksLoading());
   axios.get("api/tasks").then(res =>
     dispatch({

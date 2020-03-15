@@ -13,12 +13,12 @@ class ProjectBar extends Component {
   }
 
   render() {
-    const { project_name, _id } = this.props.project;
+    const { projectName, _id } = this.props.project;
 
     return (
       <div className="project-bar">
         <img src={keyIcon} className="project-bar__project-icon" alt="key" />
-        <div className="project-bar__project-name">{project_name}</div>
+        <div className="project-bar__project-name">{projectName}</div>
         <button
           onClick={event => this.onDeleteProject(_id, event)}
           className="project-bar__delete-button"
