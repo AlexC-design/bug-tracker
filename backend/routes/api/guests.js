@@ -16,7 +16,9 @@ router.post("/", (req, res) => {
 //route   GET api/guests
 //descr   Get all guests
 router.get("/", (req, res) => {
-  Guest.find().then(guest => res.json(guest));
+  Guest.find()
+    .sort({ register_date: -1 })
+    .then(guest => res.json(guest));
 });
 
 //route   DELETE api/guests
