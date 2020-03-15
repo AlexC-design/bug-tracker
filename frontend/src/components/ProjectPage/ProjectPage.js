@@ -7,14 +7,6 @@ import CreateTaskButton from "./CreateTaskButton/CreateTaskButton";
 import "./css/project-page.css";
 
 class ProjectPage extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      selectedProject: ""
-    };
-  }
-
   componentDidMount() {
     this.props.selectProject(this.props.match.params.id);
   }

@@ -11,19 +11,15 @@ import "./css/members-page.css";
 const MembersPage = ({ guestList, guestsLoading, getGuests }) => {
   useEffect(() => {
     getGuests();
-    console.log(guestList);
-    console.log(guestsLoading);
-  }, []);
+  }, [getGuests]);
 
   if (guestsLoading === true) {
-    console.log("LOADING");
     return (
       <div className="members-page">
         <LoadingAnimation />
       </div>
     );
   } else {
-    console.log("LOADED");
     return (
       <div className="members-page">
         <SimpleBarReact>

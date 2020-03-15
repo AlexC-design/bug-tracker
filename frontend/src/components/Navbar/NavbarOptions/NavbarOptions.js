@@ -7,8 +7,8 @@ import "./css/navbar-options.css";
 const NavbarOptions = ({ history, isAdmin, projectId }) => {
   const [currentPage, setCurrentPage] = useState("other");
 
-  let match;
   useEffect(() => {
+    let match;
     history.listen(location => {
       match = matchPath(location.pathname, {
         path: "/project/:id/:page",

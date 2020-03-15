@@ -12,7 +12,7 @@ const MemberCard = ({ name, date, id, deleteGuest }) => {
 
   return (
     <div className="member-card">
-      <img className="member-card__icon" src={memberIcon} />
+      <img className="member-card__icon" src={memberIcon} alt="user" />
       <div className="member-card__details">
         <div className="member-card__details__name">{name}</div>
         <div className="member-card__details__date">
