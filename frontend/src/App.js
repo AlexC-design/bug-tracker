@@ -13,7 +13,6 @@ import { MembersPage } from "./components/MembersPage/MembersPage";
 
 import "./css/app.css";
 
-console.log(persistor);
 export default class App extends React.Component {
   render() {
     return (
