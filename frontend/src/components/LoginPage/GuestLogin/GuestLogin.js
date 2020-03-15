@@ -24,14 +24,14 @@ export default class GuestLogin extends Component {
         : `Guest${Math.floor(Math.random() * 9000 + 1000)}`;
 
     let newGuest = {
-      guest_name: guestName
+      guestName
     };
 
     //creating user in db and loading user details in redux
     axios.post("api/guests", newGuest).then(res => {
       let userDetails = {
         isSignedIn: true,
-        guestName: res.data.guest_name,
+        guestName: res.data.guestName,
         guestId: res.data._id
       };
 

@@ -6,7 +6,7 @@ import Navbar from "./Navbar";
 const wrappedBar = withRouter(Navbar);
 
 const mapStateToProps = state => ({
-  projectName: state.selectedProject.project_name,
+  projectName: state.selectedProject.projectName,
   projectId: state.selectedProject._id
 });
 

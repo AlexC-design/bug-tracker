@@ -26,8 +26,8 @@ const MembersPage = ({ guestList, guestsLoading, getGuests }) => {
           <div className="members-container">
             {guestList.map(guest => (
               <MemberCard
-                name={guest.guest_name}
-                date={guest.register_date}
+                name={guest.guestName}
+                date={guest.registerDate}
                 id={guest._id}
               />
             ))}

@@ -7,7 +7,7 @@ import { selectProject } from "../../store/state/selectedProject/index";
 
 import "./css/create-task-page.css";
 
-const CreateTaskPage = ({ selectProject, selectedProject }) => {
+const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
   const [taskDetails, setTaskDetails] = useState({
     taskName: "",
     taskSeverity: "",
@@ -17,10 +17,10 @@ const CreateTaskPage = ({ selectProject, selectedProject }) => {
   });
 
   useEffect(() => {
-    if (selectedProject.projectName) {
-      selectProject(this.props.match.params.id);
+    if (selectedProject && selectedProject.projectName) {
+      selectProject(match.params.id);
     }
-  }, [selectProject, selectedProject.projectName]);
+  }, []);
 
   useEffect(() => {
     console.log(taskDetails);

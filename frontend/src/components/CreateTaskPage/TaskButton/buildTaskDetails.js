@@ -1,6 +1,6 @@
 export const buildTaskDetails = (taskDetails, creator) => ({
   ...taskDetails,
-  task_creator: {
+  taskCreator: {
     _id: creator._id,
     name: creator.name
   }
