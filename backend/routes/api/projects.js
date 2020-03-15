@@ -6,7 +6,9 @@ const Project = require("../../models/Project");
 //route   GET api/projects
 //descr   Get all projects
 router.get("/", (req, res) => {
-  Project.find().then(projects => res.json(projects));
+  Project.find()
+    .sort({ creation_date: -1 })
+    .then(projects => res.json(projects));
 });
 
 //route   GET api/projects/:id
