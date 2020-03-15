@@ -11,6 +11,7 @@ const TaskButton = ({
   history,
   action,
   taskDetails,
+  projectId,
   createTask,
   currentUser
 }) => {
@@ -21,9 +22,13 @@ const TaskButton = ({
         break;
       case "Create":
         const validationMessage = validateTaskDetails(taskDetails);
-        validationMessage === "valid"
-          ? createTask(buildTaskDetails(taskDetails, currentUser))
-          : alert(validationMessage);
+
+        if (validationMessage === "valid") {
+          createTask(buildTaskDetails(taskDetails, currentUser));
+          history.push(`/project/${projectId}`);
+        } else {
+          alert(validationMessage);
+        }
         break;
       default:
         console.log(`no action ' ${action} ' defined`);
@@ -44,7 +49,8 @@ const mapStateToProps = state => ({
   currentUser: {
     _id: state.userDetails.guestId,
     name: state.userDetails.guestName
-  }
+  },
+  projectId: state.selectedProject._id
 });
 
 const wrappedComponent = withRouter(TaskButton);
