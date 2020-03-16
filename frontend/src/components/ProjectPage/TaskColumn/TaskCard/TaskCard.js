@@ -3,9 +3,9 @@ import React from "react";
 import "./css/task-card.css";
 
 export const TaskCard = ({ taskDetails }) => {
-  const formatDescription = ({ taskDescription }) => {
-    const desc = taskDescription.substring(0, 150);
-    const format = taskDescription.length > 150 ? "..." : "";
+  const formatSummary = ({ taskSummary }) => {
+    const desc = taskSummary.substring(0, 150);
+    const format = taskSummary.length > 150 ? "..." : "";
 
     return desc + format;
   };
@@ -18,8 +18,8 @@ export const TaskCard = ({ taskDetails }) => {
           className={`task-card__details__severity task-card__details__severity--${taskDetails.taskSeverity}`}
         />
       </div>
-      <div className="task-card__description">
-        {formatDescription(taskDetails)}
+      <div className="task-card__summary">
+        {formatSummary(taskDetails)}
       </div>
     </div>
   );

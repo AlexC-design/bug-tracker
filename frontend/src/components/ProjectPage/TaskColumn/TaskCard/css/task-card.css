@@ -47,7 +47,7 @@
   background-color: #e93223;
 }
 
-.task-card__description {
+.task-card__summary {
   padding: 20px;
   opacity: 0.8;
 }
