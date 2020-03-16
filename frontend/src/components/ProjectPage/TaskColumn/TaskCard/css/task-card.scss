@@ -17,16 +17,22 @@
       font-weight: bold;
       margin-right: 10px;
     }
-    &__id {
-      font-size: 0.9em;
-      margin-right: 10px;
-    }
     &__severity {
       width: 13px;
       height: 13px;
       border-radius: 50px;
-      background-color: red;
+      background-color: gray;
       margin-left: auto;
+
+      &--Low {
+        background-color: color(accent3);
+      }
+      &--Medium {
+        background-color: color(accent2);
+      }
+      &--High {
+        background-color: color(accent1);
+      }
     }
   }
 

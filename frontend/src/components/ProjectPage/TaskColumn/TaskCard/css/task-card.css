@@ -27,17 +27,24 @@
   margin-right: 10px;
 }
 
-.task-card__details__id {
-  font-size: 0.9em;
-  margin-right: 10px;
-}
-
 .task-card__details__severity {
   width: 13px;
   height: 13px;
   border-radius: 50px;
-  background-color: red;
+  background-color: gray;
   margin-left: auto;
+}
+
+.task-card__details__severity--Low {
+  background-color: #00e0ff;
+}
+
+.task-card__details__severity--Medium {
+  background-color: #faff00;
+}
+
+.task-card__details__severity--High {
+  background-color: #e93223;
 }
 
 .task-card__description {
