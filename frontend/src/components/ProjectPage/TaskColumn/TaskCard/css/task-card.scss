@@ -5,6 +5,25 @@
   border-radius: 10px;
   background-color: rgba(color(primary-dark), 0.9);
 
+  transition: all 0.5s cubic-bezier(0, 2, 0, 2);
+
+  &:hover {
+    background-color: darken(color(primary-dark), 3%);
+    cursor: pointer;
+
+    .task-card__details__severity {
+      &--Low {
+        box-shadow: 0 0 10px 1px color(accent3);
+      }
+      &--Medium {
+        box-shadow: 0 0 12px 2px color(accent2);
+      }
+      &--High {
+        box-shadow: 0 0 15px 3px color(accent1);
+      }
+    }
+  }
+
   &__details {
     display: flex;
     flex-direction: row;
@@ -23,6 +42,8 @@
       border-radius: 50px;
       background-color: gray;
       margin-left: auto;
+
+      transition: all 0.3s cubic-bezier(0, -0.6, 0, 1.65);
 
       &--Low {
         background-color: color(accent3);

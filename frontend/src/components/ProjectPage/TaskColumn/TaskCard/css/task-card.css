@@ -2,6 +2,28 @@
   margin: 0 10px 15px;
   border-radius: 10px;
   background-color: rgba(29, 29, 35, 0.9);
+  -webkit-transition: all 0.5s cubic-bezier(0, 2, 0, 2);
+  transition: all 0.5s cubic-bezier(0, 2, 0, 2);
+}
+
+.task-card:hover {
+  background-color: #16161b;
+  cursor: pointer;
+}
+
+.task-card:hover .task-card__details__severity--Low {
+  -webkit-box-shadow: 0 0 10px 1px #00e0ff;
+          box-shadow: 0 0 10px 1px #00e0ff;
+}
+
+.task-card:hover .task-card__details__severity--Medium {
+  -webkit-box-shadow: 0 0 12px 2px #faff00;
+          box-shadow: 0 0 12px 2px #faff00;
+}
+
+.task-card:hover .task-card__details__severity--High {
+  -webkit-box-shadow: 0 0 15px 3px #e93223;
+          box-shadow: 0 0 15px 3px #e93223;
 }
 
 .task-card__details {
@@ -33,6 +55,8 @@
   border-radius: 50px;
   background-color: gray;
   margin-left: auto;
+  -webkit-transition: all 0.3s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: all 0.3s cubic-bezier(0, -0.6, 0, 1.65);
 }
 
 .task-card__details__severity--Low {
