@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
+import { selectProject } from "../../store/state/selectedProject/index";
 import { SeverityCheckbox } from "./SeverityCheckbox/SeverityCheckbox";
 import { EnvironmentDropdown } from "./EnvironmentDropdown/EnvironmentDropdown";
+import { TaskInput } from "./TaskInput/TaskInput";
 import TaskButton from "./TaskButton/TaskButton";
-import { selectProject } from "../../store/state/selectedProject/index";
 
 import "./css/create-task-page.css";
 
@@ -46,16 +47,11 @@ const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
       <div className="task-creation__top">
         <form className="task-creation__left">
           <div className="task-creation__left__top">
-            <label className="task-creation__left__top__name">
-              <span>Name</span>
-              <input
-                name="taskName"
-                type="text"
-                autoComplete="off"
-                value={taskDetails.taskName}
-                onChange={handleInputChange}
-              />
-            </label>
+            <TaskInput
+              inputType="Name"
+              taskDetails={taskDetails}
+              handleInputChange={handleInputChange}
+            />
             <div className="task-creation__left__top__severity">
               <div className="task-creation__left__top__severity__label">
                 Severity
@@ -81,26 +77,16 @@ const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
               </div>
             </div>
           </div>
-          <label className="task-creation__left__summary">
-            <span>Summary</span>
-            <input
-              name="taskSummary"
-              type="text"
-              autoComplete="off"
-              value={taskDetails.taskSummary}
-              onChange={handleInputChange}
-            />
-          </label>
-          <label className="task-creation__left__description">
-            <span>Description</span>
-            <textarea
-              name="taskDescription"
-              type="text"
-              autoComplete="off"
-              value={taskDetails.taskDescription}
-              onChange={handleInputChange}
-            />
-          </label>
+          <TaskInput
+            inputType="Summary"
+            taskDetails={taskDetails}
+            handleInputChange={handleInputChange}
+          />
+          <TaskInput
+            inputType="Description"
+            taskDetails={taskDetails}
+            handleInputChange={handleInputChange}
+          />
         </form>
         <div className="task-creation__right">
           <EnvironmentDropdown
