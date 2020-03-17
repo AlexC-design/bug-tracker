@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { selectProject } from "../../store/state/selectedProject/index";
-import { SeverityCheckbox } from "./SeverityCheckbox/SeverityCheckbox";
 import { EnvironmentDropdown } from "./EnvironmentDropdown/EnvironmentDropdown";
 import { TaskInput } from "./TaskInput/TaskInput";
 import TaskButton from "./TaskButton/TaskButton";
 
 import "./css/create-task-page.css";
+import { SeveritySection } from "./SeveritySection/SeveritySection";
 
 const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
   const [taskDetails, setTaskDetails] = useState({
@@ -52,30 +52,10 @@ const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
               taskDetails={taskDetails}
               handleInputChange={handleInputChange}
             />
-            <div className="task-creation__left__top__severity">
-              <div className="task-creation__left__top__severity__label">
-                Severity
-              </div>
-              <div className="task-creation__left__top__severity__checkboxes">
-                <SeverityCheckbox
-                  severity="High"
-                  selectSeverity={selectSeverity}
-                  selected={taskDetails.taskSeverity === "High" ? true : false}
-                />
-                <SeverityCheckbox
-                  severity="Medium"
-                  selectSeverity={selectSeverity}
-                  selected={
-                    taskDetails.taskSeverity === "Medium" ? true : false
-                  }
-                />
-                <SeverityCheckbox
-                  severity="Low"
-                  selectSeverity={selectSeverity}
-                  selected={taskDetails.taskSeverity === "Low" ? true : false}
-                />
-              </div>
-            </div>
+            <SeveritySection
+              selectSeverity={selectSeverity}
+              taskDetails={taskDetails}
+            />
           </div>
           <TaskInput
             inputType="Summary"
