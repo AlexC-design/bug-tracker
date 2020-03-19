@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import { SeverityCheckbox } from "../CreateTaskPage/SeverityCheckbox/SeverityCheckbox";
 import { CompletionToggle } from "./CompletionToggle/CompletionToggle";
 import { TaskInput } from "../CreateTaskPage/TaskInput/TaskInput";
@@ -8,10 +10,28 @@ import userIcon from "../../assets/svg/member-icon.svg";
 
 import "./css/view-task-page.css";
 
-export const ViewTaskPage = ({ taskDetails }) => {
+export const ViewTaskPage = ({ match }) => {
+  const [taskDetails, setTaskDetails] = useState(null);
+
+  useEffect(() => {
+    if (taskDetails === null) {
+      axios
+        .get(`api/tasks/${match.params.taskId}`)
+        .then(res => setTaskDetails(res.data));
+    }
+  }, [taskDetails]);
+
+  const showDetails = () => {
+    console.log(taskDetails);
+  };
+
   return (
-    <div className="task-view">
-      <div className="task-view__top">
+    <div
+      onClick={showDetails}
+      style={{ width: "100vw", height: "100vh", backgroundColor: "black" }}
+      className="task-view"
+    >
+      {/* <div className="task-view__top">
         <form className="task-view__left">
           <div className="task-view__left__top">
             <div className="task-view__left__top__task-name">
@@ -40,7 +60,7 @@ export const ViewTaskPage = ({ taskDetails }) => {
       <div className="task-view__bottom">
         <TaskButton action="Cancel" />
         <TaskButton action="Create" taskDetails={taskDetails} />
-      </div>
+      </div> */}
     </div>
   );
 };

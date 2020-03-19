@@ -14,7 +14,7 @@ const TaskCard = ({ taskDetails, projectId }) => {
 
   return (
     <Link
-      to={`project/${projectId}/task${taskDetails._id}`}
+      to={`/project/${projectId}/task${taskDetails._id}`}
       className="task-card"
     >
       <div className="task-card__details">
