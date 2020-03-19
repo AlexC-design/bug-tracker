@@ -11,13 +11,13 @@ router.get("/", (req, res) => {
     .then(tasks => res.json(tasks));
 });
 
-// //route   GET api/projects/:id
-// //descr   Get a project by ID
-// router.get("/:id", (req, res) => {
-//   Project.findById(req.params.id).then(project => {
-//     res.json(project);
-//   });
-// });
+//route   GET api/tasks/:id
+//descr   Get a task by ID
+router.get("/:id", (req, res) => {
+  Task.findById(req.params.id).then(task => {
+    res.json(task);
+  });
+});
 
 //route   POST api/tasks
 //descr   Create new task
