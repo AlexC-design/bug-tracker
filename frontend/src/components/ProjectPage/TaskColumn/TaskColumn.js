@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskCard } from "./TaskCard/TaskCard";
+import TaskCard from "./TaskCard/TaskCard";
 import SimpleBarReact from "simplebar-react";
 
 import "simplebar/src/simplebar.css";

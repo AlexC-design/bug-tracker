@@ -1,6 +1,7 @@
 @import "../../../../../sass/variables/variables.scss";
 
 .task-card {
+  display: block;
   margin: 0 10px 15px;
   border-radius: 10px;
   background-color: rgba(color(primary-dark), 0.9);

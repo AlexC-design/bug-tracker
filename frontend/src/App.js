@@ -30,7 +30,7 @@ export default class App extends React.Component {
               component={CreateTaskPage}
             />
             <Route path="/project/:id/members" exact component={MembersPage} />
-            <Route path="/project/:id/task:id" exact component={ViewTaskPage} />
+            <Route path="/project/:id/task:taskId" exact component={ViewTaskPage} />
             <div className="app-background" />
           </HashRouter>
         </PersistGate>

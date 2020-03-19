@@ -3,7 +3,10 @@ import { SeverityCheckbox } from "../CreateTaskPage/SeverityCheckbox/SeverityChe
 import { CompletionToggle } from "./CompletionToggle/CompletionToggle";
 import { TaskInput } from "../CreateTaskPage/TaskInput/TaskInput";
 import { EnvironmentDropdown } from "../CreateTaskPage/EnvironmentDropdown/EnvironmentDropdown";
-import { TaskButton } from "../CreateTaskPage/TaskButton/TaskButton";
+import TaskButton from "../CreateTaskPage/TaskButton/TaskButton";
+import userIcon from "../../assets/svg/member-icon.svg";
+
+import "./css/view-task-page.css";
 
 export const ViewTaskPage = ({ taskDetails }) => {
   return (
@@ -16,22 +19,11 @@ export const ViewTaskPage = ({ taskDetails }) => {
             </div>
             <SeverityCheckbox />
           </div>
-          <TaskInput
-            inputType="Summary"
-            taskDetails={taskDetails}
-            handleInputChange={handleInputChange}
-          />
-          <TaskInput
-            inputType="Description"
-            taskDetails={taskDetails}
-            handleInputChange={handleInputChange}
-          />
+          <TaskInput inputType="Summary" taskDetails={taskDetails} />
+          <TaskInput inputType="Description" taskDetails={taskDetails} />
         </form>
         <div className="task-view__right">
-          <EnvironmentDropdown
-            selectEnvironment={selectEnvironment}
-            environment={taskDetails.taskEnvironment}
-          />
+          <EnvironmentDropdown environment={taskDetails.taskEnvironment} />
           <div className="task-view__right__user-details">
             <p>
               Created by: <b>{}</b>
