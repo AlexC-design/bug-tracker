@@ -33,7 +33,7 @@
     justify-content: flex-start;
 
     input {
-      border: 2px solid #e5e5e5;
+      border: 2px solid rgba(255, 255, 255, 0.2);
       border-radius: 8px;
       padding: 10px 20px;
       background-color: transparent;
@@ -106,7 +106,7 @@
       height: 100%;
 
       textarea {
-        border: 2px solid #e5e5e5;
+        border: 2px solid rgba(255, 255, 255, 0.2);
         border-radius: 8px;
         padding: 10px 20px;
         background-color: transparent;
@@ -152,6 +152,5 @@
       margin-top: auto;
       margin-bottom: 100px;
     }
-
   }
 }

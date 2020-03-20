@@ -14,7 +14,11 @@ export const TaskInput = ({ inputType, taskDetails, handleInputChange }) => {
   };
 
   return (
-    <label className={`task-creation__left${inputTypeToClassName[inputType]}`}>
+    <label
+      className={`task-${
+        handleInputChange === "disabled" ? "view" : "creation"
+      }__left${inputTypeToClassName[inputType]}`}
+    >
       <span>{inputType}</span>
       {(inputType === "Name" || inputType === "Summary") && (
         <input
