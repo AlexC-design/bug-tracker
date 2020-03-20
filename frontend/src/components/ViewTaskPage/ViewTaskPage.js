@@ -21,7 +21,7 @@ export const ViewTaskPage = ({ match }) => {
         .get(`api/tasks/${match.params.taskId}`)
         .then(res => setTaskDetails(res.data));
     }
-  }, [taskDetails]);
+  }, [taskDetails, match.params.taskId]);
 
   if (!taskDetails) {
     return (
@@ -66,7 +66,8 @@ export const ViewTaskPage = ({ match }) => {
                 <img src={userIcon} alt="user" />
               </p>
               <p>
-                on <b>{moment(taskDetails.creationDate).format("Do MMM YYYY")}</b>
+                on{" "}
+                <b>{moment(taskDetails.creationDate).format("Do MMM YYYY")}</b>
               </p>
             </div>
             <CompletionToggle />

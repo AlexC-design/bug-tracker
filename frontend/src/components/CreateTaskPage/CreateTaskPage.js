@@ -18,14 +18,12 @@ const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
   });
 
   useEffect(() => {
-    if (selectedProject && selectedProject.projectName) {
+    if (!selectedProject) {
       selectProject(match.params.id);
     }
-  }, []);
+  }, [selectedProject, selectProject, match.params.id]);
 
-  useEffect(() => {
-    console.log(taskDetails);
-  });
+  useEffect(() => {});
 
   const selectSeverity = severity => {
     setTaskDetails({ ...taskDetails, taskSeverity: severity });

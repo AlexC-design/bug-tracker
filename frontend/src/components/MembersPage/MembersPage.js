@@ -29,6 +29,7 @@ const MembersPage = ({ guestList, guestsLoading, getGuests }) => {
                 name={guest.guestName}
                 date={guest.registerDate}
                 id={guest._id}
+                key={guest._id}
               />
             ))}
           </div>

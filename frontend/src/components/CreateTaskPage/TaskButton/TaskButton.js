@@ -31,7 +31,6 @@ const TaskButton = ({
         }
         break;
       default:
-        console.log(`no action ' ${action} ' defined`);
     }
   };
 

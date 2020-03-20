@@ -16,7 +16,9 @@ export const EnvironmentDropdown = ({ selectEnvironment, environment }) => {
     <>
       <label>Environment</label>
       <div
-        onClick={selectEnvironment !== "disabled" ? () => toggleDropdown() : ""}
+        onClick={
+          selectEnvironment !== "disabled" ? () => toggleDropdown() : () => {}
+        }
         className="environment-dropdown"
       >
         <div
@@ -44,10 +46,14 @@ export const EnvironmentDropdown = ({ selectEnvironment, environment }) => {
         >
           {options.map(option => (
             <div
-              onClick={() => {
-                selectEnvironment(option);
-                toggleDropdown();
-              }}
+              onClick={
+                selectEnvironment !== "disabled"
+                  ? () => {
+                      selectEnvironment(option);
+                      toggleDropdown();
+                    }
+                  : () => {}
+              }
               key={option}
             >
               {option}
