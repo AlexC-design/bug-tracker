@@ -2,7 +2,7 @@ import React from "react";
 
 export const CompletionToggle = () => {
   return (
-    <div>
+    <div className="completion-toggle">
       <div>CompletionToggle</div>
     </div>
   );

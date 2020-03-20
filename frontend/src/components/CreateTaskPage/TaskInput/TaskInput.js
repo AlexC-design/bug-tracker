@@ -23,6 +23,7 @@ export const TaskInput = ({ inputType, taskDetails, handleInputChange }) => {
           autoComplete="off"
           value={inputTypeToValue[inputType]}
           onChange={handleInputChange}
+          disabled={handleInputChange === "disabled" ? true : false}
         />
       )}
       {inputType === "Description" && (
@@ -32,6 +33,7 @@ export const TaskInput = ({ inputType, taskDetails, handleInputChange }) => {
           autoComplete="off"
           value={inputTypeToValue[inputType]}
           onChange={handleInputChange}
+          disabled={handleInputChange === "disabled" ? true : false}
         />
       )}
     </label>

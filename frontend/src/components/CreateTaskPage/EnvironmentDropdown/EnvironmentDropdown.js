@@ -15,18 +15,27 @@ export const EnvironmentDropdown = ({ selectEnvironment, environment }) => {
   return (
     <>
       <label>Environment</label>
-      <div onClick={() => toggleDropdown()} className="environment-dropdown">
-        <div className="environment-dropdown__top">
+      <div
+        onClick={selectEnvironment !== "disabled" ? () => toggleDropdown() : ""}
+        className="environment-dropdown"
+      >
+        <div
+          className={`environment-dropdown__top ${
+            selectEnvironment === "disabled" ? "nopointer" : ""
+          }`}
+        >
           <div className="environment-dropdown__top__selected">
             {environment}
           </div>
-          <img
-            src={dropdownArrow}
-            className={`environment-dropdown__top__arrow environment-dropdown__top__arrow${
-              expanded ? "--reversed" : ""
-            }`}
-            alt="arrow"
-          />
+          {selectEnvironment !== "disabled" && (
+            <img
+              src={dropdownArrow}
+              className={`environment-dropdown__top__arrow environment-dropdown__top__arrow${
+                expanded ? "--reversed" : ""
+              }`}
+              alt="arrow"
+            />
+          )}
         </div>
         <div
           className={`environment-dropdown__options environment-dropdown__options${

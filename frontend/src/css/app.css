@@ -22,4 +22,8 @@ body .app-background {
   top: 0;
   z-index: -1;
 }
+
+.nopointer {
+  cursor: default;
+}
 /*# sourceMappingURL=app.css.map */
