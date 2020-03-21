@@ -24,7 +24,7 @@ const TaskButton = ({
         const validationMessage = validateTaskDetails(taskDetails);
 
         if (validationMessage === "valid") {
-          createTask(buildTaskDetails(taskDetails, currentUser));
+          createTask(buildTaskDetails(taskDetails, currentUser), projectId);
           history.push(`/project/${projectId}`);
         } else {
           alert(validationMessage);

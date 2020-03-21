@@ -15,8 +15,8 @@ export const getTasks = () => dispatch => {
   );
 };
 
-export const createTask = taskDetails => dispatch => {
-  axios.post("api/tasks", taskDetails).then(res =>
+export const createTask = (taskDetails, projectId) => dispatch => {
+  axios.put(`api/projects/${projectId}`, taskDetails).then(res =>
     dispatch({
       type: CREATE_TASK,
       payload: res.data
