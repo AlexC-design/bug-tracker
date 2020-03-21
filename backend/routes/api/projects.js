@@ -2,8 +2,9 @@ const express = require("express");
 const router = express.Router();
 
 const Project = require("../../models/Project");
+const Tasks = require("../../models/Task");
+const Task = Tasks.TaskModel;
 
-//route   GET api/projects
 //descr   Get all projects
 router.get("/", (req, res) => {
   Project.find()
@@ -11,7 +12,6 @@ router.get("/", (req, res) => {
     .then(projects => res.json(projects));
 });
 
-//route   GET api/projects/:id
 //descr   Get a project by ID
 router.get("/:id", (req, res) => {
   Project.findById(req.params.id).then(project => {
@@ -19,7 +19,6 @@ router.get("/:id", (req, res) => {
   });
 });
 
-//route   POST api/projects
 //descr   Create new project
 router.post("/", (req, res) => {
   const newProject = new Project({
@@ -29,12 +28,27 @@ router.post("/", (req, res) => {
   newProject.save().then(project => res.json(project));
 });
 
-//route   DELETE api/projects
 //descr   Delete a project
 router.delete("/:id", (req, res) => {
   Project.findById(req.params.id)
     .then(project => project.remove().then(() => res.json({ success: true })))
     .catch(err => res.status(404).json({ sucess: false }));
+});
+
+//descr   Add task in project
+router.put("/:projectId", (req, res) => {
+  const newTask = new Task({
+    ...req.body
+  });
+
+  Project.findById(req.params.projectId).then(project => {
+    project.tasks[`${req.body.taskSeverity}`].push(newTask);
+    console.log({ project });
+    project.save().then(project => {
+      console.log(project);
+      return res.json(project.tasks);
+    });
+  });
 });
 
 module.exports = router;

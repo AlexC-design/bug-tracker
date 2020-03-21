@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const Tasks = require("../models/Task");
+const TaskSchema = Tasks.TaskSchema;
+
 const ProjectSchema = new Schema({
   projectName: {
     type: String,
@@ -9,6 +12,12 @@ const ProjectSchema = new Schema({
   creationDate: {
     type: Date,
     default: Date.now
+  },
+  tasks: {
+    High: [TaskSchema],
+    Medium: [TaskSchema],
+    Low: [TaskSchema],
+    Trivial: [TaskSchema]
   }
 });
 
