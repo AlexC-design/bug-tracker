@@ -17,9 +17,16 @@ export const ViewTaskPage = ({ match, selectedTask }) => {
 
   useEffect(() => {
     if (taskDetails === null) {
-      axios
-        .get(`api/projects/${match.params.id}/task${match.params.taskId}`)
-        .then(res => setTaskDetails(res.data));
+      axios.get(`api/projects/${match.params.id}`).then(res => {
+        for (let taskPriority in res.data.tasks) {
+          let task = res.data.tasks[`${taskPriority}`].find(
+            task => task._id === match.params.taskId
+          );
+          if (task && task.taskName) {
+            setTaskDetails(task);
+          }
+        }
+      });
     }
   }, [taskDetails, match.params.taskId]);
 
