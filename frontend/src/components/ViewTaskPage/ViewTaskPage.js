@@ -12,13 +12,13 @@ import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 import "./css/view-task-page.css";
 
-export const ViewTaskPage = ({ match }) => {
+export const ViewTaskPage = ({ match, selectedTask }) => {
   const [taskDetails, setTaskDetails] = useState(null);
 
   useEffect(() => {
     if (taskDetails === null) {
       axios
-        .get(`api/tasks/${match.params.taskId}`)
+        .get(`api/projects/${match.params.id}/task${match.params.taskId}`)
         .then(res => setTaskDetails(res.data));
     }
   }, [taskDetails, match.params.taskId]);

@@ -6,20 +6,26 @@ import "simplebar/src/simplebar.css";
 import "./css/task-column.css";
 
 export const TaskColumn = ({ priority, tasks }) => {
+  console.log(priority, tasks);
+
   return (
     <div className="task-column">
       <div className="task-column__title">{priority}</div>
-      <SimpleBarReact>
-        {tasks.map(task => (
-          <TaskCard taskDetails={task} key={task._id} />
-        ))}
-        <div className="task-column__completed">
-          <div className="task-column__completed__title">Completed</div>
+      {tasks.length ? (
+        <SimpleBarReact>
           {tasks.map(task => (
             <TaskCard taskDetails={task} key={task._id} />
           ))}
-        </div>
-      </SimpleBarReact>
+          <div className="task-column__completed">
+            <div className="task-column__completed__title">Completed</div>
+            {tasks.map(task => (
+              <TaskCard taskDetails={task} key={task._id} />
+            ))}
+          </div>
+        </SimpleBarReact>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

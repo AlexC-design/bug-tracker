@@ -5,15 +5,15 @@ export const CREATE_TASK = "CREATE_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const TASKS_LOADING = "TASKS_LOADING";
 
-export const getTasks = () => dispatch => {
-  dispatch(setTasksLoading());
-  axios.get("api/tasks").then(res =>
-    dispatch({
-      type: GET_TASKS,
-      payload: res.data
-    })
-  );
-};
+// export const getTasks = () => dispatch => {
+//   dispatch(setTasksLoading());
+//   axios.get("api/tasks").then(res =>
+//     dispatch({
+//       type: GET_TASKS,
+//       payload: res.data
+//     })
+//   );
+// };
 
 export const createTask = (taskDetails, projectId) => dispatch => {
   axios.put(`api/projects/${projectId}`, taskDetails).then(res =>
