@@ -51,4 +51,12 @@ router.put("/:projectId", (req, res) => {
   });
 });
 
+//descr   Get task
+router.get("/:id/task:taskId", (req, res) => {
+  Task.findById(req.params.taskId).then(task => {
+    console.log(task);
+    res.json(task);
+  });
+});
+
 module.exports = router;
