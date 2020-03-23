@@ -59,19 +59,19 @@
 
     &__top {
       display: flex;
-      flex-direction: row;
-      justify-content: flex-start;
-      margin-bottom: 30px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
 
       &__task-name {
+        margin-bottom: 20px;
         font-size: 1.5em;
         font-weight: bold;
-        display: flex;
-        flex-direction: column;
-        padding-right: 50px;
       }
 
       &__severity {
+        margin-left: auto;
         display: flex;
         flex-direction: column;
 
