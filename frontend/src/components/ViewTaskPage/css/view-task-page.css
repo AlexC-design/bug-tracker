@@ -60,7 +60,7 @@
   padding: 10px 20px;
   background-color: transparent;
   margin-top: 10px;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 1em;
   color: white;
 }
@@ -164,7 +164,7 @@
   margin-top: 10px;
   resize: none;
   height: 100%;
-  font-family: Montserrat;
+  font-family: Montserrat, sans-serif;
   font-size: 1em;
   color: white;
 }
