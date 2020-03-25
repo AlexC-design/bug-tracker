@@ -1,0 +1,61 @@
+@import "../../../../sass/variables/variables.scss";
+
+.completion-toggle {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+
+  align-self: flex-start;
+  margin-left: 25%;
+
+  transition: all 0.2s ease-out;
+
+  &__toggle {
+    width: 60px;
+    height: 31px;
+    border-radius: 50px;
+    margin-right: 20px;
+    padding: 0;
+    position: relative;
+
+    transition: all 0.2s ease-out;
+
+    &__button {
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      border-radius: 50px;
+
+      transition: all 0.2s ease-out;
+    }
+
+    &--on {
+      border: 3px solid #237435;
+      background-color: #00ff29;
+      box-shadow: 0 0 20px -5px #00ff29;
+
+      .completion-toggle__toggle__button {
+        background-color: #237435;
+        top: 0;
+        left: calc(100% - 25px);
+      }
+    }
+    &--off {
+      .completion-toggle__toggle__button {
+        background-color: color(secondary-light);
+        top: 0;
+        left: 0;
+      }
+      border: 3px solid color(primary-light);
+      background-color: color(primary-light);
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__text {
+  }
+}
