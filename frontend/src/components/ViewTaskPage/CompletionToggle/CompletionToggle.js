@@ -17,7 +17,11 @@ export const CompletionToggle = () => {
       >
         <div className="completion-toggle__toggle__button"></div>
       </button>
-      <div className="completion-toggle__text">
+      <div
+        className={`completion-toggle__text completion-toggle__text${
+          taskState ? "" : "--completed"
+        }`}
+      >
         {taskState ? "In progress" : "Completed"}
       </div>
     </div>
