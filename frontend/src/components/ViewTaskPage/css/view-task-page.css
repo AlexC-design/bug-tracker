@@ -74,6 +74,10 @@
 }
 
 .task-view__left label span {
+  opacity: 0.5;
+}
+
+.task-view__left label span {
   margin-left: 20px;
   font-weight: 500;
 }
@@ -82,21 +86,21 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
+  -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .task-view__left__top__task-name {
-  margin-bottom: 20px;
+  margin: 0 50px;
   font-size: 1.5em;
   font-weight: bold;
 }

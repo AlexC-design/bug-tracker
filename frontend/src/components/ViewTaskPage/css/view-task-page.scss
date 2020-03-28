@@ -52,6 +52,10 @@
       margin-bottom: 50px;
 
       span {
+        opacity: 0.5;
+      }
+
+      span {
         margin-left: 20px;
         font-weight: 500;
       }
@@ -59,13 +63,13 @@
 
     &__top {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex-direction: row;
+      justify-content: flex-start;
       align-items: center;
-      margin-bottom: 20px;
+      margin-bottom: 40px;
 
       &__task-name {
-        margin-bottom: 20px;
+        margin: 0 50px;
         font-size: 1.5em;
         font-weight: bold;
       }
