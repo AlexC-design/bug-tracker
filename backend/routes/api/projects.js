@@ -43,16 +43,13 @@ router.put("/:projectId", (req, res) => {
 
   Project.findById(req.params.projectId).then(project => {
     project.tasks[`${req.body.taskSeverity}`].push(newTask);
-    console.log({ project });
     project.save().then(project => {
-      console.log(project);
       return res.json(project.tasks);
     });
   });
 });
 
 //descr   Delete task from project
-//TODO -- fix comparing objectIds
 router.delete("/:projectId/:taskSeverity/:taskId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
     let taskIndex = project.tasks[`${req.params.taskSeverity}`].findIndex(
@@ -66,7 +63,6 @@ router.delete("/:projectId/:taskSeverity/:taskId", (req, res) => {
       return "not found";
     }
     project.save().then(project => {
-      console.log(project.tasks);
       return res.json(project.tasks);
     });
   });
