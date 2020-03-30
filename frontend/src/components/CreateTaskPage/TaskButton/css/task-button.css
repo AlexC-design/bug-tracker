@@ -33,6 +33,10 @@
   background-color: #41414d;
 }
 
+.task-button--OK {
+  margin-left: auto;
+}
+
 .task-button--Delete {
   background-color: #eb483a;
   margin-right: 100px;
