@@ -20,6 +20,9 @@ const TaskButton = ({
       case "Cancel":
         history.goBack();
         break;
+      case "OK":
+        history.goBack();
+        break;
       case "Create":
         const validationMessage = validateTaskDetails(taskDetails);
 
