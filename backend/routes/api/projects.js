@@ -54,17 +54,10 @@ router.put("/:projectId", (req, res) => {
 //descr   Delete task from project
 //TODO -- fix comparing objectIds
 router.delete("/:projectId/:taskSeverity/:taskId", (req, res) => {
-  console.log("projectId:", req.params.projectId);
-  console.log("taskSeverity:", req.params.taskSeverity);
-  console.log("taskId:", req.params.taskId);
-
   Project.findById(req.params.projectId).then(project => {
     let taskIndex = project.tasks[`${req.params.taskSeverity}`].findIndex(
       task => {
-        console.log("task._id:", task._id);
-        console.log("taskId:", req.params.taskId);
-
-        return task._id === req.params.taskId;
+        return task._id.toString() === req.params.taskId;
       }
     );
     if (taskIndex !== -1) {
