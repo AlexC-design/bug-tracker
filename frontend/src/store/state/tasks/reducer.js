@@ -7,12 +7,6 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_TASKS:
-      return {
-        ...state,
-        tasks: action.payload,
-        loading: false
-      };
     case CREATE_TASK:
       return {
         ...state,
