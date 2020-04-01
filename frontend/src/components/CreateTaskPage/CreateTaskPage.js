@@ -4,17 +4,26 @@ import { selectProject } from "../../store/state/selectedProject/index";
 import { EnvironmentDropdown } from "./EnvironmentDropdown/EnvironmentDropdown";
 import { TaskInput } from "./TaskInput/TaskInput";
 import TaskButton from "./TaskButton/TaskButton";
+import { loremIpsum } from "lorem-ipsum";
 
 import "./css/create-task-page.css";
 import { SeveritySection } from "./SeveritySection/SeveritySection";
 
 const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
   const [taskDetails, setTaskDetails] = useState({
-    taskName: "",
+    taskName: `Test Task ${Math.floor(Math.random() * 101)}`,
     taskSeverity: "",
-    taskSummary: "",
-    taskDescription: "",
-    taskEnvironment: "Select"
+    taskSummary: loremIpsum(),
+    taskDescription: loremIpsum({
+      count: 1,
+      format: "plain",
+      paragraphLowerBound: 3,
+      paragraphUpperBound: 7,
+      sentenceLowerBound: 5,
+      sentenceUpperBound: 15,
+      units: "paragraphs"
+    }),
+    taskEnvironment: "All"
   });
 
   useEffect(() => {
