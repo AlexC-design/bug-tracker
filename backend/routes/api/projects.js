@@ -68,4 +68,24 @@ router.delete("/:projectId/:taskSeverity/:taskId", (req, res) => {
   });
 });
 
+//descr   Edit task
+router.put("/:projectId/:taskSeverity/:taskId", (req, res) => {
+  const newTask = new Task({
+    ...req.body
+  });
+
+  Project.findById(req.params.projectId).then(project => {
+    let taskIndex = project.tasks[`${req.params.taskSeverity}`].findIndex(
+      task => {
+        return task._id.toString() === req.params.taskId;
+      }
+    );
+    if (taskIndex !== -1) {
+      project.tasks[`${req.params.taskSeverity}`][taskIndex] = newTask;
+    } else {
+      return "not found";
+    }
+  });
+});
+
 module.exports = router;

@@ -22,6 +22,10 @@ const TaskSchema = new Schema({
     type: String,
     required: true
   },
+  taskCompleted: {
+    type: Boolean,
+    default: false
+  },
   taskCreator: {
     _id: { type: String, required: true },
     name: { type: String, required: true }
@@ -33,4 +37,4 @@ const TaskSchema = new Schema({
 });
 
 exports.TaskModel = mongoose.model("task", TaskSchema);
-exports.TaskSchema = TaskSchema
+exports.TaskSchema = TaskSchema;
