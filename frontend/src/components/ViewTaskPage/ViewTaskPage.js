@@ -82,8 +82,8 @@ export const ViewTaskPage = ({ match, selectedTask }) => {
         </div>
 
         <div className="task-view__bottom">
-          <TaskButton action="Delete" />
-          <TaskButton action="Edit" />
+          <TaskButton action="Delete" taskDetails={taskDetails} />
+          <TaskButton action="Edit" taskDetails={taskDetails} />
           <TaskButton action="OK" taskDetails={taskDetails} />
         </div>
       </div>

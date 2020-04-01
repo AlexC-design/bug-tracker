@@ -6,8 +6,6 @@ import "simplebar/src/simplebar.css";
 import "./css/task-column.css";
 
 export const TaskColumn = ({ priority, tasks }) => {
-  console.log(priority, tasks);
-
   return (
     <div className="task-column">
       <div className="task-column__title">{priority}</div>

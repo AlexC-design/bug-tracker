@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { createTask } from "../../../store/state/tasks";
+import { createTask, deleteTask } from "../../../store/state/selectedProject";
 import { validateTaskDetails } from "./validateTaskDetails";
 import { buildTaskDetails } from "./buildTaskDetails";
 
@@ -13,6 +13,7 @@ const TaskButton = ({
   taskDetails,
   projectId,
   createTask,
+  deleteTask,
   currentUser
 }) => {
   const buttonAction = action => {
@@ -32,6 +33,10 @@ const TaskButton = ({
         } else {
           alert(validationMessage);
         }
+        break;
+      case "Delete":
+        deleteTask(projectId, taskDetails.taskSeverity, taskDetails._id);
+        history.push(`/project/${projectId}`);
         break;
       default:
     }
@@ -57,4 +62,6 @@ const mapStateToProps = state => ({
 
 const wrappedComponent = withRouter(TaskButton);
 
-export default connect(mapStateToProps, { createTask })(wrappedComponent);
+export default connect(mapStateToProps, { createTask, deleteTask })(
+  wrappedComponent
+);

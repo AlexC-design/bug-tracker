@@ -17,6 +17,7 @@
   background-color: #5f9e65;
   border-radius: 10px;
   margin: 0 10px;
+  padding-bottom: 1px;
 }
 
 .task-column__completed .task-card {
