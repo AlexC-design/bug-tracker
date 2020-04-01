@@ -14,7 +14,6 @@ mongoose
 
 app.use("/api/projects", require("./routes/api/projects"));
 app.use("/api/guests", require("./routes/api/guests"));
-app.use("/api/tasks", require("./routes/api/tasks"));
 // app.use("/api/users", require("./routes/api/users"));
 // app.use("/login", require("./routes/login/login"));
 
