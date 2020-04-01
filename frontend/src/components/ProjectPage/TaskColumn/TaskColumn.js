@@ -11,14 +11,18 @@ export const TaskColumn = ({ priority, tasks }) => {
       <div className="task-column__title">{priority}</div>
       {tasks.length ? (
         <SimpleBarReact>
-          {tasks.map(task => (
-            <TaskCard taskDetails={task} key={task._id} />
-          ))}
+          {tasks.map(task => {
+            if (!task.taskCompleted) {
+              return <TaskCard taskDetails={task} key={task._id} />;
+            }
+          })}
           <div className="task-column__completed">
             <div className="task-column__completed__title">Completed</div>
-            {tasks.map(task => (
-              <TaskCard taskDetails={task} key={task._id} />
-            ))}
+            {tasks.map(task => {
+              if (task.taskCompleted) {
+                return <TaskCard taskDetails={task} key={task._id} />;
+              }
+            })}
           </div>
         </SimpleBarReact>
       ) : (
