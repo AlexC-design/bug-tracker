@@ -10,7 +10,7 @@ import ProjectsPage from "./components/ProjectsPage/ProjectsPage";
 import ProjectPage from "./components/ProjectPage/ProjectPage";
 import CreateTaskPage from "./components/CreateTaskPage/CreateTaskPage";
 import MembersPage from "./components/MembersPage/MembersPage";
-import { ViewTaskPage } from "./components/ViewTaskPage/ViewTaskPage";
+import ViewTaskPage from "./components/ViewTaskPage/ViewTaskPage";
 
 import "./css/app.css";
 
@@ -30,7 +30,11 @@ export default class App extends React.Component {
               component={CreateTaskPage}
             />
             <Route path="/project/:id/members" exact component={MembersPage} />
-            <Route path="/project/:id/task:taskId" exact component={ViewTaskPage} />
+            <Route
+              path="/project/:id/task:taskId"
+              exact
+              component={ViewTaskPage}
+            />
             <div className="app-background" />
           </HashRouter>
         </PersistGate>

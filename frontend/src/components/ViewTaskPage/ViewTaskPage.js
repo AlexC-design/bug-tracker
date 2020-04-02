@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
 import axios from "axios";
 import moment from "moment";
 
@@ -9,11 +10,16 @@ import { EnvironmentDropdown } from "../CreateTaskPage/EnvironmentDropdown/Envir
 import TaskButton from "../CreateTaskPage/TaskButton/TaskButton";
 import userIcon from "../../assets/svg/member-icon.svg";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
+import { taskCompletion } from "../../store/state/selectedProject/index";
 
 import "./css/view-task-page.css";
 
-export const ViewTaskPage = ({ match, selectedTask }) => {
+const ViewTaskPage = ({ match, taskCompletion, storedTasks }) => {
   const [taskDetails, setTaskDetails] = useState(null);
+
+  const setTaskCompleted = () => {
+    taskCompletion(match.params.id, taskDetails.taskSeverity, taskDetails._id);
+  };
 
   useEffect(() => {
     if (taskDetails === null) {
@@ -29,6 +35,17 @@ export const ViewTaskPage = ({ match, selectedTask }) => {
       });
     }
   }, [taskDetails, match.params.taskId]);
+
+  const getTaskCompletion = tasks => {
+    for (let taskPriority in tasks) {
+      let task = tasks[`${taskPriority}`].find(
+        task => task._id === match.params.taskId
+      );
+      if (task && task.taskName) {
+        return task.taskCompleted;
+      }
+    }
+  };
 
   if (!taskDetails) {
     return (
@@ -77,7 +94,10 @@ export const ViewTaskPage = ({ match, selectedTask }) => {
                 <b>{moment(taskDetails.creationDate).format("Do MMM YYYY")}</b>
               </p>
             </div>
-            <CompletionToggle />
+            <CompletionToggle
+              taskCompleted={getTaskCompletion(storedTasks)}
+              setTaskCompleted={setTaskCompleted}
+            />
           </div>
         </div>
 
@@ -90,3 +110,9 @@ export const ViewTaskPage = ({ match, selectedTask }) => {
     );
   }
 };
+
+const mapStateToProps = state => ({
+  storedTasks: state.selectedProject.tasks
+});
+
+export default connect(mapStateToProps, { taskCompletion })(ViewTaskPage);

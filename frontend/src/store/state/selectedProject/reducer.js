@@ -2,7 +2,8 @@ import {
   SELECT_PROJECT,
   CREATE_TASK,
   DELETE_TASK,
-  PROJECT_LOADING
+  PROJECT_LOADING,
+  TASK_COMPLETION
 } from "./index";
 
 const initialState = {
@@ -20,6 +21,11 @@ export default (state = initialState, action) => {
         tasks: action.payload
       };
     case DELETE_TASK:
+      return {
+        ...state,
+        tasks: action.payload
+      };
+    case TASK_COMPLETION:
       return {
         ...state,
         tasks: action.payload

@@ -1,28 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "./css/completion-toggle.css";
 
-export const CompletionToggle = () => {
-  const [taskState, setTaskState] = useState(false);
-
+export const CompletionToggle = ({ taskCompleted, setTaskCompleted }) => {
   return (
     <div className="completion-toggle">
       <button
         onClick={() => {
-          setTaskState(!taskState);
+          setTaskCompleted();
         }}
         className={`completion-toggle__toggle completion-toggle__toggle${
-          taskState === true ? "--off" : "--on"
+          !taskCompleted === true ? "--off" : "--on"
         }`}
       >
         <div className="completion-toggle__toggle__button"></div>
       </button>
       <div
         className={`completion-toggle__text completion-toggle__text${
-          taskState ? "" : "--completed"
+          !taskCompleted ? "" : "--completed"
         }`}
       >
-        {taskState ? "In progress" : "Completed"}
+        {!taskCompleted ? "In progress" : "Completed"}
       </div>
     </div>
   );
