@@ -68,12 +68,8 @@ router.delete("/:projectId/:taskSeverity/:taskId", (req, res) => {
   });
 });
 
-//descr   Edit task
-router.put("/:projectId/:taskSeverity/:taskId", (req, res) => {
-  const newTask = new Task({
-    ...req.body
-  });
-
+//descr   Complete task
+router.put("/completion/:projectId/:taskSeverity/:taskId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
     let taskIndex = project.tasks[`${req.params.taskSeverity}`].findIndex(
       task => {
@@ -81,10 +77,16 @@ router.put("/:projectId/:taskSeverity/:taskId", (req, res) => {
       }
     );
     if (taskIndex !== -1) {
-      project.tasks[`${req.params.taskSeverity}`][taskIndex] = newTask;
+      project.tasks[`${req.params.taskSeverity}`][
+        taskIndex
+      ].taskCompleted = !project.tasks[`${req.params.taskSeverity}`][taskIndex]
+        .taskCompleted;
     } else {
       return "not found";
     }
+    project.save().then(project => {
+      return res.json(project.tasks);
+    });
   });
 });
 
