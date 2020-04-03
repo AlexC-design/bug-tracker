@@ -52,6 +52,7 @@ const NavbarOptions = ({ history, isAdmin, projectId }) => {
           }`}
         >
           Unassigned
+          <div className="navbar-options__notification" />
         </div>
       )}
     </div>
