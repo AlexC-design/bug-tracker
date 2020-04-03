@@ -1,5 +1,6 @@
 .task-column {
   width: 400px;
+  min-height: 90vh;
   margin: 0 5px 0 0;
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), to(transparent));
   -webkit-mask-image: linear-gradient(black, black, black, black, black, black, black, black, transparent);

@@ -51,7 +51,7 @@
 }
 
 .task-card__details__severity {
-  width: 13px;
+  min-width: 13px;
   height: 13px;
   border-radius: 50px;
   background-color: gray;
