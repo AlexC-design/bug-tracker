@@ -13,6 +13,7 @@ const CreateTaskPage = ({ match, selectProject, selectedProject, editOn }) => {
   const [taskDetails, setTaskDetails] = useState({
     taskName: `Test Task ${Math.floor(Math.random() * 101)}`,
     taskSeverity: "",
+    taskPriority: "Trivial",
     taskSummary: loremIpsum(),
     taskDescription: loremIpsum({
       count: 1,
@@ -29,8 +30,8 @@ const CreateTaskPage = ({ match, selectProject, selectedProject, editOn }) => {
   const [currentTask, setCurrentTask] = useState("empty");
 
   if (editOn) {
-    for (let taskSeverity in selectedProject.tasks) {
-      selectedProject.tasks[taskSeverity].forEach(task => {
+    for (let taskPriority in selectedProject.tasks) {
+      selectedProject.tasks[taskPriority].forEach(task => {
         if (task._id === match.params.taskId && currentTask === "empty") {
           setCurrentTask(task);
           return;

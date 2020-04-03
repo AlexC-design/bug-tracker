@@ -10,6 +10,10 @@ const TaskSchema = new Schema({
     type: String,
     required: true
   },
+  taskPriority: {
+    type: String,
+    default: "Trivial"
+  },
   taskSummary: {
     type: String,
     required: true

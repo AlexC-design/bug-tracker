@@ -42,7 +42,7 @@ router.put("/:projectId", (req, res) => {
   });
 
   Project.findById(req.params.projectId).then(project => {
-    project.tasks[`${req.body.taskSeverity}`].push(newTask);
+    project.tasks[`Trivial`].push(newTask);
     project.save().then(project => {
       return res.json(project.tasks);
     });
@@ -50,15 +50,15 @@ router.put("/:projectId", (req, res) => {
 });
 
 //descr   Delete task from project
-router.delete("/:projectId/:taskSeverity/:taskId", (req, res) => {
+router.delete("/:projectId/:taskPriority/:taskId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
-    let taskIndex = project.tasks[`${req.params.taskSeverity}`].findIndex(
+    let taskIndex = project.tasks[`${req.params.taskPriority}`].findIndex(
       task => {
         return task._id.toString() === req.params.taskId;
       }
     );
     if (taskIndex !== -1) {
-      project.tasks[`${req.params.taskSeverity}`].splice(taskIndex, 1);
+      project.tasks[`${req.params.taskPriority}`].splice(taskIndex, 1);
     } else {
       return "not found";
     }
@@ -69,17 +69,17 @@ router.delete("/:projectId/:taskSeverity/:taskId", (req, res) => {
 });
 
 //descr   Edit task completion
-router.put("/completion/:projectId/:taskSeverity/:taskId", (req, res) => {
+router.put("/completion/:projectId/:taskPriority/:taskId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
-    let taskIndex = project.tasks[`${req.params.taskSeverity}`].findIndex(
+    let taskIndex = project.tasks[`${req.params.taskPriority}`].findIndex(
       task => {
         return task._id.toString() === req.params.taskId;
       }
     );
     if (taskIndex !== -1) {
-      project.tasks[`${req.params.taskSeverity}`][
+      project.tasks[`${req.params.taskPriority}`][
         taskIndex
-      ].taskCompleted = !project.tasks[`${req.params.taskSeverity}`][taskIndex]
+      ].taskCompleted = !project.tasks[`${req.params.taskPriority}`][taskIndex]
         .taskCompleted;
     } else {
       return "not found";
@@ -91,15 +91,15 @@ router.put("/completion/:projectId/:taskSeverity/:taskId", (req, res) => {
 });
 
 //descr   Edit Task Details
-router.put("/edit/:projectId/:taskSeverity/:taskId", (req, res) => {
+router.put("/edit/:projectId/:taskPriority/:taskId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
-    let taskIndex = project.tasks[`${req.params.taskSeverity}`].findIndex(
+    let taskIndex = project.tasks[`${req.params.taskPriority}`].findIndex(
       task => {
         return task._id.toString() === req.params.taskId;
       }
     );
     if (taskIndex !== -1) {
-      let currentTask = project.tasks[`${req.params.taskSeverity}`][taskIndex];
+      let currentTask = project.tasks[`${req.params.taskPriority}`][taskIndex];
 
       currentTask.taskName = req.body.taskName;
       currentTask.taskSeverity = req.body.taskSeverity;
@@ -110,11 +110,11 @@ router.put("/edit/:projectId/:taskSeverity/:taskId", (req, res) => {
       return "not found";
     }
 
-    if (req.params.taskSeverity !== req.body.taskSeverity) {
-      let taskToMove = project.tasks[`${req.params.taskSeverity}`][taskIndex];
-      project.tasks[`${req.params.taskSeverity}`].splice(taskIndex, 1);
-      project.tasks[`${req.body.taskSeverity}`].push(taskToMove);
-    }
+    // if (req.params.taskPriority !== req.body.taskPriority) {
+    //   let taskToMove = project.tasks[`${req.params.taskPriority}`][taskIndex];
+    //   project.tasks[`${req.params.taskPriority}`].splice(taskIndex, 1);
+    //   project.tasks[`${req.body.taskPriority}`].push(taskToMove);
+    // }
 
     project.save().then(project => {
       return res.json(project.tasks);

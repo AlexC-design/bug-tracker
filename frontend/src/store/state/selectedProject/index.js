@@ -36,9 +36,9 @@ export const createTask = (taskDetails, projectId) => dispatch => {
   );
 };
 
-export const deleteTask = (projectId, taskSeverity, taskId) => dispatch => {
+export const deleteTask = (projectId, taskPriority, taskId) => dispatch => {
   axios
-    .delete(`api/projects/${projectId}/${taskSeverity}/${taskId}`)
+    .delete(`api/projects/${projectId}/${taskPriority}/${taskId}`)
     .then(res =>
       dispatch({
         type: DELETE_TASK,
@@ -47,10 +47,10 @@ export const deleteTask = (projectId, taskSeverity, taskId) => dispatch => {
     );
 };
 
-export const taskCompletion = (projectId, taskSeverity, taskId) => dispatch => {
+export const taskCompletion = (projectId, taskPriority, taskId) => dispatch => {
   dispatch(setCompletionLoading());
   axios
-    .put(`api/projects/completion/${projectId}/${taskSeverity}/${taskId}`)
+    .put(`api/projects/completion/${projectId}/${taskPriority}/${taskId}`)
     .then(res =>
       dispatch({
         type: TASK_COMPLETION,
@@ -65,14 +65,13 @@ export const setCompletionLoading = () => ({
 
 export const taskEdit = (
   projectId,
-  taskSeverity,
+  taskPriority,
   taskId,
   taskDetails
 ) => dispatch => {
-  console.log({ projectId }, { taskSeverity }, { taskId }, { taskDetails });
   dispatch(setEditingLoading());
   axios
-    .put(`api/projects/edit/${projectId}/${taskSeverity}/${taskId}`, {
+    .put(`api/projects/edit/${projectId}/${taskPriority}/${taskId}`, {
       ...taskDetails
     })
     .then(res =>
