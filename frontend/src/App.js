@@ -24,6 +24,7 @@ export default class App extends React.Component {
             <Route path="/" exact component={LoginPage} />
             <Route path="/projects" exact component={ProjectsPage} />
             <Route path="/project/:id" exact component={ProjectPage} />
+            <Route path="/project/:id/unassigned" exact component={ProjectPage} />
             <Route
               path="/project/:id/create-task"
               exact

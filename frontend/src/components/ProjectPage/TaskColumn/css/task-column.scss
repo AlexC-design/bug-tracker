@@ -41,6 +41,10 @@
     }
   }
 
+  &__spacing {
+    min-height: 400px;
+  }
+
   .simplebar-wrapper {
     max-height: calc(100vh - 75px);
   }

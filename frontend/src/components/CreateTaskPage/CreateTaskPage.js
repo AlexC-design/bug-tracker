@@ -13,7 +13,7 @@ const CreateTaskPage = ({ match, selectProject, selectedProject, editOn }) => {
   const [taskDetails, setTaskDetails] = useState({
     taskName: `Test Task ${Math.floor(Math.random() * 101)}`,
     taskSeverity: "",
-    taskPriority: "Trivial",
+    taskPriority: "Unassigned",
     taskSummary: loremIpsum(),
     taskDescription: loremIpsum({
       count: 1,

@@ -32,6 +32,10 @@
   padding-top: 20px;
 }
 
+.task-column__spacing {
+  min-height: 400px;
+}
+
 .task-column .simplebar-wrapper {
   max-height: calc(100vh - 75px);
 }

@@ -9,6 +9,7 @@ import "./css/project-page.css";
 
 class ProjectPage extends Component {
   componentDidMount() {
+    console.log(this.props.location.pathname.includes("unassigned"));
     this.props.selectProject(this.props.match.params.id);
   }
 
@@ -32,6 +33,12 @@ class ProjectPage extends Component {
             priority="Trivial"
             tasks={this.props.selectedProject.tasks.Trivial}
           />
+          {this.props.location.pathname.includes("unassigned") && (
+            <TaskColumn
+              priority="Unassigned"
+              tasks={this.props.selectedProject.tasks.Unassigned}
+            />
+          )}
           <CreateTaskButton projectId={this.props.match.params.id} />
         </div>
       );

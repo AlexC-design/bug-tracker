@@ -52,7 +52,7 @@ const TaskButton = ({
 
         if (validationMessage === "valid") {
           createTask(buildTaskDetails(taskDetails, currentUser), projectId);
-          history.push(`/project/${projectId}`);
+          history.goBack();
         } else {
           alert(validationMessage);
         }
@@ -71,7 +71,7 @@ const TaskButton = ({
         break;
       case "Delete":
         deleteTask(projectId, taskDetails.taskPriority, taskDetails._id);
-        history.push(`/project/${projectId}`);
+        history.goBack();
         break;
       default:
     }

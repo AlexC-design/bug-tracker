@@ -8,10 +8,10 @@ import "./css/task-column.css";
 export const TaskColumn = ({ priority, tasks }) => {
   const [noCompleted, setNoCompleted] = useState(true);
 
-  const checkCompleted = (tasks) => {
+  const checkCompleted = tasks => {
     let found = false;
 
-    tasks.map((task) => {
+    tasks.map(task => {
       if (task.taskCompleted) {
         found = true;
       }
@@ -31,7 +31,7 @@ export const TaskColumn = ({ priority, tasks }) => {
       <div className="task-column__title">{priority}</div>
       {tasks.length ? (
         <SimpleBarReact>
-          {tasks.map((task) => {
+          {tasks.map(task => {
             if (!task.taskCompleted) {
               return <TaskCard taskDetails={task} key={task._id} />;
             } else {
@@ -41,7 +41,7 @@ export const TaskColumn = ({ priority, tasks }) => {
           {noCompleted && (
             <div className="task-column__completed">
               <div className="task-column__completed__title">Completed</div>
-              {tasks.map((task) => {
+              {tasks.map(task => {
                 if (task.taskCompleted) {
                   return <TaskCard taskDetails={task} key={task._id} />;
                 } else {
@@ -50,6 +50,7 @@ export const TaskColumn = ({ priority, tasks }) => {
               })}
             </div>
           )}
+          <div className="task-column__spacing" />
         </SimpleBarReact>
       ) : (
         <div></div>
