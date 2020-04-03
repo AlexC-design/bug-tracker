@@ -23,7 +23,7 @@ const ViewTaskPage = ({
   const [taskDetails, setTaskDetails] = useState(null);
 
   const setTaskCompleted = () => {
-    taskCompletion(match.params.id, taskDetails.taskSeverity, taskDetails._id);
+    taskCompletion(match.params.id, taskDetails.taskPriority, taskDetails._id);
   };
 
   useEffect(() => {

@@ -14,8 +14,8 @@ import "./css/task-button.css";
 const findTaskById = (project, taskId) => {
   let result = {};
 
-  for (let taskSeverity in project.tasks) {
-    project.tasks[taskSeverity].forEach(task => {
+  for (let taskPriority in project.tasks) {
+    project.tasks[taskPriority].forEach(task => {
       if (task._id === taskId) {
         result = task;
         return;
@@ -63,14 +63,14 @@ const TaskButton = ({
       case "Save":
         taskEdit(
           projectId,
-          findTaskById(selectedProject, taskId).taskSeverity,
+          findTaskById(selectedProject, taskId).taskPriority,
           taskId,
           taskDetails
         );
         history.goBack();
         break;
       case "Delete":
-        deleteTask(projectId, taskDetails.taskSeverity, taskDetails._id);
+        deleteTask(projectId, taskDetails.taskPriority, taskDetails._id);
         history.push(`/project/${projectId}`);
         break;
       default:
