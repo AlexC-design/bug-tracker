@@ -2,9 +2,17 @@ import React from "react";
 
 import "./css/completion-toggle.css";
 
-export const CompletionToggle = ({ taskCompleted, setTaskCompleted }) => {
+export const CompletionToggle = ({
+  taskCompleted,
+  setTaskCompleted,
+  completionLoading
+}) => {
   return (
-    <div className="completion-toggle">
+    <div
+      className={`completion-toggle completion-toggle${
+        completionLoading ? "--loading" : ""
+      }`}
+    >
       <button
         onClick={() => {
           setTaskCompleted();

@@ -14,7 +14,12 @@ import { taskCompletion } from "../../store/state/selectedProject/index";
 
 import "./css/view-task-page.css";
 
-const ViewTaskPage = ({ match, taskCompletion, storedTasks }) => {
+const ViewTaskPage = ({
+  match,
+  taskCompletion,
+  storedTasks,
+  completionLoading
+}) => {
   const [taskDetails, setTaskDetails] = useState(null);
 
   const setTaskCompleted = () => {
@@ -34,7 +39,7 @@ const ViewTaskPage = ({ match, taskCompletion, storedTasks }) => {
         }
       });
     }
-  }, [taskDetails, match.params.taskId]);
+  }, [taskDetails, match.params.taskId, match.params.id]);
 
   const getTaskCompletion = tasks => {
     for (let taskPriority in tasks) {
@@ -95,6 +100,7 @@ const ViewTaskPage = ({ match, taskCompletion, storedTasks }) => {
               </p>
             </div>
             <CompletionToggle
+              completionLoading={completionLoading}
               taskCompleted={getTaskCompletion(storedTasks)}
               setTaskCompleted={setTaskCompleted}
             />
@@ -112,7 +118,8 @@ const ViewTaskPage = ({ match, taskCompletion, storedTasks }) => {
 };
 
 const mapStateToProps = state => ({
-  storedTasks: state.selectedProject.tasks
+  storedTasks: state.selectedProject.tasks,
+  completionLoading: state.selectedProject.completionLoading
 });
 
 export default connect(mapStateToProps, { taskCompletion })(ViewTaskPage);

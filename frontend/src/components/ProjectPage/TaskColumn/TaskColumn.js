@@ -14,6 +14,8 @@ export const TaskColumn = ({ priority, tasks }) => {
           {tasks.map(task => {
             if (!task.taskCompleted) {
               return <TaskCard taskDetails={task} key={task._id} />;
+            } else {
+              return null;
             }
           })}
           <div className="task-column__completed">
@@ -21,6 +23,8 @@ export const TaskColumn = ({ priority, tasks }) => {
             {tasks.map(task => {
               if (task.taskCompleted) {
                 return <TaskCard taskDetails={task} key={task._id} />;
+              } else {
+                return null;
               }
             })}
           </div>

@@ -19,6 +19,12 @@
   transition: all 0.2s ease-out;
 }
 
+.completion-toggle--loading {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.5;
+}
+
 .completion-toggle__toggle {
   width: 60px;
   height: 31px;

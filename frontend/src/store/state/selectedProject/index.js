@@ -6,6 +6,9 @@ export const CREATE_TASK = "CREATE_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const PROJECT_LOADING = "PROJECT_LOADING";
 export const TASK_COMPLETION = "TASK_COMPLETION";
+export const COMPLETION_LOADING = "COMPLETION_LOADING";
+export const TASK_EDIT = "TASK_EDIT";
+export const EDITING_LOADING = "EDITING_LOADING";
 
 // ------ PROJECT ------
 
@@ -45,6 +48,7 @@ export const deleteTask = (projectId, taskSeverity, taskId) => dispatch => {
 };
 
 export const taskCompletion = (projectId, taskSeverity, taskId) => dispatch => {
+  dispatch(setCompletionLoading());
   axios
     .put(`api/projects/completion/${projectId}/${taskSeverity}/${taskId}`)
     .then(res =>
@@ -54,3 +58,31 @@ export const taskCompletion = (projectId, taskSeverity, taskId) => dispatch => {
       })
     );
 };
+
+export const setCompletionLoading = () => ({
+  type: COMPLETION_LOADING
+});
+
+export const taskEdit = (
+  projectId,
+  taskSeverity,
+  taskId,
+  taskDetails
+) => dispatch => {
+  console.log({ projectId }, { taskSeverity }, { taskId }, { taskDetails });
+  dispatch(setEditingLoading());
+  axios
+    .put(`api/projects/edit/${projectId}/${taskSeverity}/${taskId}`, {
+      ...taskDetails
+    })
+    .then(res =>
+      dispatch({
+        type: TASK_EDIT,
+        payload: res.data
+      })
+    );
+};
+
+export const setEditingLoading = () => ({
+  type: EDITING_LOADING
+});
