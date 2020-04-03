@@ -68,7 +68,7 @@ router.delete("/:projectId/:taskSeverity/:taskId", (req, res) => {
   });
 });
 
-//descr   Complete task
+//descr   Edit task completion
 router.put("/completion/:projectId/:taskSeverity/:taskId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
     let taskIndex = project.tasks[`${req.params.taskSeverity}`].findIndex(
@@ -81,6 +81,31 @@ router.put("/completion/:projectId/:taskSeverity/:taskId", (req, res) => {
         taskIndex
       ].taskCompleted = !project.tasks[`${req.params.taskSeverity}`][taskIndex]
         .taskCompleted;
+    } else {
+      return "not found";
+    }
+    project.save().then(project => {
+      return res.json(project.tasks);
+    });
+  });
+});
+
+//descr   Edit Task Details
+router.put("/edit/:projectId/:taskSeverity/:taskId", (req, res) => {
+  Project.findById(req.params.projectId).then(project => {
+    let taskIndex = project.tasks[`${req.params.taskSeverity}`].findIndex(
+      task => {
+        return task._id.toString() === req.params.taskId;
+      }
+    );
+    if (taskIndex !== -1) {
+      let currentTask = project.tasks[`${req.params.taskSeverity}`][taskIndex];
+
+      currentTask.taskName = req.body.taskName;
+      currentTask.taskSeverity = req.body.taskSeverity;
+      currentTask.taskSummary = req.body.taskSummary;
+      currentTask.taskDescription = req.body.taskDescription;
+      currentTask.taskEnvironment = req.body.taskEnvironment;
     } else {
       return "not found";
     }
