@@ -109,6 +109,13 @@ router.put("/edit/:projectId/:taskSeverity/:taskId", (req, res) => {
     } else {
       return "not found";
     }
+
+    if (req.params.taskSeverity !== req.body.taskSeverity) {
+      let taskToMove = project.tasks[`${req.params.taskSeverity}`][taskIndex];
+      project.tasks[`${req.params.taskSeverity}`].splice(taskIndex, 1);
+      project.tasks[`${req.body.taskSeverity}`].push(taskToMove);
+    }
+
     project.save().then(project => {
       return res.json(project.tasks);
     });
