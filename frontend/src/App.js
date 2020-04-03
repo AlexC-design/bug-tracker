@@ -29,6 +29,11 @@ export default class App extends React.Component {
               exact
               component={CreateTaskPage}
             />
+            <Route
+              path="/project/:id/edit-task/:taskId"
+              exact
+              render={props => <CreateTaskPage {...props} editOn={true} />}
+            />
             <Route path="/project/:id/members" exact component={MembersPage} />
             <Route
               path="/project/:id/task:taskId"

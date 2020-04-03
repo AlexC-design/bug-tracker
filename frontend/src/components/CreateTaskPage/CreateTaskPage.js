@@ -3,13 +3,13 @@ import { connect } from "react-redux";
 import { selectProject } from "../../store/state/selectedProject/index";
 import { EnvironmentDropdown } from "./EnvironmentDropdown/EnvironmentDropdown";
 import { TaskInput } from "./TaskInput/TaskInput";
+import { SeveritySection } from "./SeveritySection/SeveritySection";
 import TaskButton from "./TaskButton/TaskButton";
 import { loremIpsum } from "lorem-ipsum";
 
 import "./css/create-task-page.css";
-import { SeveritySection } from "./SeveritySection/SeveritySection";
 
-const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
+const CreateTaskPage = ({ match, selectProject, selectedProject, editOn }) => {
   const [taskDetails, setTaskDetails] = useState({
     taskName: `Test Task ${Math.floor(Math.random() * 101)}`,
     taskSeverity: "",
@@ -26,13 +26,43 @@ const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
     taskEnvironment: "All"
   });
 
+  const [currentTask, setCurrentTask] = useState("empty");
+
+  if (editOn) {
+    for (let taskSeverity in selectedProject.tasks) {
+      selectedProject.tasks[taskSeverity].forEach(task => {
+        if (task._id === match.params.taskId && currentTask === "empty") {
+          setCurrentTask(task);
+          return;
+        }
+      });
+    }
+  }
+
   useEffect(() => {
     if (!selectedProject) {
       selectProject(match.params.id);
     }
   }, [selectedProject, selectProject, match.params.id]);
 
-  useEffect(() => {});
+  useEffect(() => {
+    if (editOn) {
+      setTaskDetails({
+        taskName: currentTask.taskName,
+        taskSeverity: currentTask.taskSeverity,
+        taskSummary: currentTask.taskSummary,
+        taskDescription: currentTask.taskDescription,
+        taskEnvironment: currentTask.taskEnvironment
+      });
+    }
+  }, [
+    editOn,
+    currentTask.taskName,
+    currentTask.taskSeverity,
+    currentTask.taskSummary,
+    currentTask.taskDescription,
+    currentTask.taskEnvironment
+  ]);
 
   const selectSeverity = severity => {
     setTaskDetails({ ...taskDetails, taskSeverity: severity });
@@ -85,7 +115,11 @@ const CreateTaskPage = ({ match, selectProject, selectedProject }) => {
 
       <div className="task-creation__bottom">
         <TaskButton action="Cancel" />
-        <TaskButton action="Create" taskDetails={taskDetails} />
+        <TaskButton
+          action={`${editOn ? "Save" : "Create"}`}
+          taskDetails={taskDetails}
+          taskId={match.params.taskId}
+        />
       </div>
     </div>
   );

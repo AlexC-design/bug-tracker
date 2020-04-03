@@ -28,6 +28,10 @@
   margin-left: auto;
 }
 
+.task-button--Save {
+  margin-left: auto;
+}
+
 .task-button--Cancel {
   margin-left: calc(100% - 400px);
   background-color: #41414d;

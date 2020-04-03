@@ -1,22 +1,45 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { createTask, deleteTask } from "../../../store/state/selectedProject";
+import {
+  createTask,
+  deleteTask,
+  taskEdit
+} from "../../../store/state/selectedProject";
 import { validateTaskDetails } from "./validateTaskDetails";
 import { buildTaskDetails } from "./buildTaskDetails";
 
 import "./css/task-button.css";
 
+const findTaskById = (project, taskId) => {
+  let result = {};
+
+  for (let taskSeverity in project.tasks) {
+    project.tasks[taskSeverity].forEach(task => {
+      if (task._id === taskId) {
+        result = task;
+        return;
+      }
+    });
+  }
+
+  return result;
+};
+
 const TaskButton = ({
   history,
   action,
   taskDetails,
-  projectId,
+  selectedProject,
   createTask,
   deleteTask,
-  currentUser
+  currentUser,
+  taskId,
+  taskEdit
 }) => {
   const buttonAction = action => {
+    const projectId = selectedProject._id;
+
     switch (action) {
       case "Cancel":
         history.goBack();
@@ -33,6 +56,18 @@ const TaskButton = ({
         } else {
           alert(validationMessage);
         }
+        break;
+      case "Edit":
+        history.push(`/project/${projectId}/edit-task/${taskDetails._id}`);
+        break;
+      case "Save":
+        taskEdit(
+          projectId,
+          findTaskById(selectedProject, taskId).taskSeverity,
+          taskId,
+          taskDetails
+        );
+        history.goBack();
         break;
       case "Delete":
         deleteTask(projectId, taskDetails.taskSeverity, taskDetails._id);
@@ -57,11 +92,11 @@ const mapStateToProps = state => ({
     _id: state.userDetails.guestId,
     name: state.userDetails.guestName
   },
-  projectId: state.selectedProject._id
+  selectedProject: state.selectedProject
 });
 
 const wrappedComponent = withRouter(TaskButton);
 
-export default connect(mapStateToProps, { createTask, deleteTask })(
+export default connect(mapStateToProps, { createTask, deleteTask, taskEdit })(
   wrappedComponent
 );

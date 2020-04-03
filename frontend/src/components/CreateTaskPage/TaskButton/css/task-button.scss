@@ -30,6 +30,9 @@
   &--Create {
     margin-left: auto;
   }
+  &--Save {
+    margin-left: auto;
+  }
   &--Cancel {
     margin-left: calc(100% - 400px);
     background-color: darken(color(secondary-light), 20%);
