@@ -12,7 +12,7 @@ const TaskSchema = new Schema({
   },
   taskPriority: {
     type: String,
-    default: "Trivial"
+    default: "Unassigned"
   },
   taskSummary: {
     type: String,

@@ -42,7 +42,7 @@ router.put("/:projectId", (req, res) => {
   });
 
   Project.findById(req.params.projectId).then(project => {
-    project.tasks[`Trivial`].push(newTask);
+    project.tasks[`Unassigned`].push(newTask);
     project.save().then(project => {
       return res.json(project.tasks);
     });

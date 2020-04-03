@@ -17,7 +17,8 @@ const ProjectSchema = new Schema({
     High: [TaskSchema],
     Medium: [TaskSchema],
     Low: [TaskSchema],
-    Trivial: [TaskSchema]
+    Trivial: [TaskSchema],
+    Unassigned: [TaskSchema]
   }
 });
 
