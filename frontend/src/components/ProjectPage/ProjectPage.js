@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { TaskColumn } from "./TaskColumn/TaskColumn";
+import TaskColumn from "./TaskColumn/TaskColumn";
 import { selectProject } from "../../store/state/selectedProject";
 import CreateTaskButton from "./CreateTaskButton/CreateTaskButton";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
@@ -22,7 +22,7 @@ class ProjectPage extends Component {
             tasks={this.props.selectedProject.tasks.High}
           />
           <TaskColumn
-            priority="Mid Priority"
+            priority="Medium Priority"
             tasks={this.props.selectedProject.tasks.Medium}
           />
           <TaskColumn

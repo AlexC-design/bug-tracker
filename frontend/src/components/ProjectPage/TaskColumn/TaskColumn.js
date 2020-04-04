@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import TaskCard from "./TaskCard/TaskCard";
 import SimpleBarReact from "simplebar-react";
+import { useDrop } from "react-dnd";
+import { ItemTypes } from "../../../utils/items";
+import { changeColumn } from "../../../store/state/selectedProject/index";
 
 import "simplebar/src/simplebar.css";
 import "./css/task-column.css";
+import { connect } from "react-redux";
 
-export const TaskColumn = ({ priority, tasks }) => {
+const TaskColumn = ({ priority, tasks, changeColumn }) => {
   const [noCompleted, setNoCompleted] = useState(true);
 
   const checkCompleted = tasks => {
@@ -26,8 +30,26 @@ export const TaskColumn = ({ priority, tasks }) => {
     }
   });
 
+  const [{ isOver }, drop] = useDrop({
+    accept: ItemTypes.CARD,
+    drop: (item, monitor) => {
+      changeColumn(
+        item.projectId,
+        item.taskId,
+        item.oldPriority.split(" ")[0],
+        priority.split(" ")[0]
+      );
+    },
+    collect: monitor => ({
+      isOver: !!monitor.isOver()
+    })
+  });
+
   return (
-    <div className="task-column">
+    <div
+      className={`task-column task-column${isOver ? "--over" : ""}`}
+      ref={drop}
+    >
       <div className="task-column__title">{priority}</div>
       {tasks.length ? (
         <SimpleBarReact>
@@ -53,8 +75,10 @@ export const TaskColumn = ({ priority, tasks }) => {
           <div className="task-column__spacing" />
         </SimpleBarReact>
       ) : (
-        <div></div>
+        <div className="task-column__empty"></div>
       )}
     </div>
   );
 };
+
+export default connect(null, { changeColumn })(TaskColumn);

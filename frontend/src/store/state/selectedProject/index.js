@@ -9,6 +9,8 @@ export const TASK_COMPLETION = "TASK_COMPLETION";
 export const COMPLETION_LOADING = "COMPLETION_LOADING";
 export const TASK_EDIT = "TASK_EDIT";
 export const EDITING_LOADING = "EDITING_LOADING";
+export const CHANGE_COLUMN = "CHANGE_COLUMN";
+export const COLUMN_LOADING = "COLUMN_LOADING";
 
 // ------ PROJECT ------
 
@@ -84,4 +86,28 @@ export const taskEdit = (
 
 export const setEditingLoading = () => ({
   type: EDITING_LOADING
+});
+
+export const changeColumn = (
+  projectId,
+  taskId,
+  oldPriority,
+  newPriority
+) => dispatch => {
+  dispatch(setColumnLoading());
+  axios
+    .put(`api/projects/change-column/${projectId}/${taskId}`, {
+      oldPriority,
+      newPriority
+    })
+    .then(res =>
+      dispatch({
+        type: CHANGE_COLUMN,
+        payload: res.data
+      })
+    );
+};
+
+export const setColumnLoading = () => ({
+  type: COLUMN_LOADING
 });

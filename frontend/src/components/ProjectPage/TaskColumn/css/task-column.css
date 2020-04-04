@@ -2,6 +2,8 @@
   width: 400px;
   min-height: 90vh;
   margin: 0 5px 0 0;
+  border-radius: 10px;
+  padding-top: 10px;
   -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), to(transparent));
   -webkit-mask-image: linear-gradient(black, black, black, black, black, black, black, black, transparent);
           mask-image: -webkit-gradient(linear, left top, left bottom, from(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), color-stop(black), to(transparent));
@@ -34,6 +36,10 @@
 
 .task-column__spacing {
   min-height: 400px;
+}
+
+.task-column--over {
+  background-color: red;
 }
 
 .task-column .simplebar-wrapper {

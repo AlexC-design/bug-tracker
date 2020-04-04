@@ -8,6 +8,11 @@
 
   transition: all 0.5s cubic-bezier(0, 2, 0, 2);
 
+  &--dragging {
+    transition: all 0s linear;
+    opacity: 0.2;
+  }
+
   &:hover {
     background-color: darken(color(primary-dark), 3%);
     cursor: pointer;

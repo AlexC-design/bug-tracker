@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { useDrag } from "react-dnd";
+import { ItemTypes } from "../../../../utils/items";
 
 import "./css/task-card.css";
 
@@ -12,10 +14,23 @@ const TaskCard = ({ taskDetails, projectId }) => {
     return desc + format;
   };
 
+  const [{ isDragging }, drag] = useDrag({
+    item: {
+      type: ItemTypes.CARD,
+      taskId: taskDetails._id,
+      projectId: projectId,
+      oldPriority: taskDetails.taskPriority
+    },
+    collect: monitor => ({
+      isDragging: !!monitor.isDragging()
+    })
+  });
+
   return (
     <Link
+      ref={drag}
       to={`/project/${projectId}/task${taskDetails._id}`}
-      className="task-card"
+      className={`task-card task-card${isDragging ? "--dragging" : ""}`}
     >
       <div className="task-card__details">
         <div className="task-card__details__name">{taskDetails.taskName}</div>

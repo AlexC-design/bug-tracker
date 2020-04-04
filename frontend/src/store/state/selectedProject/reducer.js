@@ -6,13 +6,16 @@ import {
   TASK_COMPLETION,
   COMPLETION_LOADING,
   TASK_EDIT,
-  EDITING_LOADING
+  EDITING_LOADING,
+  CHANGE_COLUMN,
+  COLUMN_LOADING
 } from "./index";
 
 const initialState = {
   selectedProject: {},
   completionLoading: false,
-  projectLoading: false
+  projectLoading: false,
+  columnLoading: false
 };
 
 export default (state = initialState, action) => {
@@ -56,6 +59,19 @@ export default (state = initialState, action) => {
       return {
         ...state,
         editingLoading: true
+      };
+
+    case CHANGE_COLUMN:
+      return {
+        ...state,
+        tasks: action.payload,
+        columnLoading: false
+      };
+
+    case COLUMN_LOADING:
+      return {
+        ...state,
+        columnLoading: true
       };
 
     case PROJECT_LOADING:
