@@ -45,14 +45,16 @@ const NavbarOptions = ({ history, isAdmin, projectId }) => {
         Created
       </div>
       {isAdmin && (
-        <div
-          onClick={() => switchPage("unassigned")}
-          className={`navbar-options__unassigned navbar-options__unassigned${
-            currentPage === "unassigned" ? "--active" : ""
-          }`}
-        >
-          Unassigned
-          <div className="navbar-options__notification" />
+        <div className="unassigned-container">
+          <div className="unassigned-notification" />
+          <div
+            onClick={() => switchPage("unassigned")}
+            className={`navbar-options__unassigned--text navbar-options__unassigned${
+              currentPage === "unassigned" ? "--active" : ""
+            }`}
+          >
+            Unassigned
+          </div>
         </div>
       )}
     </div>

@@ -6,7 +6,9 @@
 
   margin-right: 2vw;
 
-  & > * {
+  &__created,
+  &__members,
+  &__unassigned--text {
     margin-right: 3vw;
     opacity: 0.5;
     position: relative;
@@ -48,17 +50,21 @@
     }
   }
 
-  &__notification {
-    position: absolute;
-    top: -5px;
-    right: -10px;
+  .unassigned-container {
+    position: relative;
 
-    width: 10px;
-    height: 10px;
-    border-radius: 10px;
-    background-color: color(accent3);
+    .unassigned-notification {
+      position: absolute;
+      top: -2px;
+      right: calc(3vw - 10px);
 
-    animation: pulse 2s infinite ease-in-out;
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      background-color: color(accent3);
+
+      animation: pulse 2s infinite ease-in-out;
+    }
   }
 
   @keyframes pulse {
