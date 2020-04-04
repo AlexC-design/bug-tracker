@@ -122,4 +122,29 @@ router.put("/edit/:projectId/:taskPriority/:taskId", (req, res) => {
   });
 });
 
+//descr   Edit Task Column
+router.put("/change-column/:projectId/:taskId", (req, res) => {
+  Project.findById(req.params.projectId).then(project => {
+    console.log("de bodi", req.body);
+    let taskIndex = project.tasks[`${req.body.oldPriority}`].findIndex(task => {
+      return task._id.toString() === req.params.taskId;
+    });
+    if (taskIndex !== -1) {
+      let taskToMove = project.tasks[`${req.body.oldPriority}`][taskIndex];
+      project.tasks[`${req.body.oldPriority}`].splice(taskIndex, 1);
+
+      taskToMove.taskPriority = req.body.newPriority;
+
+      project.tasks[`${req.body.newPriority}`].push(taskToMove);
+    } else {
+      return "not found";
+    }
+
+    project.save().then(project => {
+      console.log(project.tasks);
+      return res.json(project.tasks);
+    });
+  });
+});
+
 module.exports = router;
