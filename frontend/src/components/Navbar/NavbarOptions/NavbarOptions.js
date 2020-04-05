@@ -4,8 +4,10 @@ import { withRouter, matchPath } from "react-router";
 
 import "./css/navbar-options.css";
 
-const NavbarOptions = ({ history, isAdmin, projectId }) => {
+const NavbarOptions = ({ history, isAdmin, projectId, unassignedTasksNo }) => {
   const [currentPage, setCurrentPage] = useState("other");
+
+  console.log(unassignedTasksNo);
 
   useEffect(() => {
     let match;
@@ -46,7 +48,9 @@ const NavbarOptions = ({ history, isAdmin, projectId }) => {
       </div>
       {isAdmin && (
         <div className="unassigned-container">
-          <div className="unassigned-notification" />
+          {unassignedTasksNo !== 0 && (
+            <div className="unassigned-notification" />
+          )}
           <div
             onClick={() => switchPage("unassigned")}
             className={`navbar-options__unassigned--text navbar-options__unassigned${
@@ -62,7 +66,8 @@ const NavbarOptions = ({ history, isAdmin, projectId }) => {
 };
 
 const mapStateToProps = state => ({
-  projectId: state.selectedProject._id
+  projectId: state.selectedProject._id,
+  unassignedTasksNo: state.selectedProject.tasks.Unassigned.length
 });
 
 const wrappedComponent = withRouter(NavbarOptions);
