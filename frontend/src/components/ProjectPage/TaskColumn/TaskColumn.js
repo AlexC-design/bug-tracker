@@ -33,12 +33,14 @@ const TaskColumn = ({ priority, tasks, changeColumn }) => {
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: (item, monitor) => {
-      changeColumn(
-        item.projectId,
-        item.taskId,
-        item.oldPriority.split(" ")[0],
-        priority.split(" ")[0]
-      );
+      if (item.oldPriority.split(" ")[0] !== priority.split(" ")[0]) {
+        changeColumn(
+          item.projectId,
+          item.taskId,
+          item.oldPriority.split(" ")[0],
+          priority.split(" ")[0]
+        );
+      }
     },
     collect: monitor => ({
       isOver: !!monitor.isOver()
