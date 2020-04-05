@@ -110,12 +110,6 @@ router.put("/edit/:projectId/:taskPriority/:taskId", (req, res) => {
       return "not found";
     }
 
-    // if (req.params.taskPriority !== req.body.taskPriority) {
-    //   let taskToMove = project.tasks[`${req.params.taskPriority}`][taskIndex];
-    //   project.tasks[`${req.params.taskPriority}`].splice(taskIndex, 1);
-    //   project.tasks[`${req.body.taskPriority}`].push(taskToMove);
-    // }
-
     project.save().then(project => {
       return res.json(project.tasks);
     });
@@ -125,7 +119,6 @@ router.put("/edit/:projectId/:taskPriority/:taskId", (req, res) => {
 //descr   Edit Task Column
 router.put("/change-column/:projectId/:taskId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
-    console.log("de bodi", req.body);
     let taskIndex = project.tasks[`${req.body.oldPriority}`].findIndex(task => {
       return task._id.toString() === req.params.taskId;
     });
@@ -141,7 +134,6 @@ router.put("/change-column/:projectId/:taskId", (req, res) => {
     }
 
     project.save().then(project => {
-      console.log(project.tasks);
       return res.json(project.tasks);
     });
   });
