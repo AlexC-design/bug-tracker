@@ -1,6 +1,7 @@
 import { eventChannel } from "redux-saga";
 import { all, takeLeading, put, call, take } from "redux-saga/effects";
 import { ACTIONS, loadUserDetails } from "./index";
+import axios from "axios";
 
 const { SIGN_IN, GET_USER_DETAILS } = ACTIONS;
 
@@ -39,6 +40,11 @@ export function* getUserDetails() {
     userGivenName: basicProfile.getGivenName()
   };
 
+  yield call(performUserRegistration, {
+    userName: userDetails.userName,
+    email: userDetails.userEmail
+  });
+
   yield put(loadUserDetails(userDetails));
 }
 
@@ -55,3 +61,17 @@ function* watchGetUserDetails() {
 export default function* rootSaga() {
   yield all([watchGetUserDetails(), watchSignIn()]);
 }
+
+//
+
+const performUserRegistration = async newUser => {
+  const res = await axios.post("api/users", newUser);
+
+  let userDetails = {
+    isSignedIn: true,
+    userName: res.data.userName,
+    userId: res.data._id
+  };
+
+  console.log(userDetails);
+};
