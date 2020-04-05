@@ -89,8 +89,8 @@ const TaskButton = ({
 
 const mapStateToProps = state => ({
   currentUser: {
-    _id: state.userDetails.guestId,
-    name: state.userDetails.guestName
+    _id: state.userDetails.userId,
+    name: state.userDetails.userName
   },
   selectedProject: state.selectedProject
 });

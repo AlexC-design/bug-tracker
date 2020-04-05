@@ -36,7 +36,6 @@ export function* getUserDetails() {
     userId: auth.currentUser.get().getId(),
     userEmail: basicProfile.getEmail(),
     userName: basicProfile.getName(),
-    userFamilyName: basicProfile.getFamilyName(),
     userGivenName: basicProfile.getGivenName()
   };
 

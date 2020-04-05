@@ -2,12 +2,12 @@ import React from "react";
 import memberIcon from "../../../assets/svg/member-icon.svg";
 import { DeleteButton } from "../../DeleteButton/DeleteButton";
 import { dateFormatting } from "./dateFormatting";
-import { deleteGuest } from "../../../store/state/guests";
+import { deleteUser } from "../../../store/state/users";
 
 import "./css/member-card.css";
 import { connect } from "react-redux";
 
-const MemberCard = ({ name, date, id, deleteGuest }) => {
+const MemberCard = ({ name, date, id, deleteUser }) => {
   const formattedDate = dateFormatting(date);
 
   return (
@@ -19,9 +19,9 @@ const MemberCard = ({ name, date, id, deleteGuest }) => {
           Joined: {formattedDate}
         </div>
       </div>
-      <DeleteButton clickEvent={() => deleteGuest(id)} />
+      <DeleteButton clickEvent={() => deleteUser(id)} />
     </div>
   );
 };
 
-export default connect(null, { deleteGuest })(MemberCard);
+export default connect(null, { deleteUser })(MemberCard);

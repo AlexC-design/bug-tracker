@@ -102,7 +102,9 @@ const TaskColumn = ({ priority, tasks, changeColumn }) => {
               })}
             </div>
           )}
-          <div className="task-column__spacing" />
+          {(priority === "Unassigned" || priority === "Trivial") && (
+            <div className="task-column__spacing" />
+          )}
         </SimpleBarReact>
       ) : (
         <div className="task-column__empty"></div>

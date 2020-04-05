@@ -3,17 +3,17 @@ import { connect } from "react-redux";
 import SimpleBarReact from "simplebar-react";
 
 import MemberCard from "./MemberCard/MemberCard";
-import { getGuests } from "../../store/state/guests";
+import { getUsers } from "../../store/state/users";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 import "./css/members-page.css";
 
-const MembersPage = ({ guestList, guestsLoading, getGuests }) => {
+const MembersPage = ({ userList, usersLoading, getUsers }) => {
   useEffect(() => {
-    getGuests();
-  }, [getGuests]);
+    getUsers();
+  }, [getUsers]);
 
-  if (guestsLoading === true) {
+  if (usersLoading === true) {
     return (
       <div className="members-page">
         <LoadingAnimation />
@@ -24,12 +24,12 @@ const MembersPage = ({ guestList, guestsLoading, getGuests }) => {
       <div className="members-page">
         <SimpleBarReact>
           <div className="members-container">
-            {guestList.map(guest => (
+            {userList.map(user => (
               <MemberCard
-                name={guest.guestName}
-                date={guest.registerDate}
-                id={guest._id}
-                key={guest._id}
+                name={user.userName}
+                date={user.registerDate}
+                id={user._id}
+                key={user._id}
               />
             ))}
           </div>
@@ -40,8 +40,8 @@ const MembersPage = ({ guestList, guestsLoading, getGuests }) => {
 };
 
 const mapStateToProps = state => ({
-  guestList: state.guests.guests,
-  guestsLoading: state.guests.loading
+  userList: state.users.users,
+  usersLoading: state.users.loading
 });
 
-export default connect(mapStateToProps, { getGuests })(MembersPage);
+export default connect(mapStateToProps, { getUsers })(MembersPage);

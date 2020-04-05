@@ -1,24 +1,24 @@
-import { GET_GUESTS, GUESTS_LOADING, DELETE_GUEST } from "./index";
+import { GET_USERS, USERS_LOADING, DELETE_USER } from "./index";
 
 const initialState = {
-  guests: [],
+  users: [],
   loading: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_GUESTS:
+    case GET_USERS:
       return {
         ...state,
-        guests: action.payload,
+        users: action.payload,
         loading: false
       };
-    case DELETE_GUEST:
+    case DELETE_USER:
       return {
         ...state,
-        guests: state.guests.filter(guest => guest._id !== action.payload)
+        users: state.users.filter(user => user._id !== action.payload)
       };
-    case GUESTS_LOADING:
+    case USERS_LOADING:
       return {
         ...state,
         loading: true

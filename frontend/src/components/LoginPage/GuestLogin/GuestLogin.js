@@ -23,16 +23,16 @@ export default class GuestLogin extends Component {
         ? this.state.value
         : `Guest${Math.floor(Math.random() * 9000 + 1000)}`;
 
-    let newGuest = {
-      guestName
+    let newUser = {
+      userName: guestName
     };
 
     //creating user in db and loading user details in redux
-    axios.post("api/guests", newGuest).then(res => {
+    axios.post("api/users", newUser).then(res => {
       let userDetails = {
         isSignedIn: true,
-        guestName: res.data.guestName,
-        guestId: res.data._id
+        userName: res.data.userName,
+        userId: res.data._id
       };
 
       this.props.loadUserDetails(userDetails);
@@ -62,9 +62,7 @@ export default class GuestLogin extends Component {
     } else {
       return (
         <div className="guest-login">
-          <h2 className="guest-login__name">
-            Hi, {userDetails.userGivenName || userDetails.guestName}
-          </h2>
+          <h2 className="guest-login__name">Hi, {userDetails.userName}</h2>
           <Link to="/projects" className="guest-login__button">
             Go to Projects
           </Link>
