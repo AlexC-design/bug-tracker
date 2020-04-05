@@ -56,7 +56,21 @@ const TaskColumn = ({ priority, tasks, changeColumn }) => {
       {tasks.length ? (
         <SimpleBarReact>
           {tasks.map(task => {
-            if (!task.taskCompleted) {
+            if (!task.taskCompleted && task.taskSeverity === "High") {
+              return <TaskCard taskDetails={task} key={task._id} />;
+            } else {
+              return null;
+            }
+          })}
+          {tasks.map(task => {
+            if (!task.taskCompleted && task.taskSeverity === "Medium") {
+              return <TaskCard taskDetails={task} key={task._id} />;
+            } else {
+              return null;
+            }
+          })}
+          {tasks.map(task => {
+            if (!task.taskCompleted && task.taskSeverity === "Low") {
               return <TaskCard taskDetails={task} key={task._id} />;
             } else {
               return null;
@@ -66,7 +80,21 @@ const TaskColumn = ({ priority, tasks, changeColumn }) => {
             <div className="task-column__completed">
               <div className="task-column__completed__title">Completed</div>
               {tasks.map(task => {
-                if (task.taskCompleted) {
+                if (task.taskCompleted && task.taskSeverity === "High") {
+                  return <TaskCard taskDetails={task} key={task._id} />;
+                } else {
+                  return null;
+                }
+              })}
+              {tasks.map(task => {
+                if (task.taskCompleted && task.taskSeverity === "Medium") {
+                  return <TaskCard taskDetails={task} key={task._id} />;
+                } else {
+                  return null;
+                }
+              })}
+              {tasks.map(task => {
+                if (task.taskCompleted && task.taskSeverity === "Low") {
                   return <TaskCard taskDetails={task} key={task._id} />;
                 } else {
                   return null;

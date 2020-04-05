@@ -21,6 +21,7 @@
   border-radius: 10px;
   margin: 0 10px;
   padding-bottom: 1px;
+  opacity: 0.8;
 }
 
 .task-column__completed .task-card {
@@ -35,7 +36,7 @@
 }
 
 .task-column__spacing {
-  min-height: 400px;
+  min-height: 200px;
 }
 
 .task-column--over {
