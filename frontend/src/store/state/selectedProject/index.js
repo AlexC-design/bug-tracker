@@ -12,6 +12,7 @@ export const EDITING_LOADING = "EDITING_LOADING";
 export const CHANGE_COLUMN = "CHANGE_COLUMN";
 export const COLUMN_LOADING = "COLUMN_LOADING";
 export const ADD_USER = "ADD_USER";
+export const REMOVE_USER = "REMOVE_USER";
 
 // ------ PROJECT ------
 
@@ -119,6 +120,15 @@ export const addUserToProject = (userId, projectId) => dispatch => {
   axios.post("api/projects/add-user", { userId, projectId }).then(res => {
     dispatch({
       type: ADD_USER,
+      payload: res.data
+    });
+  });
+};
+
+export const removeUserFromProject = (userId, projectId) => dispatch => {
+  axios.post("api/projects/remove-user", { userId, projectId }).then(res => {
+    dispatch({
+      type: REMOVE_USER,
       payload: res.data
     });
   });

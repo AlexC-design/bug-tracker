@@ -9,7 +9,8 @@ import {
   EDITING_LOADING,
   CHANGE_COLUMN,
   COLUMN_LOADING,
-  ADD_USER
+  ADD_USER,
+  REMOVE_USER
 } from "./index";
 
 const initialState = {
@@ -82,6 +83,12 @@ export default (state = initialState, action) => {
       };
 
     case ADD_USER:
+      return {
+        ...state,
+        projectMembers: action.payload
+      };
+
+    case REMOVE_USER:
       return {
         ...state,
         projectMembers: action.payload

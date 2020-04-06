@@ -29,6 +29,7 @@ const MembersPage = ({ project, getUsers, users, usersLoading }) => {
                 name={user.userName}
                 date={user.registerDate}
                 id={user._id}
+                projectId={project._id}
                 key={user._id}
               />
             ))}
