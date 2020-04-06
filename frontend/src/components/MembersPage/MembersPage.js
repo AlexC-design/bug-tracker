@@ -11,7 +11,7 @@ import "./css/members-page.css";
 const MembersPage = ({ project, getUsers, users, usersLoading }) => {
   useEffect(() => {
     getUsers(project._id);
-  }, [getUsers]);
+  }, [getUsers, project]);
 
   if (usersLoading === true) {
     return (

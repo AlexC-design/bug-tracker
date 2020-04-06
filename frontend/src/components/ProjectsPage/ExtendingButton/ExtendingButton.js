@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { connect } from "react-redux";
 import { createProject } from "../../../store/state/projects/index";
 import { addUserToProject } from "../../../store/state/selectedProject/index";
@@ -48,6 +48,7 @@ const mapStateToProps = state => ({
   projectId: state.selectedProject._id
 });
 
-export default connect(mapStateToProps, { createProject, addUserToProject })(
-  ExtendingButton
-);
+export default connect(mapStateToProps, {
+  createProject,
+  addUserToProject
+})(ExtendingButton);
