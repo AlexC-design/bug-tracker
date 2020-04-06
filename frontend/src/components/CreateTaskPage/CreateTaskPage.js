@@ -11,7 +11,7 @@ import "./css/create-task-page.css";
 
 const CreateTaskPage = ({ match, selectProject, selectedProject, editOn }) => {
   const [taskDetails, setTaskDetails] = useState({
-    taskName: `Test Task ${Math.floor(Math.random() * 101)}`,
+    taskName: `Example Task ${Math.floor(Math.random() * 101)}`,
     taskSeverity: "",
     taskPriority: "Unassigned",
     taskSummary: loremIpsum(),

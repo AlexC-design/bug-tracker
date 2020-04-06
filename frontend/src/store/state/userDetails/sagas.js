@@ -34,18 +34,19 @@ export function* getUserDetails() {
 
   const userDetails = {
     isSignedIn: auth.currentUser.get().isSignedIn(),
-    userId: auth.currentUser.get().getId(),
+    googleId: auth.currentUser.get().getId(),
     userEmail: basicProfile.getEmail(),
     userName: basicProfile.getName(),
     userGivenName: basicProfile.getGivenName()
   };
 
-  yield call(performUserRegistration, {
+  const res = yield call(performUserRegistration, {
     userName: userDetails.userName,
-    email: userDetails.userEmail
+    email: userDetails.userEmail,
+    googleId: userDetails.googleId
   });
 
-  yield put(loadUserDetails(userDetails));
+  yield put(loadUserDetails({ ...res.data, isSignedIn: true }));
 }
 
 //
@@ -64,14 +65,5 @@ export default function* rootSaga() {
 
 //
 
-const performUserRegistration = async newUser => {
-  const res = await axios.post("api/users", newUser);
-
-  let userDetails = {
-    isSignedIn: true,
-    userName: res.data.userName,
-    userId: res.data._id
-  };
-
-  console.log(userDetails);
-};
+const performUserRegistration = async newUser =>
+  await axios.post("api/users", newUser);

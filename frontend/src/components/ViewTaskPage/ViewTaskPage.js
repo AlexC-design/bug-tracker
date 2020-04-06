@@ -91,11 +91,10 @@ const ViewTaskPage = ({
             />
             <div className="task-view__right__user-details">
               <p>
-                Created by: <b>{taskDetails.taskCreator.name}</b>
-                <img src={userIcon} alt="user" />
+                Created by:<b>{taskDetails.taskCreator.name}</b>
               </p>
-              <p>
-                on{" "}
+              <p className="task-view__right__user-details__creation-date">
+                on
                 <b>{moment(taskDetails.creationDate).format("Do MMM YYYY")}</b>
               </p>
             </div>

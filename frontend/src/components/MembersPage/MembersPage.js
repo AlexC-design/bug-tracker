@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import SimpleBarReact from "simplebar-react";
-
+import ExtendingButton from "../ProjectsPage/ExtendingButton/ExtendingButton";
 import MemberCard from "./MemberCard/MemberCard";
 import { getUsers } from "../../store/state/users";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 import "./css/members-page.css";
 
-const MembersPage = ({ userList, usersLoading, getUsers }) => {
+const MembersPage = ({ project, getUsers, users, usersLoading }) => {
   useEffect(() => {
-    getUsers();
+    getUsers(project._id);
   }, [getUsers]);
 
   if (usersLoading === true) {
@@ -24,7 +24,7 @@ const MembersPage = ({ userList, usersLoading, getUsers }) => {
       <div className="members-page">
         <SimpleBarReact>
           <div className="members-container">
-            {userList.map(user => (
+            {users.map(user => (
               <MemberCard
                 name={user.userName}
                 date={user.registerDate}
@@ -34,13 +34,15 @@ const MembersPage = ({ userList, usersLoading, getUsers }) => {
             ))}
           </div>
         </SimpleBarReact>
+        <ExtendingButton buttonType="addUser" />
       </div>
     );
   }
 };
 
 const mapStateToProps = state => ({
-  userList: state.users.users,
+  project: state.selectedProject,
+  users: state.users.users,
   usersLoading: state.users.loading
 });
 

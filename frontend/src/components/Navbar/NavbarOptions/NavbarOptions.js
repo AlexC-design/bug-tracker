@@ -67,7 +67,9 @@ const NavbarOptions = ({ history, isAdmin, projectId, unassignedTasksNo }) => {
 
 const mapStateToProps = state => ({
   projectId: state.selectedProject._id,
-  unassignedTasksNo: state.selectedProject.tasks.Unassigned.length
+  unassignedTasksNo: state.selectedProject.tasks
+    ? state.selectedProject.tasks.Unassigned.length
+    : 0
 });
 
 const wrappedComponent = withRouter(NavbarOptions);

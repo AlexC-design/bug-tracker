@@ -58,6 +58,7 @@
 }
 
 .google-button--sign-out {
+  width: 250px;
   display: block;
   text-align: center;
   background-color: #c52114;

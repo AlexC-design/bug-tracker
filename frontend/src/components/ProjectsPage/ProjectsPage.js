@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getProjects } from "../../store/state/projects/";
 import ProjectCard from "./ProjectCard/ProjectCard";
-import CreateProjectButton from "./CreateProjectButton/CreateProjectButton";
+import ExtendingButton from "./ExtendingButton/ExtendingButton";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import SimpleBarReact from "simplebar-react";
 
@@ -25,7 +25,7 @@ class ProjectsPage extends Component {
               ))}
             </div>
           </SimpleBarReact>
-          <CreateProjectButton />
+          <ExtendingButton buttonType="createProject" />
         </div>
       );
     } else {

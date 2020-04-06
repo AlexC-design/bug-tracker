@@ -29,13 +29,7 @@ export default class GuestLogin extends Component {
 
     //creating user in db and loading user details in redux
     axios.post("api/users", newUser).then(res => {
-      let userDetails = {
-        isSignedIn: true,
-        userName: res.data.userName,
-        userId: res.data._id
-      };
-
-      this.props.loadUserDetails(userDetails);
+      this.props.loadUserDetails({ ...res.data, isSignedIn: true });
     });
   };
 

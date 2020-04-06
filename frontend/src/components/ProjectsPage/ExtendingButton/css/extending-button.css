@@ -1,10 +1,10 @@
-.create-project-container {
+.extending-button-container {
   position: fixed;
   right: 10vw;
   bottom: 10vh;
 }
 
-.create-project-container .create-button {
+.extending-button-container .extending-button {
   position: relative;
   border: none;
   border-radius: 100px;
@@ -13,36 +13,36 @@
   height: 70px;
 }
 
-.create-project-container .create-button__plus {
+.extending-button-container .extending-button__plus {
   position: absolute;
   border-radius: 20px;
   background-color: white;
 }
 
-.create-project-container .create-button__plus--vertical {
+.extending-button-container .extending-button__plus--vertical {
   top: calc((70px/ 2) - (calc(70px * 0.55) / 2));
   left: calc((70px/ 2) - (calc(70px * 0.07) / 2));
   width: calc(70px * 0.07);
   height: calc(70px * 0.55);
 }
 
-.create-project-container .create-button__plus--horizontal {
+.extending-button-container .extending-button__plus--horizontal {
   top: calc((70px/ 2) - (calc(70px * 0.07) / 2));
   left: calc((70px/ 2) - (calc(70px * 0.55) / 2));
   width: calc(70px * 0.55);
   height: calc(70px * 0.07);
 }
 
-.create-project-container .create-button:hover {
+.extending-button-container .extending-button:hover {
   background-color: #585869;
   cursor: pointer;
 }
 
-.create-project-container .create-button:active {
+.extending-button-container .extending-button:active {
   background-color: #8a8a9d;
 }
 
-.create-project-container .create-button:focus {
+.extending-button-container .extending-button:focus {
   outline: none;
 }
-/*# sourceMappingURL=create-project-button.css.map */
+/*# sourceMappingURL=extending-button.css.map */

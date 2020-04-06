@@ -8,7 +8,8 @@ import {
   TASK_EDIT,
   EDITING_LOADING,
   CHANGE_COLUMN,
-  COLUMN_LOADING
+  COLUMN_LOADING,
+  ADD_USER
 } from "./index";
 
 const initialState = {
@@ -78,6 +79,12 @@ export default (state = initialState, action) => {
       return {
         ...state,
         projectLoading: true
+      };
+
+    case ADD_USER:
+      return {
+        ...state,
+        projectMembers: action.payload
       };
 
     default:

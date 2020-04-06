@@ -9,12 +9,12 @@ $line-long: calc(#{$button-size} * 0.55); //width for horizontal
   $buttonSize: $button-size;
   @return calc((#{$buttonSize}/ 2) - (#{$property} / 2));
 }
-.create-project-container {
+.extending-button-container {
   position: fixed;
   right: 10vw;
   bottom: 10vh;
 
-  .create-button {
+  .extending-button {
     position: relative;
     border: none;
     border-radius: 100px;
@@ -47,13 +47,12 @@ $line-long: calc(#{$button-size} * 0.55); //width for horizontal
 
     &:hover {
       background-color: darken(color(secondary-light), 10%);
-      
+
       cursor: pointer;
     }
-    
+
     &:active {
       background-color: lighten(color(secondary-light), 10%);
-
     }
 
     &:focus {

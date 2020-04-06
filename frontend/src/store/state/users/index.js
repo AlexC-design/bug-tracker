@@ -4,9 +4,9 @@ export const GET_USERS = "GET_USERS";
 export const DELETE_USER = "DELETE_USER";
 export const USERS_LOADING = "USERS_LOADING";
 
-export const getUsers = () => dispatch => {
+export const getUsers = projectId => dispatch => {
   dispatch(setUsersLoading());
-  axios.get("api/users").then(res =>
+  axios.get(`api/users/project${projectId}`).then(res =>
     dispatch({
       type: GET_USERS,
       payload: res.data
