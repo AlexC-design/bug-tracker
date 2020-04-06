@@ -154,7 +154,6 @@ router.post("/add-user", (req, res) => {
     user.save();
   });
   Project.findById(req.body.projectId).then(project => {
-    console.log("PROJECT", project);
     project.projectMembers.push({ userId: req.body.userId, isAdmin: false });
     project.save().then(project => res.json(project.projectMembers));
   });
