@@ -159,4 +159,20 @@ router.post("/add-user", (req, res) => {
   });
 });
 
+//descr   remove user from project
+router.post("/remove-user", (req, res) => {
+  User.findById(req.body.userId).then(user => {
+    user.projects = user.projects.filter(
+      projectId => projectId !== req.body.projectId
+    );
+    user.save();
+  });
+  Project.findById(req.body.projectId).then(project => {
+    project.projectMembers = project.projectMembers.filter(
+      member => member.userId !== req.body.userId
+    );
+    project.save().then(project => res.json(project.projectMembers));
+  });
+});
+
 module.exports = router;
