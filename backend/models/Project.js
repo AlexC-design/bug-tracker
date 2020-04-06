@@ -9,6 +9,10 @@ const ProjectSchema = new Schema({
     type: String,
     required: true
   },
+  projectMembers: {
+    type: Array,
+    required: true
+  },
   creationDate: {
     type: Date,
     default: Date.now

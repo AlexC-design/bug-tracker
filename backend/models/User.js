@@ -10,6 +10,14 @@ const UserSchema = new Schema({
     type: String,
     default: "none"
   },
+  googleId: {
+    type: String,
+    default: "guest"
+  },
+  projects: {
+    type: Array,
+    default: []
+  },
   registerDate: {
     type: Date,
     default: Date.now

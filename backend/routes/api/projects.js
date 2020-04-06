@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const Project = require("../../models/Project");
+const User = require("../../models/User");
 const Tasks = require("../../models/Task");
 const Task = Tasks.TaskModel;
 
@@ -22,10 +23,17 @@ router.get("/:id", (req, res) => {
 //descr   Create new project
 router.post("/", (req, res) => {
   const newProject = new Project({
-    projectName: req.body.projectName
+    projectName: req.body.projectName,
+    projectMembers: [{ userId: req.body.userId, isAdmin: true }]
   });
 
-  newProject.save().then(project => res.json(project));
+  newProject.save().then(project => {
+    User.findById(req.body.userId).then(user => {
+      user.projects.push(project._id);
+      user.save();
+    });
+    return res.json(project);
+  });
 });
 
 //descr   Delete a project
@@ -136,6 +144,19 @@ router.put("/change-column/:projectId/:taskId", (req, res) => {
     project.save().then(project => {
       return res.json(project.tasks);
     });
+  });
+});
+
+//descr   add user to project
+router.post("/add-user", (req, res) => {
+  User.findById(req.body.userId).then(user => {
+    user.projects.push(req.body.projectId);
+    user.save();
+  });
+  Project.findById(req.body.projectId).then(project => {
+    console.log("PROJECT", project);
+    project.projectMembers.push({ userId: req.body.userId, isAdmin: false });
+    project.save().then(project => res.json(project.projectMembers));
   });
 });
 

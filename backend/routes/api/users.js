@@ -2,23 +2,36 @@ const express = require("express");
 const router = express.Router();
 
 const User = require("../../models/User");
+const Project = require("../../models/Project");
 
 //route   POST api/users
 //descr   Create a user
-router.post("/", (req, res) => {
-  const newUser = new User({
-    userName: req.body.userName,
-    email: req.body.email ? req.body.email : 'none'
-  });
-  newUser.save().then(user => res.json(user));
+router.post("/", async (req, res) => {
+  const existingUser = await User.find({ googleId: req.body.googleId });
+
+  if (existingUser.length) {
+    return res.json(existingUser[0]);
+  } else {
+    const newUser = new User({
+      userName: req.body.userName,
+      email: req.body.email ? req.body.email : "none",
+      googleId: req.body.googleId ? req.body.googleId : "guest"
+    });
+    newUser.save().then(user => res.json(user));
+  }
 });
 
 //route   GET api/users
-//descr   Get all users
-router.get("/", (req, res) => {
-  User.find()
-    .sort({ registerDate: -1 })
-    .then(user => res.json(user));
+//descr   Get users by id
+router.get("/project:projectId", (req, res) => {
+  Project.findById(req.params.projectId).then(project => {
+    User.find(
+      {
+        _id: { $in: project.projectMembers.map(member => member.userId) }
+      },
+      (err, users) => res.json(users)
+    );
+  });
 });
 
 //route   DELETE api/users
