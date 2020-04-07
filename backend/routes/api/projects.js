@@ -20,6 +20,19 @@ router.get("/:id", (req, res) => {
   });
 });
 
+//descr   Get a user's projects
+router.get("/user/:userId", (req, res) => {
+  console.log(req.params.userId);
+  User.findById(req.params.userId).then(user => {
+    Project.find(
+      {
+        _id: { $in: user.projects }
+      },
+      (err, projects) => res.json(projects)
+    );
+  });
+});
+
 //descr   Create new project
 router.post("/", (req, res) => {
   const newProject = new Project({
