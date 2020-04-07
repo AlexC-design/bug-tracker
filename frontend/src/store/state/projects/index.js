@@ -5,9 +5,9 @@ export const CREATE_PROJECT = "CREATE_PROJECT";
 export const DELETE_PROJECT = "DELETE_PROJECT";
 export const PROJECTS_LOADING = "PROJECTS_LOADING";
 
-export const getProjects = () => dispatch => {
+export const getProjects = userId => dispatch => {
   dispatch(setProjectsLoading());
-  axios.get("api/projects").then(res =>
+  axios.get(`api/projects/user/${userId}`).then(res =>
     dispatch({
       type: GET_PROJECTS,
       payload: res.data

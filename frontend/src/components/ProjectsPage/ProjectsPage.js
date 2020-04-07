@@ -9,9 +9,9 @@ import SimpleBarReact from "simplebar-react";
 import "simplebar/src/simplebar.css";
 import "./css/projects-page.css";
 
-const ProjectsPage = ({ getProjects, projects }) => {
+const ProjectsPage = ({ getProjects, projects, userId }) => {
   useEffect(() => {
-    getProjects();
+    getProjects(userId);
   }, [getProjects]);
 
   if (!projects.loading) {
@@ -37,7 +37,8 @@ const ProjectsPage = ({ getProjects, projects }) => {
 };
 
 const mapStateToProps = state => ({
-  projects: state.projects
+  projects: state.projects,
+  userId: state.userDetails._id
 });
 
 export default connect(mapStateToProps, { getProjects })(ProjectsPage);
