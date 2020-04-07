@@ -36,6 +36,10 @@ router.get("/project:projectId", (req, res) => {
 router.get("/", (req, res) => {
   User.find().then(users => res.json(users));
 });
+//descr   Get all guests
+router.get("/guests", (req, res) => {
+  User.find({ googleId: "guest" }).then(users => res.json(users));
+});
 
 //descr   Delete a user
 router.delete("/:id", (req, res) => {
