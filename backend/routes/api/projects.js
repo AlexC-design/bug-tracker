@@ -24,7 +24,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   const newProject = new Project({
     projectName: req.body.projectName,
-    projectMembers: [{ userId: req.body.userId, isAdmin: true }]
+    projectMembers: [{ userId: req.body.userId.toString(), isAdmin: true }]
   });
 
   newProject.save().then(project => {
@@ -149,13 +149,18 @@ router.put("/change-column/:projectId/:taskId", (req, res) => {
 
 //descr   add user to project
 router.post("/add-user", (req, res) => {
-  User.findById(req.body.userId).then(user => {
+  User.findOne({ email: req.body.userEmail }, (err, user) => {
     user.projects.push(req.body.projectId);
-    user.save();
-  });
-  Project.findById(req.body.projectId).then(project => {
-    project.projectMembers.push({ userId: req.body.userId, isAdmin: false });
-    project.save().then(project => res.json(project.projectMembers));
+    userFoundId = user._id;
+    user.save().then(user => {
+      Project.findById(req.body.projectId).then(project => {
+        project.projectMembers.push({
+          userId: user._id.toString(),
+          isAdmin: false
+        });
+        project.save().then(project => res.json(project.projectMembers));
+      });
+    });
   });
 });
 
