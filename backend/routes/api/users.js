@@ -4,7 +4,6 @@ const router = express.Router();
 const User = require("../../models/User");
 const Project = require("../../models/Project");
 
-//route   POST api/users
 //descr   Create a user
 router.post("/", async (req, res) => {
   const existingUser = await User.find({ googleId: req.body.googleId });
@@ -21,7 +20,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-//route   GET api/users
 //descr   Get users by id
 router.get("/project:projectId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
@@ -34,7 +32,11 @@ router.get("/project:projectId", (req, res) => {
   });
 });
 
-//route   DELETE api/users
+//descr   Get all users
+router.get("/", (req, res) => {
+  User.find().then(users => res.json(users));
+});
+
 //descr   Delete a user
 router.delete("/:id", (req, res) => {
   User.findById(req.params.id)
