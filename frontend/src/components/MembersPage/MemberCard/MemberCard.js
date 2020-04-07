@@ -9,7 +9,6 @@ import { connect } from "react-redux";
 
 const MemberCard = ({ name, date, id, projectId, removeUserFromProject }) => {
   const formattedDate = dateFormatting(date);
-  console.log(id);
 
   return (
     <div className="member-card">

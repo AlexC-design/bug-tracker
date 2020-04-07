@@ -7,8 +7,6 @@ import "./css/navbar-options.css";
 const NavbarOptions = ({ history, isAdmin, projectId, unassignedTasksNo }) => {
   const [currentPage, setCurrentPage] = useState("other");
 
-  console.log(unassignedTasksNo);
-
   useEffect(() => {
     let match;
     history.listen(location => {
