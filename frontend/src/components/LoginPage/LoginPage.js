@@ -4,6 +4,7 @@ import GuestLogin from "./GuestLogin";
 import GoogleAuth from "./GoogleAuth";
 import "./css/login-page.css";
 // import { DeleteAllUsers } from "./DeleteAllUsers/DeleteAllUsers";
+// import { DeleteAllGuests } from "./DeleteAllUsers/DeleteAllGuests";
 
 export default class LoginPage extends Component {
   render() {
@@ -14,6 +15,7 @@ export default class LoginPage extends Component {
         <p>or</p>
         <GoogleAuth />
         {/* <DeleteAllUsers /> */}
+        {/* <DeleteAllGuests /> */}
       </div>
     );
   }
