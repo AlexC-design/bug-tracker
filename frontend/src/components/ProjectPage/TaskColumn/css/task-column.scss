@@ -52,6 +52,10 @@
     background-color: color(secondary-light);
   }
 
+  &--Unassigned {
+    background-color: rgba(color(accent3), 0.1);
+  }
+
   .simplebar-wrapper {
     max-height: calc(100vh - 75px);
   }

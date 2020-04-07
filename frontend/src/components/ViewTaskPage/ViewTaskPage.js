@@ -2,15 +2,14 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import axios from "axios";
 import moment from "moment";
-
 import { SeverityCheckbox } from "../CreateTaskPage/SeverityCheckbox/SeverityCheckbox";
 import { CompletionToggle } from "./CompletionToggle/CompletionToggle";
 import { TaskInput } from "../CreateTaskPage/TaskInput/TaskInput";
 import { EnvironmentDropdown } from "../CreateTaskPage/EnvironmentDropdown/EnvironmentDropdown";
 import TaskButton from "../CreateTaskPage/TaskButton/TaskButton";
-import userIcon from "../../assets/svg/member-icon.svg";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import { taskCompletion } from "../../store/state/selectedProject/index";
+import { isUserAdmin } from "../../utils/isUserAdmin";
 
 import "./css/view-task-page.css";
 
@@ -18,7 +17,10 @@ const ViewTaskPage = ({
   match,
   taskCompletion,
   storedTasks,
-  completionLoading
+  completionLoading,
+  userId,
+  projectMembers,
+  editingLoading
 }) => {
   const [taskDetails, setTaskDetails] = useState(null);
 
@@ -27,19 +29,21 @@ const ViewTaskPage = ({
   };
 
   useEffect(() => {
-    if (taskDetails === null) {
-      axios.get(`api/projects/${match.params.id}`).then(res => {
-        for (let taskPriority in res.data.tasks) {
-          let task = res.data.tasks[`${taskPriority}`].find(
-            task => task._id === match.params.taskId
-          );
-          if (task && task.taskName) {
-            setTaskDetails(task);
-          }
-        }
-      });
+    for (let taskPriority in storedTasks) {
+      let task = storedTasks[`${taskPriority}`].find(
+        task => task._id === match.params.taskId
+      );
+      if (task && task.taskName) {
+        setTaskDetails(task);
+      }
     }
-  }, [taskDetails, match.params.taskId, match.params.id]);
+  }, [
+    taskDetails,
+    match.params.taskId,
+    match.params.id,
+    storedTasks,
+    editingLoading
+  ]);
 
   const getTaskCompletion = tasks => {
     for (let taskPriority in tasks) {
@@ -50,6 +54,10 @@ const ViewTaskPage = ({
         return task.taskCompleted;
       }
     }
+  };
+
+  const ownsTask = userId => {
+    return taskDetails.taskCreator._id === userId ? true : false;
   };
 
   if (!taskDetails) {
@@ -98,17 +106,23 @@ const ViewTaskPage = ({
                 <b>{moment(taskDetails.creationDate).format("Do MMM YYYY")}</b>
               </p>
             </div>
-            <CompletionToggle
-              completionLoading={completionLoading}
-              taskCompleted={getTaskCompletion(storedTasks)}
-              setTaskCompleted={setTaskCompleted}
-            />
+            {isUserAdmin(userId, projectMembers) && (
+              <CompletionToggle
+                completionLoading={completionLoading}
+                taskCompleted={getTaskCompletion(storedTasks)}
+                setTaskCompleted={setTaskCompleted}
+              />
+            )}
           </div>
         </div>
 
         <div className="task-view__bottom">
-          <TaskButton action="Delete" taskDetails={taskDetails} />
-          <TaskButton action="Edit" taskDetails={taskDetails} />
+          {(ownsTask(userId) || isUserAdmin(userId, projectMembers)) && (
+            <TaskButton action="Delete" taskDetails={taskDetails} />
+          )}
+          {(ownsTask(userId) || isUserAdmin(userId, projectMembers)) && (
+            <TaskButton action="Edit" taskDetails={taskDetails} />
+          )}
           <TaskButton action="OK" taskDetails={taskDetails} />
         </div>
       </div>
@@ -118,7 +132,10 @@ const ViewTaskPage = ({
 
 const mapStateToProps = state => ({
   storedTasks: state.selectedProject.tasks,
-  completionLoading: state.selectedProject.completionLoading
+  completionLoading: state.selectedProject.completionLoading,
+  userId: state.userDetails._id,
+  projectMembers: state.selectedProject.projectMembers,
+  editingLoading: state.selectedProject.editingLoading
 });
 
 export default connect(mapStateToProps, { taskCompletion })(ViewTaskPage);

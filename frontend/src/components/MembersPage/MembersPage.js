@@ -7,8 +7,9 @@ import { getUsers } from "../../store/state/users";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 
 import "./css/members-page.css";
+import { isUserAdmin } from "../../utils/isUserAdmin";
 
-const MembersPage = ({ project, getUsers, users, usersLoading }) => {
+const MembersPage = ({ project, getUsers, users, usersLoading, userId }) => {
   useEffect(() => {
     getUsers(project._id);
   }, [getUsers, project]);
@@ -30,12 +31,15 @@ const MembersPage = ({ project, getUsers, users, usersLoading }) => {
                 date={user.registerDate}
                 id={user._id}
                 projectId={project._id}
+                projectMembers={project.projectMembers}
                 key={user._id}
               />
             ))}
           </div>
         </SimpleBarReact>
-        <ExtendingButton buttonType="addUser" />
+        {isUserAdmin(userId, project.projectMembers) && (
+          <ExtendingButton buttonType="addUser" />
+        )}
       </div>
     );
   }
@@ -44,7 +48,8 @@ const MembersPage = ({ project, getUsers, users, usersLoading }) => {
 const mapStateToProps = state => ({
   project: state.selectedProject,
   users: state.users.users,
-  usersLoading: state.users.loading
+  usersLoading: state.users.loading,
+  userId: state.userDetails._id
 });
 
 export default connect(mapStateToProps, { getUsers })(MembersPage);

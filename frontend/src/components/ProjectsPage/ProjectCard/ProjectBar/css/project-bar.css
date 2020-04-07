@@ -20,6 +20,8 @@
 
 .project-bar__project-icon {
   margin-left: 5%;
+  max-width: 50px;
+  max-height: 50px;
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
 }

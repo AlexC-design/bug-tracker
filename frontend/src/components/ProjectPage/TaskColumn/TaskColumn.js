@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import TaskCard from "./TaskCard/TaskCard";
 import SimpleBarReact from "simplebar-react";
 import { useDrop } from "react-dnd";
@@ -9,24 +9,30 @@ import "simplebar/src/simplebar.css";
 import "./css/task-column.css";
 import { connect } from "react-redux";
 
-const TaskColumn = ({ priority, tasks, changeColumn }) => {
+const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
   const [noCompleted, setNoCompleted] = useState(true);
 
-  const checkCompleted = tasks => {
-    let found = false;
+  const taskColumn = useRef();
 
-    tasks.map(task => {
+  const checkCompleted = () => {
+    let show = false;
+
+    tasks.forEach(task => {
       if (task.taskCompleted) {
-        found = true;
+        show = true;
       }
     });
 
-    return found;
+    if (taskColumn.current) {
+      taskColumn.current.offsetHeight < 100 ? (show = false) : (show = true);
+    }
+
+    return show;
   };
 
   useEffect(() => {
-    if (checkCompleted(tasks) !== noCompleted) {
-      setNoCompleted(checkCompleted(tasks));
+    if (checkCompleted() !== noCompleted) {
+      setNoCompleted(checkCompleted());
     }
   });
 
@@ -49,7 +55,9 @@ const TaskColumn = ({ priority, tasks, changeColumn }) => {
 
   return (
     <div
-      className={`task-column task-column${isOver ? "--over" : ""}`}
+      className={`task-column task-column${
+        isOver ? "--over" : ""
+      } task-column--${priority}`}
       ref={drop}
     >
       <div className="task-column__title">{priority}</div>
@@ -57,45 +65,81 @@ const TaskColumn = ({ priority, tasks, changeColumn }) => {
         <SimpleBarReact>
           {tasks.map(task => {
             if (!task.taskCompleted && task.taskSeverity === "High") {
-              return <TaskCard taskDetails={task} key={task._id} />;
+              return (
+                <TaskCard
+                  onCreatedPage={onCreatedPage}
+                  taskDetails={task}
+                  key={task._id}
+                />
+              );
             } else {
               return null;
             }
           })}
           {tasks.map(task => {
             if (!task.taskCompleted && task.taskSeverity === "Medium") {
-              return <TaskCard taskDetails={task} key={task._id} />;
+              return (
+                <TaskCard
+                  onCreatedPage={onCreatedPage}
+                  taskDetails={task}
+                  key={task._id}
+                />
+              );
             } else {
               return null;
             }
           })}
           {tasks.map(task => {
             if (!task.taskCompleted && task.taskSeverity === "Low") {
-              return <TaskCard taskDetails={task} key={task._id} />;
+              return (
+                <TaskCard
+                  onCreatedPage={onCreatedPage}
+                  taskDetails={task}
+                  key={task._id}
+                />
+              );
             } else {
               return null;
             }
           })}
           {noCompleted && (
-            <div className="task-column__completed">
+            <div className="task-column__completed" ref={taskColumn}>
               <div className="task-column__completed__title">Completed</div>
               {tasks.map(task => {
                 if (task.taskCompleted && task.taskSeverity === "High") {
-                  return <TaskCard taskDetails={task} key={task._id} />;
+                  return (
+                    <TaskCard
+                      onCreatedPage={onCreatedPage}
+                      taskDetails={task}
+                      key={task._id}
+                    />
+                  );
                 } else {
                   return null;
                 }
               })}
               {tasks.map(task => {
                 if (task.taskCompleted && task.taskSeverity === "Medium") {
-                  return <TaskCard taskDetails={task} key={task._id} />;
+                  return (
+                    <TaskCard
+                      onCreatedPage={onCreatedPage}
+                      taskDetails={task}
+                      key={task._id}
+                    />
+                  );
                 } else {
                   return null;
                 }
               })}
               {tasks.map(task => {
                 if (task.taskCompleted && task.taskSeverity === "Low") {
-                  return <TaskCard taskDetails={task} key={task._id} />;
+                  return (
+                    <TaskCard
+                      onCreatedPage={onCreatedPage}
+                      taskDetails={task}
+                      key={task._id}
+                    />
+                  );
                 } else {
                   return null;
                 }

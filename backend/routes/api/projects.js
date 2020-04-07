@@ -22,7 +22,6 @@ router.get("/:id", (req, res) => {
 
 //descr   Get a user's projects
 router.get("/user/:userId", (req, res) => {
-  console.log(req.params.userId);
   User.findById(req.params.userId).then(user => {
     Project.find(
       {
@@ -42,7 +41,7 @@ router.post("/", (req, res) => {
 
   newProject.save().then(project => {
     User.findById(req.body.userId).then(user => {
-      user.projects.push(project._id);
+      user.projects.push(project._id.toString());
       user.save();
     });
     return res.json(project);
@@ -51,9 +50,25 @@ router.post("/", (req, res) => {
 
 //descr   Delete a project
 router.delete("/:id", (req, res) => {
-  Project.findById(req.params.id)
-    .then(project => project.remove().then(() => res.json({ success: true })))
-    .catch(err => res.status(404).json({ sucess: false }));
+  Project.findById(req.params.id).then(project => {
+    let userIds = project.projectMembers.map(member => member.userId);
+
+    User.find(
+      {
+        _id: { $in: userIds }
+      },
+      (err, users) => {
+        users.forEach(user => {
+          user.projects = user.projects.filter(
+            projectId => projectId !== req.params.id.toString()
+          );
+          user.save();
+        });
+      }
+    );
+
+    project.remove().then(project => res.json(project._id));
+  });
 });
 
 //descr   Add task in project
@@ -163,8 +178,7 @@ router.put("/change-column/:projectId/:taskId", (req, res) => {
 //descr   add user to project
 router.post("/add-user", (req, res) => {
   User.findOne({ email: req.body.userEmail }, (err, user) => {
-    user.projects.push(req.body.projectId);
-    userFoundId = user._id;
+    user.projects.push(req.body.projectId.toString());
     user.save().then(user => {
       Project.findById(req.body.projectId).then(project => {
         project.projectMembers.push({

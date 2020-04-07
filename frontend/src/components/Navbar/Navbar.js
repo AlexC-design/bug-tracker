@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { matchPath } from "react-router";
+import { connect } from "react-redux";
 
 import NavbarOptions from "./NavbarOptions/NavbarOptions";
 import { UserDropdown } from "./UserDropdown/UserDropdown";
 import userIcon from "../../assets/svg/user-icon.svg";
+import { isUserAdmin } from "../../utils/isUserAdmin";
 
 import "./css/navbar.css";
 
@@ -74,7 +76,9 @@ export default class Navbar extends Component {
       >
         {this.renderTitle()}
         {!this.state.page.includes("projects") && (
-          <NavbarOptions isAdmin={true} />
+          <NavbarOptions
+            isAdmin={isUserAdmin(this.props.userId, this.props.projectMembers)}
+          />
         )}
         <img
           src={userIcon}

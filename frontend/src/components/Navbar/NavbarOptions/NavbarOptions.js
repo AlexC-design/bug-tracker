@@ -26,7 +26,7 @@ const NavbarOptions = ({ history, isAdmin, projectId, unassignedTasksNo }) => {
 
   return (
     <div className="navbar-options">
-      {isAdmin && (
+      {
         <div
           onClick={() => switchPage("members")}
           className={`navbar-options__members navbar-options__members${
@@ -35,14 +35,14 @@ const NavbarOptions = ({ history, isAdmin, projectId, unassignedTasksNo }) => {
         >
           Members
         </div>
-      )}
+      }
       <div
         onClick={() => switchPage("created")}
         className={`navbar-options__created navbar-options__created${
           currentPage === "created" ? "--active" : ""
         }`}
       >
-        Created
+        Created by me
       </div>
       {isAdmin && (
         <div className="unassigned-container">

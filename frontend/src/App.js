@@ -33,6 +33,11 @@ export default class App extends React.Component {
                 component={ProjectPage}
               />
               <Route
+                path="/project/:id/created"
+                exact
+                component={ProjectPage}
+              />
+              <Route
                 path="/project/:id/create-task"
                 exact
                 component={CreateTaskPage}

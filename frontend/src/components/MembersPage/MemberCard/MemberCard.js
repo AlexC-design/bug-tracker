@@ -1,13 +1,22 @@
 import React from "react";
+import { connect } from "react-redux";
 import memberIcon from "../../../assets/svg/member-icon.svg";
 import { DeleteButton } from "../../DeleteButton/DeleteButton";
 import { dateFormatting } from "./dateFormatting";
 import { removeUserFromProject } from "../../../store/state/selectedProject/index";
+import { isUserAdmin } from "../../../utils/isUserAdmin";
 
 import "./css/member-card.css";
-import { connect } from "react-redux";
 
-const MemberCard = ({ name, date, id, projectId, removeUserFromProject }) => {
+const MemberCard = ({
+  name,
+  date,
+  id,
+  userId,
+  projectId,
+  removeUserFromProject,
+  projectMembers
+}) => {
   const formattedDate = dateFormatting(date);
 
   return (
@@ -19,9 +28,16 @@ const MemberCard = ({ name, date, id, projectId, removeUserFromProject }) => {
           Joined: {formattedDate}
         </div>
       </div>
-      <DeleteButton clickEvent={() => removeUserFromProject(id, projectId)} />
+      {(!isUserAdmin(id, projectMembers) ||
+        !isUserAdmin(userId, projectMembers)) && (
+        <DeleteButton clickEvent={() => removeUserFromProject(id, projectId)} />
+      )}
     </div>
   );
 };
 
-export default connect(null, { removeUserFromProject })(MemberCard);
+const mapStateToProps = state => ({
+  userId: state.userDetails._id
+});
+
+export default connect(mapStateToProps, { removeUserFromProject })(MemberCard);
