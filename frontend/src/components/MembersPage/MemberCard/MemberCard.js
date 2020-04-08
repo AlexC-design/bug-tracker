@@ -28,10 +28,12 @@ const MemberCard = ({
           Joined: {formattedDate}
         </div>
       </div>
-      {(!isUserAdmin(id, projectMembers) ||
-        !isUserAdmin(userId, projectMembers)) && (
-        <DeleteButton clickEvent={() => removeUserFromProject(id, projectId)} />
-      )}
+      {isUserAdmin(userId, projectMembers) &&
+        !isUserAdmin(id, projectMembers) && (
+          <DeleteButton
+            clickEvent={() => removeUserFromProject(id, projectId)}
+          />
+        )}
     </div>
   );
 };

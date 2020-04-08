@@ -5,14 +5,28 @@ import ExtendingButton from "../ProjectsPage/ExtendingButton/ExtendingButton";
 import MemberCard from "./MemberCard/MemberCard";
 import { getUsers } from "../../store/state/users";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
+import { isUserAdmin } from "../../utils/isUserAdmin";
 
 import "./css/members-page.css";
-import { isUserAdmin } from "../../utils/isUserAdmin";
 
 const MembersPage = ({ project, getUsers, users, usersLoading, userId }) => {
   useEffect(() => {
     getUsers(project._id);
   }, [getUsers, project]);
+
+  const sortUsers = users => {
+    for (let i = 0; i < users.length; i++) {
+      if (isUserAdmin(users[i]._id, project.projectMembers)) {
+        let userToMove = users[i];
+        users.splice(i, 1);
+        users.unshift(userToMove);
+        i--;
+        console.log(i);
+      }
+    }
+
+    return users;
+  };
 
   if (usersLoading === true) {
     return (

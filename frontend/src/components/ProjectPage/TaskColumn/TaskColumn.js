@@ -15,19 +15,37 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
   const taskColumn = useRef();
 
   const checkCompleted = () => {
-    let show = false;
+    // let show = true;
 
-    tasks.forEach(task => {
-      if (task.taskCompleted) {
-        show = true;
-      }
-    });
+    // tasks.forEach(task => {
+    //   if (task.taskCompleted) {
+    //     show = true;
+    //   }
+    // });
 
     if (taskColumn.current) {
-      taskColumn.current.offsetHeight < 100 ? (show = false) : (show = true);
+      console.log(tasks.map(task => task.taskName));
+      // if (show) {
+      if (
+        taskColumn.current.offsetHeight < 100 &&
+        taskColumn.current.offsetHeight > 50
+      ) {
+        console.log(priority, "false", taskColumn.current.offsetHeight);
+        return false;
+      } else {
+        console.log(priority, "true", taskColumn.current.offsetHeight);
+
+        return true;
+      }
+      // }
     }
 
-    return show;
+    //   if (taskColumn.current.offsetHeight < 100 && show) {
+    //     show = false;
+    //   }
+    // }
+
+    // return show;
   };
 
   useEffect(() => {
@@ -157,4 +175,8 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
   );
 };
 
-export default connect(null, { changeColumn })(TaskColumn);
+const mapStateToProps = state => ({
+  columnLoading: state.selectedProject.columnLoading
+});
+
+export default connect(mapStateToProps, { changeColumn })(TaskColumn);

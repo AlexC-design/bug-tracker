@@ -19,6 +19,8 @@ class ProjectPage extends Component {
   }
 
   componentDidMount() {
+    console.log(this.state.projectName);
+    console.log(this.props.selectedProject.projectName);
     this.props.selectProject(this.props.match.params.id);
 
     this.unlisten = this.props.history.listen(history => {

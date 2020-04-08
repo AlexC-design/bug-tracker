@@ -20,15 +20,14 @@ router.post("/", async (req, res) => {
   }
 });
 
-//descr   Get users by id
+//descr   Get project's users
 router.get("/project:projectId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
-    User.find(
-      {
-        _id: { $in: project.projectMembers.map(member => member.userId) }
-      },
-      (err, users) => res.json(users)
-    );
+    User.find({
+      _id: { $in: project.projectMembers.map(member => member.userId) }
+    })
+      .sort({ email: -1 })
+      .then(users => res.json(users));
   });
 });
 

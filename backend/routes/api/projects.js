@@ -6,6 +6,8 @@ const User = require("../../models/User");
 const Tasks = require("../../models/Task");
 const Task = Tasks.TaskModel;
 
+// ---------- PROJECT ------------
+
 //descr   Get all projects
 router.get("/", (req, res) => {
   Project.find()
@@ -70,6 +72,8 @@ router.delete("/:id", (req, res) => {
     project.remove().then(project => res.json(project._id));
   });
 });
+
+// ---------- TASKS ------------
 
 //descr   Add task in project
 router.put("/:projectId", (req, res) => {
@@ -174,6 +178,8 @@ router.put("/change-column/:projectId/:taskId", (req, res) => {
     });
   });
 });
+
+// ---------- USERS ------------
 
 //descr   add user to project
 router.post("/add-user", (req, res) => {

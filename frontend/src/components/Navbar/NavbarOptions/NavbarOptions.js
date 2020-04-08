@@ -9,7 +9,7 @@ const NavbarOptions = ({ history, isAdmin, projectId, unassignedTasksNo }) => {
 
   useEffect(() => {
     let match;
-    history.listen(location => {
+    const unlisten = history.listen(location => {
       match = matchPath(location.pathname, {
         path: "/project/:id/:page",
         exact: true
@@ -18,6 +18,9 @@ const NavbarOptions = ({ history, isAdmin, projectId, unassignedTasksNo }) => {
         ? setCurrentPage(match.params.page)
         : setCurrentPage("other");
     });
+    return () => {
+      unlisten();
+    };
   });
 
   const switchPage = page => {

@@ -6,7 +6,13 @@ import { ItemTypes } from "../../../../utils/items";
 
 import "./css/task-card.css";
 
-const TaskCard = ({ taskDetails, projectId, onCreatedPage, userId }) => {
+const TaskCard = ({
+  taskDetails,
+  projectId,
+  onCreatedPage,
+  userId,
+  columnLoading
+}) => {
   const formatSummary = ({ taskSummary }) => {
     const desc = taskSummary.substring(0, 150);
     const format = taskSummary.length > 150 ? "..." : "";
@@ -17,8 +23,6 @@ const TaskCard = ({ taskDetails, projectId, onCreatedPage, userId }) => {
   const ownsTask = userId => {
     return taskDetails.taskCreator._id === userId ? true : false;
   };
-
-  console.log(taskDetails.taskName, ownsTask(userId), onCreatedPage);
 
   const [{ isDragging }, drag] = useDrag({
     item: {
@@ -38,7 +42,9 @@ const TaskCard = ({ taskDetails, projectId, onCreatedPage, userId }) => {
         <Link
           ref={drag}
           to={`/project/${projectId}/task${taskDetails._id}`}
-          className={`task-card task-card${isDragging ? "--dragging" : ""}`}
+          className={`task-card task-card${
+            isDragging || columnLoading ? "--dragging" : ""
+          }`}
         >
           <div className="task-card__details">
             <div className="task-card__details__name">
@@ -57,7 +63,8 @@ const TaskCard = ({ taskDetails, projectId, onCreatedPage, userId }) => {
 
 const mapStateToProps = state => ({
   projectId: state.selectedProject._id,
-  userId: state.userDetails._id
+  userId: state.userDetails._id,
+  columnLoading: state.selectedProject.columnLoading
 });
 
 export default connect(mapStateToProps)(TaskCard);
