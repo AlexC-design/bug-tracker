@@ -12,13 +12,12 @@ import { buildTaskDetails } from "./buildTaskDetails";
 import "./css/task-button.css";
 
 const findTaskById = (project, taskId) => {
-  let result = {};
+  let result = '';
 
   for (let taskPriority in project.tasks) {
     project.tasks[taskPriority].forEach(task => {
       if (task._id === taskId) {
         result = task;
-        return;
       }
     });
   }

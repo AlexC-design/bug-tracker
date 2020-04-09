@@ -1,59 +1,15 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import TaskCard from "./TaskCard/TaskCard";
 import SimpleBarReact from "simplebar-react";
 import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../utils/items";
 import { changeColumn } from "../../../store/state/selectedProject/index";
+import { connect } from "react-redux";
 
 import "simplebar/src/simplebar.css";
 import "./css/task-column.css";
-import { connect } from "react-redux";
 
 const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
-  const [noCompleted, setNoCompleted] = useState(true);
-
-  const taskColumn = useRef();
-
-  const checkCompleted = () => {
-    // let show = true;
-
-    // tasks.forEach(task => {
-    //   if (task.taskCompleted) {
-    //     show = true;
-    //   }
-    // });
-
-    if (taskColumn.current) {
-      console.log(tasks.map(task => task.taskName));
-      // if (show) {
-      if (
-        taskColumn.current.offsetHeight < 100 &&
-        taskColumn.current.offsetHeight > 50
-      ) {
-        console.log(priority, "false", taskColumn.current.offsetHeight);
-        return false;
-      } else {
-        console.log(priority, "true", taskColumn.current.offsetHeight);
-
-        return true;
-      }
-      // }
-    }
-
-    //   if (taskColumn.current.offsetHeight < 100 && show) {
-    //     show = false;
-    //   }
-    // }
-
-    // return show;
-  };
-
-  useEffect(() => {
-    if (checkCompleted() !== noCompleted) {
-      setNoCompleted(checkCompleted());
-    }
-  });
-
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: (item, monitor) => {
@@ -71,6 +27,31 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
     })
   });
 
+  const sortTasksBySeverity = tasks => {
+    let sortedTasks = [];
+    let sortedTasksCompleted = [];
+
+    sortedTasks = tasks.sort(
+      (task1, task2) => task1.taskSeverity - task2.taskSeverity
+    );
+
+    for (let i = 0; i < sortedTasks.length; i++) {
+      if (sortedTasks.taskCompleted) {
+        sortedTasksCompleted.push(sortedTasks[i]);
+        sortedTasks.splice(i, 1);
+        i--;
+      }
+    }
+
+    return [sortedTasks, sortedTasksCompleted];
+  };
+
+  console.log("PRIORITY", priority);
+  console.log(tasks);
+  console.log("none", sortTasksBySeverity(tasks));
+  console.log("0", sortTasksBySeverity(tasks)[0]);
+  console.log("1", sortTasksBySeverity(tasks)[1]);
+
   return (
     <div
       className={`task-column task-column${
@@ -81,89 +62,30 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
       <div className="task-column__title">{priority}</div>
       {tasks.length ? (
         <SimpleBarReact>
-          {tasks.map(task => {
-            if (!task.taskCompleted && task.taskSeverity === "High") {
-              return (
-                <TaskCard
-                  onCreatedPage={onCreatedPage}
-                  taskDetails={task}
-                  key={task._id}
-                />
-              );
-            } else {
-              return null;
-            }
+          {sortTasksBySeverity(tasks)[0].map(task => {
+            return (
+              <TaskCard
+                onCreatedPage={onCreatedPage}
+                taskDetails={task}
+                key={task._id}
+              />
+            );
           })}
-          {tasks.map(task => {
-            if (!task.taskCompleted && task.taskSeverity === "Medium") {
-              return (
-                <TaskCard
-                  onCreatedPage={onCreatedPage}
-                  taskDetails={task}
-                  key={task._id}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
-          {tasks.map(task => {
-            if (!task.taskCompleted && task.taskSeverity === "Low") {
-              return (
-                <TaskCard
-                  onCreatedPage={onCreatedPage}
-                  taskDetails={task}
-                  key={task._id}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
-          {noCompleted && (
-            <div className="task-column__completed" ref={taskColumn}>
+
+          {
+            <div className="task-column__completed">
               <div className="task-column__completed__title">Completed</div>
-              {tasks.map(task => {
-                if (task.taskCompleted && task.taskSeverity === "High") {
-                  return (
-                    <TaskCard
-                      onCreatedPage={onCreatedPage}
-                      taskDetails={task}
-                      key={task._id}
-                    />
-                  );
-                } else {
-                  return null;
-                }
-              })}
-              {tasks.map(task => {
-                if (task.taskCompleted && task.taskSeverity === "Medium") {
-                  return (
-                    <TaskCard
-                      onCreatedPage={onCreatedPage}
-                      taskDetails={task}
-                      key={task._id}
-                    />
-                  );
-                } else {
-                  return null;
-                }
-              })}
-              {tasks.map(task => {
-                if (task.taskCompleted && task.taskSeverity === "Low") {
-                  return (
-                    <TaskCard
-                      onCreatedPage={onCreatedPage}
-                      taskDetails={task}
-                      key={task._id}
-                    />
-                  );
-                } else {
-                  return null;
-                }
+              {sortTasksBySeverity(tasks)[1].map(task => {
+                return (
+                  <TaskCard
+                    onCreatedPage={onCreatedPage}
+                    taskDetails={task}
+                    key={task._id}
+                  />
+                );
               })}
             </div>
-          )}
+          }
           {(priority === "Unassigned" || priority === "Trivial") && (
             <div className="task-column__spacing" />
           )}

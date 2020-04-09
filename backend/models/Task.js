@@ -7,7 +7,7 @@ const TaskSchema = new Schema({
     required: true
   },
   taskSeverity: {
-    type: String,
+    type: Number,
     required: true
   },
   taskPriority: {

@@ -10,7 +10,7 @@
 .task-card--dragging {
   -webkit-transition: all 0s linear;
   transition: all 0s linear;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .task-card:hover {

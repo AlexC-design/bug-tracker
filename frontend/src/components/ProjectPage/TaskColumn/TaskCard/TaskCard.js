@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useDrag } from "react-dnd";
 import { ItemTypes } from "../../../../utils/items";
+import { intToSeverity } from "../../../../utils/severities";
 
 import "./css/task-card.css";
 
@@ -51,7 +52,7 @@ const TaskCard = ({
               {taskDetails.taskName}
             </div>
             <div
-              className={`task-card__details__severity task-card__details__severity--${taskDetails.taskSeverity}`}
+              className={`task-card__details__severity task-card__details__severity--${intToSeverity[taskDetails.taskSeverity]}`}
             />
           </div>
           <div className="task-card__summary">{formatSummary(taskDetails)}</div>

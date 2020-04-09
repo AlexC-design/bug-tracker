@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import { matchPath } from "react-router";
-import { connect } from "react-redux";
-
 import NavbarOptions from "./NavbarOptions/NavbarOptions";
 import { UserDropdown } from "./UserDropdown/UserDropdown";
 import userIcon from "../../assets/svg/user-icon.svg";

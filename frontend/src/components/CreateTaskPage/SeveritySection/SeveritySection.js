@@ -7,19 +7,19 @@ export const SeveritySection = ({ selectSeverity, taskDetails }) => {
       <div className="task-creation__left__top__severity__label">Severity</div>
       <div className="task-creation__left__top__severity__checkboxes">
         <SeverityCheckbox
-          severity="High"
+          severity={1}
           selectSeverity={selectSeverity}
-          selected={taskDetails.taskSeverity === "High" ? true : false}
+          selected={taskDetails.taskSeverity === 1 ? true : false}
         />
         <SeverityCheckbox
-          severity="Medium"
+          severity={2}
           selectSeverity={selectSeverity}
-          selected={taskDetails.taskSeverity === "Medium" ? true : false}
+          selected={taskDetails.taskSeverity === 2 ? true : false}
         />
         <SeverityCheckbox
-          severity="Low"
+          severity={3}
           selectSeverity={selectSeverity}
-          selected={taskDetails.taskSeverity === "Low" ? true : false}
+          selected={taskDetails.taskSeverity === 3 ? true : false}
         />
       </div>
     </div>

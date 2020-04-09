@@ -133,6 +133,8 @@ router.put("/completion/:projectId/:taskPriority/:taskId", (req, res) => {
 //descr   Edit Task Details
 router.put("/edit/:projectId/:taskPriority/:taskId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
+    console.log(req.params);
+    console.log(req.body);
     let taskIndex = project.tasks[`${req.params.taskPriority}`].findIndex(
       task => {
         return task._id.toString() === req.params.taskId;

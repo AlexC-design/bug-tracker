@@ -15,14 +15,33 @@ const MembersPage = ({ project, getUsers, users, usersLoading, userId }) => {
   }, [getUsers, project]);
 
   const sortUsers = users => {
+    let adminNo = 0;
+    let me = null;
+
     for (let i = 0; i < users.length; i++) {
-      if (isUserAdmin(users[i]._id, project.projectMembers)) {
+      //find current user
+      console.log(users[i]._id, userId);
+      if (users[i]._id === userId) {
+        console.log(i, users[i]._id, userId);
+        me = users[i];
+        users.splice(i, 1);
+        i--;
+      }
+      //move all admins to start
+      else if (isUserAdmin(users[i]._id, project.projectMembers)) {
         let userToMove = users[i];
         users.splice(i, 1);
         users.unshift(userToMove);
-        i--;
-        console.log(i);
+        adminNo++;
       }
+    }
+
+    console.log(me, adminNo);
+    //place current user
+    if (me) {
+      isUserAdmin(me._id, project.projectMembers)
+        ? users.unshift(me)
+        : users.splice(adminNo, 0, me);
     }
 
     return users;
@@ -39,7 +58,7 @@ const MembersPage = ({ project, getUsers, users, usersLoading, userId }) => {
       <div className="members-page">
         <SimpleBarReact>
           <div className="members-container">
-            {users.map(user => (
+            {sortUsers(users).map(user => (
               <MemberCard
                 name={user.userName}
                 date={user.registerDate}

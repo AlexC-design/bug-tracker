@@ -1,86 +1,59 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import TaskColumn from "./TaskColumn/TaskColumn";
 import { selectProject } from "../../store/state/selectedProject";
 import CreateTaskButton from "./CreateTaskButton/CreateTaskButton";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import { withRouter } from "react-router";
+import { priorities } from "../../utils/priorities";
 
 import "./css/project-page.css";
 
-class ProjectPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      onCreatedPage: this.props.location.pathname.includes("created")
-        ? true
-        : false
-    };
-  }
+const ProjectPage = ({
+  selectProject,
+  onCreatedPage,
+  onUnassignedPage,
+  selectedProject,
+  match
+}) => {
+  useEffect(() => {
+    selectProject(match.params.id);
+  }, [match.params.id, selectProject]);
 
-  componentDidMount() {
-    console.log(this.state.projectName);
-    console.log(this.props.selectedProject.projectName);
-    this.props.selectProject(this.props.match.params.id);
+  if (selectedProject._id) {
+    return (
+      <div className="project-page">
+        {priorities.map(
+          priority =>
+            priority !== "Unassigned" && (
+              <TaskColumn
+                key={priority}
+                onCreatedPage={onCreatedPage}
+                priority={priority}
+                tasks={selectedProject.tasks[priority.split(" ")[0]]}
+              />
+            )
+        )}
+        {onUnassignedPage !== undefined && (
+          <TaskColumn
+            key={"Unassigned"}
+            onCreatedPage={onCreatedPage}
+            priority="Unassigned"
+            tasks={selectedProject.tasks.Unassigned}
+          />
+        )}
 
-    this.unlisten = this.props.history.listen(history => {
-      if (history.pathname.includes("created")) {
-        this.setState({ onCreatedPage: true });
-      } else {
-        if (this.state.onCreatePage) {
-          this.setState({ onCreatePage: false });
-        }
-      }
-    });
+        <CreateTaskButton projectId={match.params.id} />
+      </div>
+    );
+  } else {
+    return (
+      <div className="project-page">
+        <LoadingAnimation />
+      </div>
+    );
   }
-
-  componentWillUnmount() {
-    this.unlisten();
-  }
-
-  render() {
-    if (this.props.selectedProject._id) {
-      return (
-        <div className="project-page">
-          <TaskColumn
-            onCreatedPage={this.state.onCreatedPage}
-            priority="High Priority"
-            tasks={this.props.selectedProject.tasks.High}
-          />
-          <TaskColumn
-            onCreatedPage={this.state.onCreatedPage}
-            priority="Medium Priority"
-            tasks={this.props.selectedProject.tasks.Medium}
-          />
-          <TaskColumn
-            onCreatedPage={this.state.onCreatedPage}
-            priority="Low Priority"
-            tasks={this.props.selectedProject.tasks.Low}
-          />
-          <TaskColumn
-            onCreatedPage={this.state.onCreatedPage}
-            priority="Trivial"
-            tasks={this.props.selectedProject.tasks.Trivial}
-          />
-          {this.props.location.pathname.includes("unassigned") && (
-            <TaskColumn
-              onCreatedPage={this.state.onCreatedPage}
-              priority="Unassigned"
-              tasks={this.props.selectedProject.tasks.Unassigned}
-            />
-          )}
-          <CreateTaskButton projectId={this.props.match.params.id} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="project-page">
-          <LoadingAnimation />
-        </div>
-      );
-    }
-  }
-}
+};
 
 const mapStateToProps = state => ({
   selectedProject: state.selectedProject

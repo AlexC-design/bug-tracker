@@ -19,9 +19,16 @@
 }
 
 .member-card__icon {
+  position: relative;
   margin: 0 10px;
   -webkit-transform: scale(0.8);
           transform: scale(0.8);
+}
+
+.member-card__icon__admin {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
 }
 
 .member-card__details {
@@ -47,5 +54,9 @@
 
 .member-card__details__date {
   opacity: 0.8;
+}
+
+.member-card--user {
+  background-color: #111115;
 }
 /*# sourceMappingURL=member-card.css.map */

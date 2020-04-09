@@ -12,7 +12,7 @@ import "./css/projects-page.css";
 const ProjectsPage = ({ getProjects, projects, userId }) => {
   useEffect(() => {
     getProjects(userId);
-  }, [getProjects]);
+  }, [getProjects, userId]);
 
   if (!projects.loading) {
     return (
