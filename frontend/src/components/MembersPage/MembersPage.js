@@ -20,9 +20,8 @@ const MembersPage = ({ project, getUsers, users, usersLoading, userId }) => {
 
     for (let i = 0; i < users.length; i++) {
       //find current user
-      console.log(users[i]._id, userId);
+
       if (users[i]._id === userId) {
-        console.log(i, users[i]._id, userId);
         me = users[i];
         users.splice(i, 1);
         i--;
@@ -36,7 +35,6 @@ const MembersPage = ({ project, getUsers, users, usersLoading, userId }) => {
       }
     }
 
-    console.log(me, adminNo);
     //place current user
     if (me) {
       isUserAdmin(me._id, project.projectMembers)

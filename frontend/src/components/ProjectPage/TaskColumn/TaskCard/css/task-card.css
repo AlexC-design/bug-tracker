@@ -8,6 +8,7 @@
 }
 
 .task-card--dragging {
+  pointer-events: none;
   -webkit-transition: all 0s linear;
   transition: all 0s linear;
   opacity: 0.8;

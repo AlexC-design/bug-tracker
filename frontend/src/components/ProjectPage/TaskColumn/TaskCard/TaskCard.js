@@ -7,22 +7,12 @@ import { intToSeverity } from "../../../../utils/severities";
 
 import "./css/task-card.css";
 
-const TaskCard = ({
-  taskDetails,
-  projectId,
-  onCreatedPage,
-  userId,
-  columnLoading
-}) => {
+const TaskCard = ({ taskDetails, projectId, columnLoading }) => {
   const formatSummary = ({ taskSummary }) => {
     const desc = taskSummary.substring(0, 150);
     const format = taskSummary.length > 150 ? "..." : "";
 
     return desc + format;
-  };
-
-  const ownsTask = userId => {
-    return taskDetails.taskCreator._id === userId ? true : false;
   };
 
   const [{ isDragging }, drag] = useDrag({
@@ -39,25 +29,23 @@ const TaskCard = ({
 
   return (
     <>
-      {!(onCreatedPage && ownsTask(userId)) ? (
-        <Link
-          ref={drag}
-          to={`/project/${projectId}/task${taskDetails._id}`}
-          className={`task-card task-card${
-            isDragging || columnLoading ? "--dragging" : ""
-          }`}
-        >
-          <div className="task-card__details">
-            <div className="task-card__details__name">
-              {taskDetails.taskName}
-            </div>
-            <div
-              className={`task-card__details__severity task-card__details__severity--${intToSeverity[taskDetails.taskSeverity]}`}
-            />
-          </div>
-          <div className="task-card__summary">{formatSummary(taskDetails)}</div>
-        </Link>
-      ) : null}
+      <Link
+        ref={drag}
+        to={`/project/${projectId}/task${taskDetails._id}`}
+        className={`task-card task-card${
+          isDragging || columnLoading ? "--dragging" : ""
+        }`}
+      >
+        <div className="task-card__details">
+          <div className="task-card__details__name">{taskDetails.taskName}</div>
+          <div
+            className={`task-card__details__severity task-card__details__severity--${
+              intToSeverity[taskDetails.taskSeverity]
+            }`}
+          />
+        </div>
+        <div className="task-card__summary">{formatSummary(taskDetails)}</div>
+      </Link>
     </>
   );
 };

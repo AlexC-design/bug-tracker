@@ -9,7 +9,13 @@ import { connect } from "react-redux";
 import "simplebar/src/simplebar.css";
 import "./css/task-column.css";
 
-const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
+const TaskColumn = ({
+  priority,
+  tasks,
+  changeColumn,
+  onCreatedPage,
+  userId
+}) => {
   const [{ isOver }, drop] = useDrop({
     accept: ItemTypes.CARD,
     drop: (item, monitor) => {
@@ -45,6 +51,24 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
     return [sortedTasks, sortedTasksCompleted];
   };
 
+  const filterByCreated = (tasks, userId, onCreatedPage) => {
+    return onCreatedPage
+      ? [...tasks].filter(task => task.taskCreator._id === userId)
+      : tasks;
+  };
+
+  const showCompletedColumn =
+    filterByCreated(sortTasksBySeverity(tasks)[1], userId, onCreatedPage)
+      .length === 0
+      ? false
+      : true;
+
+  console.log(
+    priority,
+    showCompletedColumn,
+    filterByCreated(sortTasksBySeverity(tasks)[1], userId, onCreatedPage).length
+  );
+
   return (
     <div
       className={`task-column task-column${
@@ -55,7 +79,11 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
       <div className="task-column__title">{priority}</div>
       {tasks.length ? (
         <SimpleBarReact>
-          {sortTasksBySeverity(tasks)[0].map(task => {
+          {filterByCreated(
+            sortTasksBySeverity(tasks)[0],
+            userId,
+            onCreatedPage
+          ).map(task => {
             return (
               <TaskCard
                 onCreatedPage={onCreatedPage}
@@ -65,10 +93,14 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
             );
           })}
 
-          {sortTasksBySeverity(tasks)[1].length > 0 && (
+          {showCompletedColumn && (
             <div className="task-column__completed">
               <div className="task-column__completed__title">Completed</div>
-              {sortTasksBySeverity(tasks)[1].map(task => {
+              {filterByCreated(
+                sortTasksBySeverity(tasks)[1],
+                userId,
+                onCreatedPage
+              ).map(task => {
                 return (
                   <TaskCard
                     onCreatedPage={onCreatedPage}
@@ -79,9 +111,7 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
               })}
             </div>
           )}
-          {(priority === "Unassigned" || priority === "Trivial") && (
-            <div className="task-column__spacing" />
-          )}
+          {tasks.length && <div className="task-column__spacing" />}
         </SimpleBarReact>
       ) : (
         <div className="task-column__empty"></div>
@@ -91,7 +121,8 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
 };
 
 const mapStateToProps = state => ({
-  columnLoading: state.selectedProject.columnLoading
+  columnLoading: state.selectedProject.columnLoading,
+  userId: state.userDetails._id
 });
 
 export default connect(mapStateToProps, { changeColumn })(TaskColumn);

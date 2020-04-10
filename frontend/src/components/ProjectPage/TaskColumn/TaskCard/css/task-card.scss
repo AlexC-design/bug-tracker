@@ -9,6 +9,7 @@
   transition: all 0.5s cubic-bezier(0, 2, 0, 2);
 
   &--dragging {
+    pointer-events: none;
     transition: all 0s linear;
     opacity: 0.8;
   }
