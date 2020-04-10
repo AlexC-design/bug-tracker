@@ -28,15 +28,14 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
   });
 
   const sortTasksBySeverity = tasks => {
-    let sortedTasks = [];
-    let sortedTasksCompleted = [];
-
-    sortedTasks = tasks.sort(
+    let sortedTasks = [...tasks].sort(
       (task1, task2) => task1.taskSeverity - task2.taskSeverity
     );
 
+    let sortedTasksCompleted = [];
+
     for (let i = 0; i < sortedTasks.length; i++) {
-      if (sortedTasks.taskCompleted) {
+      if (sortedTasks[i].taskCompleted) {
         sortedTasksCompleted.push(sortedTasks[i]);
         sortedTasks.splice(i, 1);
         i--;
@@ -45,12 +44,6 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
 
     return [sortedTasks, sortedTasksCompleted];
   };
-
-  console.log("PRIORITY", priority);
-  console.log(tasks);
-  console.log("none", sortTasksBySeverity(tasks));
-  console.log("0", sortTasksBySeverity(tasks)[0]);
-  console.log("1", sortTasksBySeverity(tasks)[1]);
 
   return (
     <div
@@ -72,7 +65,7 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
             );
           })}
 
-          {
+          {sortTasksBySeverity(tasks)[1].length > 0 && (
             <div className="task-column__completed">
               <div className="task-column__completed__title">Completed</div>
               {sortTasksBySeverity(tasks)[1].map(task => {
@@ -85,7 +78,7 @@ const TaskColumn = ({ priority, tasks, changeColumn, onCreatedPage }) => {
                 );
               })}
             </div>
-          }
+          )}
           {(priority === "Unassigned" || priority === "Trivial") && (
             <div className="task-column__spacing" />
           )}

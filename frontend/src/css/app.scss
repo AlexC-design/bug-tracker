@@ -10,6 +10,7 @@ body {
   text-decoration: none;
   height: 100vh;
   overflow-y: hidden;
+  background-color: color(primary-dark);
 
   a {
     color: inherit;
@@ -29,4 +30,20 @@ body {
 
 .nopointer {
   cursor: default;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  display: none;
+}
+
+body::-webkit-scrollbar-thumb {
+  border: solid 2px color(primary-dark);
+  border-radius: 10px;
+  padding: 10px;
+  background-color: color(primary-light);
 }
