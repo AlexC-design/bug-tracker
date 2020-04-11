@@ -186,16 +186,24 @@ router.put("/change-column/:projectId/:taskId", (req, res) => {
 //descr   add user to project
 router.post("/add-user", (req, res) => {
   User.findOne({ email: req.body.userEmail }, (err, user) => {
-    user.projects.push(req.body.projectId.toString());
-    user.save().then(user => {
-      Project.findById(req.body.projectId).then(project => {
-        project.projectMembers.push({
-          userId: user._id.toString(),
-          isAdmin: false
+    console.log("ERROR:", err);
+    console.log("FINDONE:", user);
+
+    if (user) {
+      user.projects.push(req.body.projectId.toString());
+      user.save().then(user => {
+        Project.findById(req.body.projectId).then(project => {
+          project.projectMembers.push({
+            userId: user._id.toString(),
+            isAdmin: false
+          });
+
+          project.save().then(project => res.json(project.projectMembers));
         });
-        project.save().then(project => res.json(project.projectMembers));
       });
-    });
+    } else {
+      return res.json({ error: "email not found" });
+    }
   });
 });
 
