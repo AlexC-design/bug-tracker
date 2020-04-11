@@ -118,10 +118,14 @@ export const setColumnLoading = () => ({
 
 export const addUserToProject = (userEmail, projectId) => dispatch => {
   axios.post("api/projects/add-user", { userEmail, projectId }).then(res => {
-    dispatch({
-      type: ADD_USER,
-      payload: res.data
-    });
+    if (!res.data.error) {
+      dispatch({
+        type: ADD_USER,
+        payload: res.data
+      });
+    } else {
+      return "email not found";
+    }
   });
 };
 

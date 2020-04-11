@@ -22,7 +22,10 @@ const ExtendingButton = ({
         break;
       case "addUser":
         input = prompt("enter user email");
-        addUserToProject(input, projectId);
+        const userFound = addUserToProject(input, projectId);
+        if (userFound === "email not found") {
+          alert("email not found");
+        }
         break;
       default:
         alert(

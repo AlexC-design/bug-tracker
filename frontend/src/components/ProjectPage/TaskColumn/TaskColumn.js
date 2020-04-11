@@ -63,12 +63,6 @@ const TaskColumn = ({
       ? false
       : true;
 
-  console.log(
-    priority,
-    showCompletedColumn,
-    filterByCreated(sortTasksBySeverity(tasks)[1], userId, onCreatedPage).length
-  );
-
   return (
     <div
       className={`task-column task-column${
