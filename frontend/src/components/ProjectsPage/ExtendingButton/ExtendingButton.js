@@ -26,6 +26,9 @@ const ExtendingButton = ({
   const toggle = () => {
     if (buttonState === "--contracted") {
       inputRef.current.focus();
+    } else {
+      inputRef.current.blur();
+      setInputValue("");
     }
     setButtonState(
       buttonState === "--contracted" ? "--expanded" : "--contracted"

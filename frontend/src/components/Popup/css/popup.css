@@ -22,8 +22,8 @@
 
 .popup__card {
   position: relative;
-  width: 900px;
-  height: 500px;
+  width: 700px;
+  height: 400px;
   background-color: #1d1d23;
   margin-bottom: 10%;
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -45,7 +45,7 @@
 }
 
 .popup__card__text {
-  margin-bottom: calc(500px / 2 - 500px * 0.1);
+  margin-bottom: calc(400px / 2 - 400px * 0.1);
 }
 
 .popup__card__button {
@@ -53,7 +53,7 @@
   height: 50px;
   border-radius: 50px;
   border: none;
-  margin-bottom: calc(500px * 0.1);
+  margin-bottom: calc(400px * 0.1);
   background-color: #6f6f85;
   color: white;
   font-weight: 500;
