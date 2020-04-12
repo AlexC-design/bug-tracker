@@ -10,7 +10,8 @@ import {
   CHANGE_COLUMN,
   COLUMN_LOADING,
   ADD_USER,
-  REMOVE_USER
+  REMOVE_USER,
+  CLEAR_TASKS
 } from "./index";
 
 const initialState = {
@@ -92,6 +93,18 @@ export default (state = initialState, action) => {
       return {
         ...state,
         projectMembers: action.payload
+      };
+
+    case CLEAR_TASKS:
+      return {
+        ...state,
+        tasks: {
+          High: [],
+          Medium: [],
+          Low: [],
+          Trivial: [],
+          Unassigned: []
+        }
       };
 
     default:

@@ -13,6 +13,7 @@ export const CHANGE_COLUMN = "CHANGE_COLUMN";
 export const COLUMN_LOADING = "COLUMN_LOADING";
 export const ADD_USER = "ADD_USER";
 export const REMOVE_USER = "REMOVE_USER";
+export const CLEAR_TASKS = "CLEAR_TASKS";
 
 // ------ PROJECT ------
 
@@ -108,6 +109,12 @@ export const changeColumn = (
         payload: res.data
       })
     );
+};
+
+export const clearTasks = () => dispatch => {
+  dispatch({
+    type: CLEAR_TASKS
+  });
 };
 
 export const setColumnLoading = () => ({

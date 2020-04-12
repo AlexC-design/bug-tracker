@@ -5,14 +5,16 @@ import ProjectCard from "./ProjectCard/ProjectCard";
 import ExtendingButton from "./ExtendingButton/ExtendingButton";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import SimpleBarReact from "simplebar-react";
+import { clearTasks } from "../../store/state/selectedProject/index";
 
 import "simplebar/src/simplebar.css";
 import "./css/projects-page.css";
 
-const ProjectsPage = ({ getProjects, projects, userId }) => {
+const ProjectsPage = ({ getProjects, projects, userId, clearTasks }) => {
   useEffect(() => {
     getProjects(userId);
-  }, [getProjects, userId]);
+    clearTasks();
+  }, [getProjects, userId, clearTasks]);
 
   if (!projects.loading) {
     return (
@@ -41,4 +43,6 @@ const mapStateToProps = state => ({
   userId: state.userDetails._id
 });
 
-export default connect(mapStateToProps, { getProjects })(ProjectsPage);
+export default connect(mapStateToProps, { getProjects, clearTasks })(
+  ProjectsPage
+);
