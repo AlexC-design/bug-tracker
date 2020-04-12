@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { createProject } from "../../../store/state/projects/index";
 import { addUserToProject } from "../../../store/state/selectedProject/index";
+import { emailNotFoundOn } from "../../../store/state/notifications/index";
 
 import "./css/extending-button.css";
 
@@ -22,10 +23,7 @@ const ExtendingButton = ({
         break;
       case "addUser":
         input = prompt("enter user email");
-        const userFound = addUserToProject(input, projectId);
-        if (userFound === "email not found") {
-          alert("email not found");
-        }
+        addUserToProject(input, projectId);
         break;
       default:
         alert(

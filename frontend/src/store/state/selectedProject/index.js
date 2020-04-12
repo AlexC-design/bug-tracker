@@ -1,7 +1,7 @@
 import axios from "axios";
+import { emailNotFoundOn } from "../notifications/index";
 
 export const SELECT_PROJECT = "SELECT_PROJECT";
-
 export const CREATE_TASK = "CREATE_TASK";
 export const DELETE_TASK = "DELETE_TASK";
 export const PROJECT_LOADING = "PROJECT_LOADING";
@@ -118,13 +118,13 @@ export const setColumnLoading = () => ({
 
 export const addUserToProject = (userEmail, projectId) => dispatch => {
   axios.post("api/projects/add-user", { userEmail, projectId }).then(res => {
-    if (!res.data.error) {
+    if (res.data.error === undefined) {
       dispatch({
         type: ADD_USER,
         payload: res.data
       });
     } else {
-      return "email not found";
+      dispatch(emailNotFoundOn(userEmail));
     }
   });
 };

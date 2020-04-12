@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import SimpleBarReact from "simplebar-react";
 import ExtendingButton from "../ProjectsPage/ExtendingButton/ExtendingButton";
@@ -6,43 +6,27 @@ import MemberCard from "./MemberCard/MemberCard";
 import { getUsers } from "../../store/state/users";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import { isUserAdmin } from "../../utils/isUserAdmin";
+import { sortUsers } from "./sortUsers";
+import { emailNotFoundOff } from "../../store/state/notifications/index";
 
 import "./css/members-page.css";
+import { Popup } from "../Popup/Popup";
 
-const MembersPage = ({ project, getUsers, users, usersLoading, userId }) => {
+const MembersPage = ({
+  project,
+  getUsers,
+  users,
+  usersLoading,
+  userId,
+  emailNotFound,
+  emailNotFoundOff
+}) => {
   useEffect(() => {
     getUsers(project._id);
   }, [getUsers, project]);
 
-  const sortUsers = users => {
-    let adminNo = 0;
-    let me = null;
-
-    for (let i = 0; i < users.length; i++) {
-      //find current user
-
-      if (users[i]._id === userId) {
-        me = users[i];
-        users.splice(i, 1);
-        i--;
-      }
-      //move all admins to start
-      else if (isUserAdmin(users[i]._id, project.projectMembers)) {
-        let userToMove = users[i];
-        users.splice(i, 1);
-        users.unshift(userToMove);
-        adminNo++;
-      }
-    }
-
-    //place current user
-    if (me) {
-      isUserAdmin(me._id, project.projectMembers)
-        ? users.unshift(me)
-        : users.splice(adminNo, 0, me);
-    }
-
-    return users;
+  const hidePopup = () => {
+    emailNotFoundOff();
   };
 
   if (usersLoading === true) {
@@ -54,9 +38,18 @@ const MembersPage = ({ project, getUsers, users, usersLoading, userId }) => {
   } else {
     return (
       <div className="members-page">
+        {emailNotFound !== null && (
+          <Popup
+            action={hidePopup}
+            text={[
+              "No registered user found with email ",
+              <b>{emailNotFound}</b>
+            ]}
+          />
+        )}
         <SimpleBarReact>
           <div className="members-container">
-            {sortUsers(users).map(user => (
+            {sortUsers(users, userId, project).map(user => (
               <MemberCard
                 name={user.userName}
                 date={user.registerDate}
@@ -80,7 +73,10 @@ const mapStateToProps = state => ({
   project: state.selectedProject,
   users: state.users.users,
   usersLoading: state.users.loading,
-  userId: state.userDetails._id
+  userId: state.userDetails._id,
+  emailNotFound: state.notifications.emailNotFound
 });
 
-export default connect(mapStateToProps, { getUsers })(MembersPage);
+export default connect(mapStateToProps, { getUsers, emailNotFoundOff })(
+  MembersPage
+);
