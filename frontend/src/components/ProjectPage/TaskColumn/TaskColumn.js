@@ -105,7 +105,11 @@ const TaskColumn = ({
               })}
             </div>
           )}
-          {tasks.length && <div className="task-column__spacing" />}
+          {/* {tasks.length && <div className="task-column__spacing" />} */}
+          {tasks.length &&
+            (priority === "Trivial" || priority === "Unassigned") && (
+              <div className="task-column__spacing" />
+            )}
         </SimpleBarReact>
       ) : (
         <div className="task-column__empty"></div>
