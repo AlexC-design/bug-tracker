@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { connect } from "react-redux";
 import { createProject } from "../../../store/state/projects/index";
 import { addUserToProject } from "../../../store/state/selectedProject/index";
 import { emailNotFoundOn } from "../../../store/state/notifications/index";
+import { DeleteButton } from "../../DeleteButton/DeleteButton";
 
 import "./css/extending-button.css";
 
@@ -13,17 +14,39 @@ const ExtendingButton = ({
   createProject,
   addUserToProject
 }) => {
-  const createNew = () => {
-    let input = "";
+  const [buttonState, setButtonState] = useState("--contracted");
+  const [inputValue, setInputValue] = useState("");
 
+  const inputRef = useRef(null);
+
+  const handleInputChange = e => {
+    setInputValue(e.target.value);
+  };
+
+  const toggle = () => {
+    if (buttonState === "--contracted") {
+      inputRef.current.focus();
+    }
+    setButtonState(
+      buttonState === "--contracted" ? "--expanded" : "--contracted"
+    );
+  };
+
+  const keyPressed = e => {
+    if (e.key === "Enter") {
+      createNew();
+    }
+  };
+
+  const createNew = () => {
     switch (buttonType) {
       case "createProject":
-        input = prompt("enter project name");
-        createProject({ projectName: input, userId });
+        createProject({ projectName: inputValue, userId });
+        toggle();
         break;
       case "addUser":
-        input = prompt("enter user email");
-        addUserToProject(input, projectId);
+        addUserToProject(inputValue, projectId);
+        toggle();
         break;
       default:
         alert(
@@ -35,11 +58,31 @@ const ExtendingButton = ({
   };
 
   return (
-    <div className="extending-button-container">
-      <button className="extending-button" onClick={createNew}>
-        <div className="extending-button__plus extending-button__plus--vertical" />
-        <div className="extending-button__plus extending-button__plus--horizontal" />
+    <div
+      className={`extending-button-container extending-button-container${buttonState}`}
+    >
+      <button
+        className="extending-button"
+        onClick={buttonState === "--expanded" ? createNew : toggle}
+      >
+        <div className="plus-container">
+          <div className="extending-button__plus extending-button__plus--vertical" />
+          <div className="extending-button__plus extending-button__plus--horizontal" />
+        </div>
       </button>
+      <input
+        name="buttonInput"
+        type="text"
+        placeholder={
+          buttonType === "addUser" ? "Enter email" : "Enter project name"
+        }
+        onKeyPress={keyPressed}
+        autoComplete="off"
+        ref={inputRef}
+        value={inputValue}
+        onChange={handleInputChange}
+      />
+      <DeleteButton clickEvent={toggle} />
     </div>
   );
 };

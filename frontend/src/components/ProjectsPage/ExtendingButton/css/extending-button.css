@@ -2,6 +2,21 @@
   position: fixed;
   right: 10vw;
   bottom: 10vh;
+  background-color: #44454d;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 100px;
+  padding: 10px;
+  -webkit-transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
 }
 
 .extending-button-container .extending-button {
@@ -11,26 +26,10 @@
   background-color: #6f6f85;
   width: 70px;
   height: 70px;
-}
-
-.extending-button-container .extending-button__plus {
-  position: absolute;
-  border-radius: 20px;
-  background-color: white;
-}
-
-.extending-button-container .extending-button__plus--vertical {
-  top: calc((70px/ 2) - (calc(70px * 0.55) / 2));
-  left: calc((70px/ 2) - (calc(70px * 0.07) / 2));
-  width: calc(70px * 0.07);
-  height: calc(70px * 0.55);
-}
-
-.extending-button-container .extending-button__plus--horizontal {
-  top: calc((70px/ 2) - (calc(70px * 0.07) / 2));
-  left: calc((70px/ 2) - (calc(70px * 0.55) / 2));
-  width: calc(70px * 0.55);
-  height: calc(70px * 0.07);
+  min-width: 70px;
+  min-height: 70px;
+  -webkit-transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
 }
 
 .extending-button-container .extending-button:hover {
@@ -44,5 +43,129 @@
 
 .extending-button-container .extending-button:focus {
   outline: none;
+}
+
+.extending-button-container .extending-button .plus-container {
+  position: relative;
+  min-width: 70px;
+  min-height: 70px;
+  -webkit-transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+}
+
+.extending-button-container .extending-button__plus {
+  -webkit-transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+}
+
+.extending-button-container .extending-button__plus--vertical {
+  -webkit-transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+}
+
+.extending-button-container .extending-button__plus--horizontal {
+  -webkit-transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+}
+
+.extending-button-container input {
+  color: white;
+  font-family: Montserrat, sans-serif;
+  font-size: 1em;
+  width: 300px;
+  margin-left: 20px;
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.5);
+  height: 35px;
+}
+
+.extending-button-container input:focus {
+  outline: none;
+  border-bottom: solid 2px rgba(255, 255, 255, 0.8);
+}
+
+.extending-button-container .delete-button {
+  position: absolute;
+  right: 0;
+  -webkit-transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+}
+
+.extending-button-container--expanded {
+  width: 500px;
+}
+
+.extending-button-container--expanded .extending-button {
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
+}
+
+.extending-button-container--expanded .extending-button .plus-container {
+  margin-left: -5px;
+  margin-bottom: -15px;
+}
+
+.extending-button-container--expanded .extending-button__plus {
+  position: absolute;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.extending-button-container--expanded .extending-button__plus--vertical {
+  top: calc((70px/ 2) - (calc(70px * 0.55) / 2));
+  left: calc(calc((70px/ 2) - (calc(70px * 0.07) / 2)) - (calc(70px * 0.55) / 2 - 2px));
+  width: calc(70px * 0.07);
+  height: calc(calc(70px * 0.55) / 2 + 2px);
+}
+
+.extending-button-container--expanded .extending-button__plus--horizontal {
+  top: calc((70px/ 2) - (calc(70px * 0.07) / 2));
+  left: calc((70px/ 2) - (calc(70px * 0.55) / 2));
+  width: calc(70px * 0.55);
+  height: calc(70px * 0.07);
+}
+
+.extending-button-container--expanded input {
+  -webkit-transition: 0.4s 0.4s cubic-bezier(0, -0.2, 0, 1.1);
+  transition: 0.4s 0.4s cubic-bezier(0, -0.2, 0, 1.1);
+}
+
+.extending-button-container--contracted {
+  width: 0;
+  padding: 0;
+}
+
+.extending-button-container--contracted .extending-button {
+  padding: 0;
+}
+
+.extending-button-container--contracted .extending-button__plus {
+  position: absolute;
+  border-radius: 20px;
+  background-color: white;
+}
+
+.extending-button-container--contracted .extending-button__plus--vertical {
+  top: calc((70px/ 2) - (calc(70px * 0.55) / 2));
+  left: calc((70px/ 2) - (calc(70px * 0.07) / 2));
+  width: calc(70px * 0.07);
+  height: calc(70px * 0.55);
+}
+
+.extending-button-container--contracted .extending-button__plus--horizontal {
+  top: calc((70px/ 2) - (calc(70px * 0.07) / 2));
+  left: calc((70px/ 2) - (calc(70px * 0.55) / 2));
+  width: calc(70px * 0.55);
+  height: calc(70px * 0.07);
+}
+
+.extending-button-container--contracted input {
+  width: 0;
+}
+
+.extending-button-container--contracted .delete-button {
+  -webkit-transform: scale(0) rotate(180deg);
+          transform: scale(0) rotate(180deg);
 }
 /*# sourceMappingURL=extending-button.css.map */

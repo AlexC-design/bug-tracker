@@ -4,6 +4,8 @@
   margin: 0 5%;
   height: 35px;
   width: 35px;
+  min-height: 35px;
+  min-width: 35px;
   border: none;
   background-color: #e93223;
   border-radius: 100px;

@@ -13,6 +13,14 @@ $line-long: calc(#{$button-size} * 0.55); //width for horizontal
   position: fixed;
   right: 10vw;
   bottom: 10vh;
+  background-color: color(primary-light);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 100px;
+  padding: 10px;
+
+  transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
 
   .extending-button {
     position: relative;
@@ -22,28 +30,10 @@ $line-long: calc(#{$button-size} * 0.55); //width for horizontal
 
     width: $button-size;
     height: $button-size;
+    min-width: $button-size;
+    min-height: $button-size;
 
-    &__plus {
-      position: absolute;
-      border-radius: 20px;
-      background-color: white;
-
-      &--vertical {
-        top: center($line-long);
-        left: center($line-small);
-
-        width: $line-small;
-        height: $line-long;
-      }
-
-      &--horizontal {
-        top: center($line-small);
-        left: center($line-long);
-
-        width: $line-long;
-        height: $line-small;
-      }
-    }
+    transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
 
     &:hover {
       background-color: darken(color(secondary-light), 10%);
@@ -57,6 +47,127 @@ $line-long: calc(#{$button-size} * 0.55); //width for horizontal
 
     &:focus {
       outline: none;
+    }
+    .plus-container {
+      position: relative;
+      min-width: $button-size;
+      min-height: $button-size;
+
+      transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+    }
+
+    &__plus {
+      transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+
+      &--vertical {
+        transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+      }
+      &--horizontal {
+        transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+      }
+    }
+  }
+
+  input {
+    color: white;
+    font-family: Montserrat, sans-serif;
+    font-size: 1em;
+    width: 300px;
+    margin-left: 20px;
+
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px rgba(white, 0.5);
+    height: 35px;
+
+    &:focus {
+      outline: none;
+      border-bottom: solid 2px rgba(white, 0.8);
+    }
+  }
+
+  .delete-button {
+    position: absolute;
+    right: 0;
+
+    transition: 0.4s cubic-bezier(0, -0.6, 0, 1.65);
+  }
+
+  &--expanded {
+    width: 500px;
+
+    .extending-button {
+      transform: rotate(-45deg);
+
+      .plus-container {
+        margin-left: -5px;
+        margin-bottom: -15px;
+      }
+
+      &__plus {
+        position: absolute;
+        border-radius: 20px;
+        background-color: white;
+
+        &--vertical {
+          top: center($line-long);
+          left: calc(#{center($line-small)} - (#{$line-long} / 2 - 2px));
+
+          width: $line-small;
+          height: calc(#{$line-long} / 2 + 2px);
+        }
+
+        &--horizontal {
+          top: center($line-small);
+          left: center($line-long);
+
+          width: $line-long;
+          height: $line-small;
+        }
+      }
+    }
+
+    input {
+      transition: 0.4s 0.4s cubic-bezier(0, -0.2, 0, 1.1);
+    }
+  }
+
+  &--contracted {
+    width: 0;
+    padding: 0;
+
+    .extending-button {
+      padding: 0;
+
+      &__plus {
+        position: absolute;
+        border-radius: 20px;
+        background-color: white;
+
+        &--vertical {
+          top: center($line-long);
+          left: center($line-small);
+
+          width: $line-small;
+          height: $line-long;
+        }
+
+        &--horizontal {
+          top: center($line-small);
+          left: center($line-long);
+
+          width: $line-long;
+          height: $line-small;
+        }
+      }
+    }
+
+    input {
+      width: 0;
+    }
+
+    .delete-button {
+      transform: scale(0) rotate(180deg);
     }
   }
 }
