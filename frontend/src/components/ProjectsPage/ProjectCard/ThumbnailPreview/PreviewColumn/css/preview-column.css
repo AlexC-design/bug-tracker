@@ -1,0 +1,5 @@
+.preview-column {
+  -webkit-transition: margin 4s cubic-bezier(0.1, -0.1, 0, 1.1);
+  transition: margin 4s cubic-bezier(0.1, -0.1, 0, 1.1);
+}
+/*# sourceMappingURL=preview-column.css.map */

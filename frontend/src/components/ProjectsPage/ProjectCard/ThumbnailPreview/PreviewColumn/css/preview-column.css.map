@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,eAAe,CAAC;EACd,UAAU,EAAE,MAAM,CAAC,EAAE,CAAC,+BAA+B;CACtD",
+    "sources": [
+        "preview-column.scss"
+    ],
+    "names": [],
+    "file": "preview-column.css"
+}

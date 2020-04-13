@@ -1,1 +1,32 @@
-/* No CSS *//*# sourceMappingURL=preview-task.css.map */
+.preview-task {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  background-color: #1d1d23;
+  margin-bottom: 10px;
+}
+
+.preview-task--completed {
+  background-color: #5f9e65;
+}
+
+.preview-task__severity {
+  width: 5px;
+  height: 5px;
+  border-radius: 20px;
+  float: right;
+  margin: 10px 10px 0 0;
+}
+
+.preview-task__severity--1 {
+  background-color: #e93223;
+}
+
+.preview-task__severity--2 {
+  background-color: #faff00;
+}
+
+.preview-task__severity--3 {
+  background-color: #00e0ff;
+}
+/*# sourceMappingURL=preview-task.css.map */

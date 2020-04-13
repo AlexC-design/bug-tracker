@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAEA,AAAA,QAAQ,CAAC;EACP,WAAW,EAAE,IAAI;EACjB,QAAQ,EAAE,MAAM;EAChB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,YAAY;EAC7B,MAAM,EAAE,gBAAgB;EACxB,aAAa,EAAE,aAAa;CAC7B",
     "sources": [
-        "thumbnail-preview.scss"
+        "thumbnail-preview.scss",
+        "../../../../../sass/variables/variables.scss"
     ],
     "names": [],
     "file": "thumbnail-preview.css"

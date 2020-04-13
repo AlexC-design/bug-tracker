@@ -1,18 +1,16 @@
 import React from "react";
-import { PreviewTask } from "./PreviewTask/PreviewTask";
+import { PreviewColumn } from "./PreviewColumn/PreviewColumn";
 
 import "./css/thumbnail-preview.css";
 
-export const ThumbnailPreview = ({ tasks }) => {
+export const ThumbnailPreview = ({ taskColumns }) => {
   return (
     <div className="preview">
-      <PreviewTask />
-      <PreviewTask />
-      <PreviewTask />
-      <PreviewTask />
-      <PreviewTask />
-      <PreviewTask />
-      <PreviewTask />
+      {taskColumns.map((column, index) => {
+        if (index <= 3) {
+          return <PreviewColumn tasks={column} key={index} />;
+        }
+      })}
     </div>
   );
 };

@@ -5,6 +5,7 @@ import { useDrop } from "react-dnd";
 import { ItemTypes } from "../../../utils/items";
 import { changeColumn } from "../../../store/state/selectedProject/index";
 import { connect } from "react-redux";
+import { sortTasksBySeverity } from "./sortTasksBySeverity";
 
 import "simplebar/src/simplebar.css";
 import "./css/task-column.css";
@@ -32,24 +33,6 @@ const TaskColumn = ({
       isOver: !!monitor.isOver()
     })
   });
-
-  const sortTasksBySeverity = tasks => {
-    let sortedTasks = [...tasks].sort(
-      (task1, task2) => task1.taskSeverity - task2.taskSeverity
-    );
-
-    let sortedTasksCompleted = [];
-
-    for (let i = 0; i < sortedTasks.length; i++) {
-      if (sortedTasks[i].taskCompleted) {
-        sortedTasksCompleted.push(sortedTasks[i]);
-        sortedTasks.splice(i, 1);
-        i--;
-      }
-    }
-
-    return [sortedTasks, sortedTasksCompleted];
-  };
 
   const filterByCreated = (tasks, userId, onCreatedPage) => {
     return onCreatedPage
@@ -105,11 +88,7 @@ const TaskColumn = ({
               })}
             </div>
           )}
-          {/* {tasks.length && <div className="task-column__spacing" />} */}
-          {tasks.length &&
-            (priority === "Trivial" || priority === "Unassigned") && (
-              <div className="task-column__spacing" />
-            )}
+          {tasks.length && <div className="task-column__spacing" />}
         </SimpleBarReact>
       ) : (
         <div className="task-column__empty"></div>

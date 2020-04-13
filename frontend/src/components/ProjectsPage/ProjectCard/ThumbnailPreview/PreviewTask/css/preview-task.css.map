@@ -1,8 +1,9 @@
 {
     "version": 3,
-    "mappings": "",
+    "mappings": "AAEA,AAAA,aAAa,CAAC;EACZ,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,IAAI;EACZ,aAAa,EAAE,IAAI;EACnB,gBAAgB,ECJF,OAAO;EDKrB,aAAa,EAAE,IAAI;CAuBpB;;AArBE,AAAD,wBAAY,CAAC;EACX,gBAAgB,ECFT,OAAO;CDGf;;AAEA,AAAD,uBAAW,CAAC;EACV,KAAK,EAAE,GAAG;EACV,MAAM,EAAE,GAAG;EACX,aAAa,EAAE,IAAI;EACnB,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,aAAa;CAWtB;;AATE,AAAD,0BAAI,CAAC;EACH,gBAAgB,EChBX,OAAO;CDiBb;;AACA,AAAD,0BAAI,CAAC;EACH,gBAAgB,EClBX,OAAO;CDmBb;;AACA,AAAD,0BAAI,CAAC;EACH,gBAAgB,ECpBX,OAAO;CDqBb",
     "sources": [
-        "preview-task.scss"
+        "preview-task.scss",
+        "../../../../../../sass/variables/variables.scss"
     ],
     "names": [],
     "file": "preview-task.css"

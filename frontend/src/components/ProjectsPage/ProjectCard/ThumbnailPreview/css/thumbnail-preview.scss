@@ -1,0 +1,11 @@
+@import "../../../../../sass/variables/variables.scss";
+
+.preview {
+  padding-top: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: calc(80% - 10px);
+  border-radius: 10px 10px 0 0;
+}

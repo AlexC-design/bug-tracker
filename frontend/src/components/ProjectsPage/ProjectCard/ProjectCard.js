@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router";
 import ProjectBar from "./ProjectBar/ProjectBar";
+import { ThumbnailPreview } from "./ThumbnailPreview/ThumbnailPreview";
 
 import "./css/project-card.css";
 
@@ -12,6 +13,9 @@ class ProjectCard extends Component {
   render() {
     return (
       <div onClick={this.handleClick} className="project-card">
+        <ThumbnailPreview
+          taskColumns={Object.values(this.props.project.tasks)}
+        />
         <ProjectBar project={this.props.project} />
       </div>
     );
