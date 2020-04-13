@@ -87,6 +87,12 @@
           border-radius: 8px;
 
           background-color: color(primary-dark);
+
+          transition: all 0.4s ease-out;
+
+          &:hover {
+            background-color: darken(color(primary-dark), 5%);
+          }
         }
       }
     }

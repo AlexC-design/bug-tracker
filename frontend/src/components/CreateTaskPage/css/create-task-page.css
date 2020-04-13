@@ -137,6 +137,12 @@
   border: 2px solid #1d1d23;
   border-radius: 8px;
   background-color: #1d1d23;
+  -webkit-transition: all 0.4s ease-out;
+  transition: all 0.4s ease-out;
+}
+
+.task-creation__left__top__severity__checkboxes:hover {
+  background-color: #111115;
 }
 
 .task-creation__left__summary {

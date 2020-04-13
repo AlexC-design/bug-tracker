@@ -13,6 +13,8 @@
   margin-right: 3vw;
   opacity: 0.5;
   position: relative;
+  -webkit-transition: all 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+  transition: all 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 }
 
 .navbar-options__created:after, .navbar-options__members:after, .navbar-options__unassigned--text:after {

@@ -36,7 +36,8 @@
 
     transform-origin: top;
 
-    transition: all 0.2s ease-out, opacity 0.2s 0.1s ease-out;
+    transition: all 0.2s cubic-bezier(0, -0.4, 0, 1.5),
+      opacity 0.2s 0.1s ease-out;
 
     &--contracted {
       margin: 0;
@@ -44,15 +45,17 @@
       opacity: 0;
       visibility: hidden;
 
-      transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out, visibility 0.3s 0.3s step-end;
+      transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out,
+        visibility 0.3s 0.3s step-end;
     }
 
     & * {
       border-radius: 4px;
-      padding: 10px 15px;
-      margin-bottom: 5px;
+      padding: 12px 15px;
 
+      transition: all 0.5s ease-in;
       &:hover {
+        transition: all 0.2s ease-out;
         cursor: pointer;
         background-color: color(secondary-light);
       }

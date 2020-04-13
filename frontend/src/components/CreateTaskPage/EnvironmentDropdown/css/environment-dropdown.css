@@ -42,8 +42,8 @@
   height: 400px;
   -webkit-transform-origin: top;
           transform-origin: top;
-  -webkit-transition: all 0.2s ease-out, opacity 0.2s 0.1s ease-out;
-  transition: all 0.2s ease-out, opacity 0.2s 0.1s ease-out;
+  -webkit-transition: all 0.2s cubic-bezier(0, -0.4, 0, 1.5), opacity 0.2s 0.1s ease-out;
+  transition: all 0.2s cubic-bezier(0, -0.4, 0, 1.5), opacity 0.2s 0.1s ease-out;
 }
 
 .environment-dropdown__options--contracted {
@@ -51,17 +51,20 @@
   height: 0;
   opacity: 0;
   visibility: hidden;
-  -webkit-transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out, visibility 0.3s 0.3s step-end;
-  transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out, visibility 0.3s 0.3s step-end;
+  -webkit-transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out, visibility 0.3s 0.3s step-end;
+  transition: all 0.1s 0.2s ease-out, opacity 0.1s ease-out, visibility 0.3s 0.3s step-end;
 }
 
 .environment-dropdown__options * {
   border-radius: 4px;
-  padding: 10px 15px;
-  margin-bottom: 5px;
+  padding: 12px 15px;
+  -webkit-transition: all 0.5s ease-in;
+  transition: all 0.5s ease-in;
 }
 
 .environment-dropdown__options *:hover {
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
   cursor: pointer;
   background-color: #6f6f85;
 }

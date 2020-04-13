@@ -5,11 +5,14 @@
   top: 60px;
   right: calc(4vw - 10px);
   padding: 20px 0;
+  height: 165px;
 
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
+
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
   box-shadow: -10px 10px 20px 1px color(secondary-dark);
 
@@ -23,7 +26,8 @@
   border-radius: 10px;
 
   &--hidden {
-    display: none;
+    height: 0;
+    pointer-events: none;
     opacity: 0;
   }
 

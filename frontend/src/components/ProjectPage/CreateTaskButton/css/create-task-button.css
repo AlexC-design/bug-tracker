@@ -13,6 +13,8 @@
           box-shadow: 0 0 10px 5px rgba(15, 16, 18, 0.5);
   width: 70px;
   height: 70px;
+  -webkit-transition: background-color 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: background-color 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 .create-task-container .create-button__plus {

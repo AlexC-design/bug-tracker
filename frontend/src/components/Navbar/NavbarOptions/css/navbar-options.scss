@@ -3,7 +3,6 @@
 .navbar-options {
   display: flex;
   flex-direction: row;
-
   margin-right: 2vw;
 
   &__created,
@@ -12,6 +11,8 @@
     margin-right: 3vw;
     opacity: 0.5;
     position: relative;
+
+    transition: all 0.1s cubic-bezier(0.6, -0.28, 0.735, 0.045);
 
     &:after {
       content: "";
