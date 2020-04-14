@@ -1,12 +1,18 @@
 import React, { Component } from "react";
+import { clearProjects } from "../../store/state/projects/index";
 import Logo from "./Logo";
 import GuestLogin from "./GuestLogin";
 import GoogleAuth from "./GoogleAuth";
 import "./css/login-page.css";
+import { connect } from "react-redux";
 // import { DeleteAllUsers } from "./DeleteAllUsers/DeleteAllUsers";
 // import { DeleteAllGuests } from "./DeleteAllUsers/DeleteAllGuests";
 
-export default class LoginPage extends Component {
+class LoginPage extends Component {
+  componentDidMount() {
+    this.props.clearProjects();
+  }
+
   render() {
     return (
       <div className="login-page-container">
@@ -20,3 +26,5 @@ export default class LoginPage extends Component {
     );
   }
 }
+
+export default connect(null, { clearProjects })(LoginPage);

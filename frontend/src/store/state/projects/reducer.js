@@ -2,7 +2,8 @@ import {
   GET_PROJECTS,
   CREATE_PROJECT,
   DELETE_PROJECT,
-  PROJECTS_LOADING
+  PROJECTS_LOADING,
+  CLEAR_PROJECTS
 } from "./index";
 
 const initialState = {
@@ -18,11 +19,13 @@ export default (state = initialState, action) => {
         projects: action.payload,
         loading: false
       };
+
     case CREATE_PROJECT:
       return {
         ...state,
         projects: [action.payload, ...state.projects]
       };
+
     case DELETE_PROJECT:
       return {
         ...state,
@@ -30,11 +33,19 @@ export default (state = initialState, action) => {
           project => project._id !== action.payload
         )
       };
+
     case PROJECTS_LOADING:
       return {
         ...state,
         loading: true
       };
+
+    case CLEAR_PROJECTS:
+      return {
+        ...state,
+        projects: []
+      };
+
     default:
       return state;
   }

@@ -4,6 +4,7 @@ export const GET_PROJECTS = "GET_PROJECTS";
 export const CREATE_PROJECT = "CREATE_PROJECT";
 export const DELETE_PROJECT = "DELETE_PROJECT";
 export const PROJECTS_LOADING = "PROJECTS_LOADING";
+export const CLEAR_PROJECTS = "CLEAR_PROJECTS";
 
 export const getProjects = userId => dispatch => {
   dispatch(setProjectsLoading());
@@ -31,6 +32,12 @@ export const deleteProject = id => dispatch => {
       payload: id
     })
   );
+};
+
+export const clearProjects = () => dispatch => {
+  dispatch({
+    type: CLEAR_PROJECTS
+  });
 };
 
 export const setProjectsLoading = () => ({
