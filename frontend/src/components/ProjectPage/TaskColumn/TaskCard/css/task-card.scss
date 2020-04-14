@@ -5,6 +5,7 @@
   margin: 0 10px 15px;
   border-radius: 10px;
   background-color: rgba(color(primary-dark), 0.9);
+  max-height: 250px;
 
   transition: all 0.5s cubic-bezier(0, 2, 0, 2);
 
@@ -67,5 +68,10 @@
   &__summary {
     padding: 20px;
     opacity: 0.8;
+  }
+
+  &__description {
+    padding: 0 20px 20px;
+    opacity: 0.5;
   }
 }

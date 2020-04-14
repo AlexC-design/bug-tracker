@@ -8,9 +8,9 @@ import { intToSeverity } from "../../../../utils/severities";
 import "./css/task-card.css";
 
 const TaskCard = ({ taskDetails, projectId, columnLoading }) => {
-  const formatSummary = ({ taskSummary }) => {
-    const desc = taskSummary.substring(0, 150);
-    const format = taskSummary.length > 150 ? "..." : "";
+  const shortenText = (summary, chrNo) => {
+    const desc = summary.substring(0, chrNo);
+    const format = summary.length > chrNo ? "..." : "";
 
     return desc + format;
   };
@@ -44,7 +44,12 @@ const TaskCard = ({ taskDetails, projectId, columnLoading }) => {
             }`}
           />
         </div>
-        <div className="task-card__summary">{formatSummary(taskDetails)}</div>
+        <div className="task-card__summary">
+          {shortenText(taskDetails.taskSummary, 150)}
+        </div>
+        <div className="task-card__description">
+          {shortenText(taskDetails.taskDescription, 100)}
+        </div>
       </Link>
     </>
   );

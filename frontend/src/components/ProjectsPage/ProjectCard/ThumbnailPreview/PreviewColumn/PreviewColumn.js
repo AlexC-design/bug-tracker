@@ -10,7 +10,7 @@ export const PreviewColumn = ({ tasks }) => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       newMargin === 0 ? setNewMargin(90 * (tasks.length - 3)) : setNewMargin(0);
-    }, Math.floor(Math.random() * 10000) + 1000);
+    }, Math.floor(Math.random() * 5000) + 1000);
 
     return () => {
       clearInterval(intervalId);
