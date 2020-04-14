@@ -3,7 +3,6 @@
   margin: 0 10px 15px;
   border-radius: 10px;
   background-color: rgba(29, 29, 35, 0.9);
-  max-height: 250px;
   -webkit-transition: all 0.5s cubic-bezier(0, 2, 0, 2);
   transition: all 0.5s cubic-bezier(0, 2, 0, 2);
 }

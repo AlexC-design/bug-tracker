@@ -43,7 +43,7 @@ const MembersPage = ({
             action={hidePopup}
             text={[
               "No registered user found with email ",
-              <b>{emailNotFound}</b>
+              <b>"{emailNotFound}"</b>
             ]}
           />
         )}
