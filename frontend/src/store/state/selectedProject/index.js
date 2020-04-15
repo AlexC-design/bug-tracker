@@ -14,6 +14,7 @@ export const COLUMN_LOADING = "COLUMN_LOADING";
 export const ADD_USER = "ADD_USER";
 export const REMOVE_USER = "REMOVE_USER";
 export const CLEAR_TASKS = "CLEAR_TASKS";
+export const SET_FILTER = "SET_FILTER";
 
 // ------ PROJECT ------
 
@@ -142,5 +143,14 @@ export const removeUserFromProject = (userId, projectId) => dispatch => {
       type: REMOVE_USER,
       payload: res.data
     });
+  });
+};
+
+// ------ FILTERS ------
+
+export const setFilter = (filter, filterState) => dispatch => {
+  dispatch({
+    type: SET_FILTER,
+    payload: { filter, filterState }
   });
 };

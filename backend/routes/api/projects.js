@@ -133,8 +133,6 @@ router.put("/completion/:projectId/:taskPriority/:taskId", (req, res) => {
 //descr   Edit Task Details
 router.put("/edit/:projectId/:taskPriority/:taskId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
-    console.log(req.params);
-    console.log(req.body);
     let taskIndex = project.tasks[`${req.params.taskPriority}`].findIndex(
       task => {
         return task._id.toString() === req.params.taskId;
@@ -186,9 +184,6 @@ router.put("/change-column/:projectId/:taskId", (req, res) => {
 //descr   add user to project
 router.post("/add-user", (req, res) => {
   User.findOne({ email: req.body.userEmail }, (err, user) => {
-    console.log("ERROR:", err);
-    console.log("FINDONE:", user);
-
     if (user) {
       user.projects.push(req.body.projectId.toString());
       user.save().then(user => {

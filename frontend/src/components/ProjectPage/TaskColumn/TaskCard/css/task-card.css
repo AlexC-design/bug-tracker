@@ -3,6 +3,7 @@
   margin: 0 10px 15px;
   border-radius: 10px;
   background-color: rgba(29, 29, 35, 0.9);
+  border: solid 2px rgba(29, 29, 35, 0.01);
   -webkit-transition: all 0.5s cubic-bezier(0, 2, 0, 2);
   transition: all 0.5s cubic-bezier(0, 2, 0, 2);
 }
@@ -12,6 +13,14 @@
   -webkit-transition: all 0s linear;
   transition: all 0s linear;
   opacity: 0.8;
+}
+
+.task-card--created {
+  border: solid 2px rgba(255, 219, 153, 0.7);
+}
+
+.task-card--not-created {
+  opacity: 0.5;
 }
 
 .task-card:hover {

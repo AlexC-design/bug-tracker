@@ -8,7 +8,7 @@ export const ThumbnailPreview = ({ taskColumns }) => {
     <div className="preview">
       {taskColumns.map((column, index) => {
         if (index <= 3) {
-          return <PreviewColumn tasks={column} key={index} />;
+          return <PreviewColumn tasks={column} key={index} columnNo={index} />;
         }
       })}
     </div>

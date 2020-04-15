@@ -5,6 +5,7 @@
   margin: 0 10px 15px;
   border-radius: 10px;
   background-color: rgba(color(primary-dark), 0.9);
+  border: solid 2px rgba(color(primary-dark), 0.01);
 
   transition: all 0.5s cubic-bezier(0, 2, 0, 2);
 
@@ -12,6 +13,14 @@
     pointer-events: none;
     transition: all 0s linear;
     opacity: 0.8;
+  }
+
+  &--created {
+    border: solid 2px rgba(lighten(orange, 30%), 0.7);
+  }
+
+  &--not-created {
+    opacity: 0.5;
   }
 
   &:hover {

@@ -11,11 +11,15 @@ import {
   COLUMN_LOADING,
   ADD_USER,
   REMOVE_USER,
-  CLEAR_TASKS
+  CLEAR_TASKS,
+  SET_FILTER
 } from "./index";
 
 const initialState = {
-  selectedProject: {},
+  filter: {
+    created: false,
+    unassigned: false
+  },
   completionLoading: false,
   projectLoading: false,
   columnLoading: false
@@ -24,7 +28,10 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SELECT_PROJECT:
-      return action.payload;
+      return {
+        ...state,
+        ...action.payload
+      };
 
     case CREATE_TASK:
       return {
@@ -105,6 +112,15 @@ export default (state = initialState, action) => {
           Trivial: [],
           Unassigned: []
         }
+      };
+
+    case SET_FILTER:
+      const newFilter = { ...state.filter };
+      newFilter[`${action.payload.filter}`] = action.payload.filterState;
+
+      return {
+        ...state,
+        filter: newFilter
       };
 
     default:

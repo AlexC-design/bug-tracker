@@ -4,13 +4,25 @@ import { sortTasksBySeverity } from "../../../../ProjectPage/TaskColumn/sortTask
 
 import "./css/preview-column.css";
 
-export const PreviewColumn = ({ tasks }) => {
+export const PreviewColumn = ({ tasks, columnNo }) => {
   const [newMargin, setNewMargin] = useState(0);
 
+  //initial sliding
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      newMargin === 0 ? setNewMargin(90 * (tasks.length - 3)) : setNewMargin(0);
+    }, Math.floor(Math.random() * 4000));
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, []);
+
+  //interval sliding
   useEffect(() => {
     const intervalId = setInterval(() => {
       newMargin === 0 ? setNewMargin(90 * (tasks.length - 3)) : setNewMargin(0);
-    }, Math.floor(Math.random() * 5000) + 1000);
+    }, Math.floor(Math.random() * 1000 * columnNo) + 4000);
 
     return () => {
       clearInterval(intervalId);

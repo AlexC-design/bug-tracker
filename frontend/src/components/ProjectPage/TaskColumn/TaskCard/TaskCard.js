@@ -7,7 +7,13 @@ import { intToSeverity } from "../../../../utils/severities";
 
 import "./css/task-card.css";
 
-const TaskCard = ({ taskDetails, projectId, columnLoading }) => {
+const TaskCard = ({
+  taskDetails,
+  projectId,
+  columnLoading,
+  createdFilter,
+  userId
+}) => {
   const shortenText = (summary, chrNo) => {
     const desc = summary.substring(0, chrNo);
     const format = summary.length > chrNo ? "..." : "";
@@ -33,8 +39,14 @@ const TaskCard = ({ taskDetails, projectId, columnLoading }) => {
         ref={drag}
         to={`/project/${projectId}/task${taskDetails._id}`}
         className={`task-card task-card${
-          isDragging || columnLoading ? "--dragging" : ""
-        }`}
+          createdFilter && taskDetails.taskCreator._id !== userId
+            ? "--not-created"
+            : ""
+        } task-card${
+          createdFilter && taskDetails.taskCreator._id === userId
+            ? "--created"
+            : ""
+        } task-card${isDragging || columnLoading ? "--dragging" : ""}`}
       >
         <div className="task-card__details">
           <div className="task-card__details__name">{taskDetails.taskName}</div>
@@ -58,7 +70,9 @@ const TaskCard = ({ taskDetails, projectId, columnLoading }) => {
 const mapStateToProps = state => ({
   projectId: state.selectedProject._id,
   userId: state.userDetails._id,
-  columnLoading: state.selectedProject.columnLoading
+  columnLoading: state.selectedProject.columnLoading,
+  createdFilter: state.selectedProject.filter.created,
+  userId: state.userDetails._id
 });
 
 export default connect(mapStateToProps)(TaskCard);

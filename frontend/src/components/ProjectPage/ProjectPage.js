@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import TaskColumn from "./TaskColumn/TaskColumn";
-import { selectProject } from "../../store/state/selectedProject";
+import { selectProject, setFilter } from "../../store/state/selectedProject";
 import CreateTaskButton from "./CreateTaskButton/CreateTaskButton";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import { withRouter } from "react-router";
@@ -12,13 +12,20 @@ import "./css/project-page.css";
 const ProjectPage = ({
   selectProject,
   onCreatedPage,
-  onUnassignedPage,
+  unassignedFilter,
   selectedProject,
-  match
+  match,
+  setFilter
 }) => {
   useEffect(() => {
     selectProject(match.params.id);
   }, [match.params.id, selectProject]);
+
+  useEffect(() => {
+    if (selectedProject.tasks.Unassigned.length > 0) {
+      setFilter("unassigned", true);
+    }
+  }, [selectedProject.tasks.Unassigned.length]);
 
   if (selectedProject._id) {
     return (
@@ -34,7 +41,7 @@ const ProjectPage = ({
               />
             )
         )}
-        {onUnassignedPage !== undefined && (
+        {unassignedFilter && (
           <TaskColumn
             key={"Unassigned"}
             onCreatedPage={onCreatedPage}
@@ -56,10 +63,11 @@ const ProjectPage = ({
 };
 
 const mapStateToProps = state => ({
-  selectedProject: state.selectedProject
+  selectedProject: state.selectedProject,
+  unassignedFilter: state.selectedProject.filter.unassigned
 });
 
-const wrappedComponent = connect(mapStateToProps, { selectProject })(
+const wrappedComponent = connect(mapStateToProps, { selectProject, setFilter })(
   ProjectPage
 );
 

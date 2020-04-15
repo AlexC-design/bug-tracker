@@ -10,7 +10,7 @@ export const performClientInit = dispatch => {
       })
       .then(() => {
         const auth = window.gapi.auth2.getAuthInstance();
-        console.log(auth)
+
         auth.isSignedIn.get() && dispatch(getUserDetails(auth));
       });
   });

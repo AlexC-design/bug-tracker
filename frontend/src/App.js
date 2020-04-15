@@ -28,18 +28,6 @@ export default class App extends React.Component {
               <Route path="/projects" exact component={ProjectsPage} />
               <Route path="/project/:id" exact component={ProjectPage} />
               <Route
-                path="/project/:id/unassigned"
-                exact
-                render={props => (
-                  <ProjectPage {...props} onUnassignedPage={true} />
-                )}
-              />
-              <Route
-                path="/project/:id/created"
-                exact
-                render={props => <ProjectPage {...props} onCreatedPage={true} />}
-              />
-              <Route
                 path="/project/:id/create-task"
                 exact
                 component={CreateTaskPage}

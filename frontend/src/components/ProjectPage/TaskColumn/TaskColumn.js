@@ -34,17 +34,8 @@ const TaskColumn = ({
     })
   });
 
-  const filterByCreated = (tasks, userId, onCreatedPage) => {
-    return onCreatedPage
-      ? [...tasks].filter(task => task.taskCreator._id === userId)
-      : tasks;
-  };
-
   const showCompletedColumn =
-    filterByCreated(sortTasksBySeverity(tasks)[1], userId, onCreatedPage)
-      .length === 0
-      ? false
-      : true;
+    sortTasksBySeverity(tasks)[1].length === 0 ? false : true;
 
   return (
     <div
@@ -56,11 +47,7 @@ const TaskColumn = ({
       <div className="task-column__title">{priority}</div>
       {tasks.length ? (
         <SimpleBarReact>
-          {filterByCreated(
-            sortTasksBySeverity(tasks)[0],
-            userId,
-            onCreatedPage
-          ).map(task => {
+          {sortTasksBySeverity(tasks)[0].map(task => {
             return (
               <TaskCard
                 onCreatedPage={onCreatedPage}
@@ -73,11 +60,7 @@ const TaskColumn = ({
           {showCompletedColumn && (
             <div className="task-column__completed">
               <div className="task-column__completed__title">Completed</div>
-              {filterByCreated(
-                sortTasksBySeverity(tasks)[1],
-                userId,
-                onCreatedPage
-              ).map(task => {
+              {sortTasksBySeverity(tasks)[1].map(task => {
                 return (
                   <TaskCard
                     onCreatedPage={onCreatedPage}
