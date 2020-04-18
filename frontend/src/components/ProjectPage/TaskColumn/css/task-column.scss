@@ -26,11 +26,13 @@
   }
 
   &__completed {
-    background-color: color(accent4);
+    background-color: rgba(color(accent4), 0);
     border-radius: 10px;
     margin: 0 10px;
     padding-bottom: 1px;
     opacity: 0.8;
+
+    animation: completed-fade 0.5s 0.4s ease-in forwards;
 
     .task-card {
       margin: 0 10px 15px;
@@ -54,6 +56,11 @@
 
   &--Unassigned {
     background-color: rgba(color(accent3), 0.1);
+
+    animation: unassigned-column-pop 0.2s
+      cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+
+    transform-origin: right;
   }
 
   .simplebar-wrapper {
@@ -66,5 +73,23 @@
         background-color: lighten(color(primary-light), 20%);
       }
     }
+  }
+}
+
+@keyframes unassigned-column-pop {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes completed-fade {
+  from {
+    background-color: rgba(color(accent4), 0);
+  }
+  to {
+    background-color: rgba(color(accent4), 1);
   }
 }

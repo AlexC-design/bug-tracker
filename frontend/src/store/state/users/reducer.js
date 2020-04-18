@@ -1,4 +1,4 @@
-import { GET_USERS, USERS_LOADING, DELETE_USER } from "./index";
+import { GET_USERS, USERS_LOADING, DELETE_USER, CLEAR_USERS } from "./index";
 
 const initialState = {
   users: [],
@@ -23,6 +23,8 @@ export default (state = initialState, action) => {
         ...state,
         loading: true
       };
+    case CLEAR_USERS:
+      return initialState;
     default:
       return state;
   }

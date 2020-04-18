@@ -20,7 +20,6 @@ export const SET_FILTER = "SET_FILTER";
 // ------ PROJECT ------
 
 export const selectProject = id => dispatch => {
-  console.log("selecting");
   axios.get(`api/projects/${id}`).then(res => {
     dispatch({
       type: SELECT_PROJECT,

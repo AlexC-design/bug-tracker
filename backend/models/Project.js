@@ -11,7 +11,7 @@ const ProjectSchema = new Schema({
   },
   projectMembers: {
     type: Array,
-    required: true
+    default: []
   },
   creationDate: {
     type: Date,

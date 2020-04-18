@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { clearProjects } from "../../store/state/projects/index";
+import { clearUsers } from "../../store/state/users/index";
 import Logo from "./Logo";
 import GuestLogin from "./GuestLogin";
 import GoogleAuth from "./GoogleAuth";
@@ -10,6 +11,7 @@ import { connect } from "react-redux";
 
 class LoginPage extends Component {
   componentDidMount() {
+    this.props.clearUsers();
     this.props.clearProjects();
   }
 
@@ -27,4 +29,4 @@ class LoginPage extends Component {
   }
 }
 
-export default connect(null, { clearProjects })(LoginPage);
+export default connect(null, { clearProjects, clearUsers })(LoginPage);

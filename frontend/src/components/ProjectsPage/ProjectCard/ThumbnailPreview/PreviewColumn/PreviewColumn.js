@@ -10,13 +10,13 @@ export const PreviewColumn = ({ tasks, columnNo }) => {
   //initial sliding
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      newMargin === 0 ? setNewMargin(90 * (tasks.length - 3)) : setNewMargin(0);
+      setNewMargin(90 * (tasks.length - 3));
     }, Math.floor(Math.random() * 4000));
 
     return () => {
       clearTimeout(timeoutId);
     };
-  }, []);
+  }, [setNewMargin, tasks.length]);
 
   //interval sliding
   useEffect(() => {

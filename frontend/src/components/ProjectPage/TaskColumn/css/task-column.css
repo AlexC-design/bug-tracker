@@ -17,11 +17,13 @@
 }
 
 .task-column__completed {
-  background-color: #5f9e65;
+  background-color: rgba(95, 158, 101, 0);
   border-radius: 10px;
   margin: 0 10px;
   padding-bottom: 1px;
   opacity: 0.8;
+  -webkit-animation: completed-fade 0.5s 0.4s ease-in forwards;
+          animation: completed-fade 0.5s 0.4s ease-in forwards;
 }
 
 .task-column__completed .task-card {
@@ -45,6 +47,10 @@
 
 .task-column--Unassigned {
   background-color: rgba(0, 224, 255, 0.1);
+  -webkit-animation: unassigned-column-pop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+          animation: unassigned-column-pop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  -webkit-transform-origin: right;
+          transform-origin: right;
 }
 
 .task-column .simplebar-wrapper {
@@ -53,5 +59,45 @@
 
 .task-column .simplebar-track.simplebar-vertical .simplebar-scrollbar::before {
   background-color: #747683;
+}
+
+@-webkit-keyframes unassigned-column-pop {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@keyframes unassigned-column-pop {
+  from {
+    -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+  }
+  to {
+    -webkit-transform: scaleX(1);
+            transform: scaleX(1);
+  }
+}
+
+@-webkit-keyframes completed-fade {
+  from {
+    background-color: rgba(95, 158, 101, 0);
+  }
+  to {
+    background-color: #5f9e65;
+  }
+}
+
+@keyframes completed-fade {
+  from {
+    background-color: rgba(95, 158, 101, 0);
+  }
+  to {
+    background-color: #5f9e65;
+  }
 }
 /*# sourceMappingURL=task-column.css.map */

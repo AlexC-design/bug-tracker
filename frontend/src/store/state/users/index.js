@@ -3,6 +3,7 @@ import axios from "axios";
 export const GET_USERS = "GET_USERS";
 export const DELETE_USER = "DELETE_USER";
 export const USERS_LOADING = "USERS_LOADING";
+export const CLEAR_USERS = "CLEAR_USERS";
 
 export const getUsers = projectId => dispatch => {
   dispatch(setUsersLoading());
@@ -22,6 +23,10 @@ export const deleteUser = id => dispatch => {
     })
   );
 };
+
+export const clearUsers = () => ({
+  type: CLEAR_USERS
+});
 
 export const setUsersLoading = () => ({
   type: USERS_LOADING

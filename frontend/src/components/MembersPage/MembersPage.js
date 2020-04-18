@@ -23,7 +23,7 @@ const MembersPage = ({
 }) => {
   useEffect(() => {
     project.projectMembers.length !== users.length && getUsers(project._id);
-  }, [getUsers, project, users.length]);
+  }, [getUsers, project, users.length, project._id]);
 
   const hidePopup = () => {
     emailNotFoundOff();

@@ -6,8 +6,10 @@ const Project = require("../../models/Project");
 
 //descr   Create a user
 router.post("/", async (req, res) => {
+  //check if user exists
   const existingUser = await User.find({ googleId: req.body.googleId });
 
+  //create user if it doesn't exist
   if (existingUser.length) {
     return res.json(existingUser[0]);
   } else {
@@ -16,7 +18,27 @@ router.post("/", async (req, res) => {
       email: req.body.email ? req.body.email : "none",
       googleId: req.body.googleId ? req.body.googleId : "guest"
     });
-    newUser.save().then(user => res.json(user));
+    newUser.save().then(user => {
+      //create example project
+      Project.findById("5e9327ecb9e0a31b4c630800").then(project => {
+        const newProject = new Project({
+          projectName: project.projectName
+        });
+
+        newProject.projectMembers = project.projectMembers.map(user => ({
+          userId: user.userId,
+          isAdmin: false
+        }));
+        newProject.projectMembers.push({ userId: user._id, isAdmin: true });
+        newProject.tasks = project.tasks;
+
+        //add new project to user
+        newProject.save().then(project => {
+          user.projects.push(project._id.toString());
+          user.save().then(user => res.json(user));
+        });
+      });
+    });
   }
 });
 

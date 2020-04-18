@@ -9,6 +9,18 @@
 
   transition: all 0.5s cubic-bezier(0, 2, 0, 2);
 
+  //card animation
+  transform-origin: top;
+  transform: scaleY(0);
+
+  & > div {
+    opacity: 0;
+    animation: fadein 1s 0.2s ease-out forwards;
+  }
+
+  animation: card-animation 0.2s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+    forwards;
+
   &--dragging {
     pointer-events: none;
     transition: all 0s linear;
@@ -20,7 +32,9 @@
   }
 
   &--not-created {
-    opacity: 0.5;
+    transition: all 0.5s linear;
+
+    opacity: 0.3;
   }
 
   &:hover {
@@ -81,5 +95,14 @@
   &__description {
     padding: 0 20px 20px;
     opacity: 0.5;
+  }
+}
+
+@keyframes card-animation {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
   }
 }

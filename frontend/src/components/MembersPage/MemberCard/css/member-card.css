@@ -3,6 +3,8 @@
   width: 400px;
   height: 100px;
   border-radius: 200px;
+  -webkit-animation: slidein400 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+          animation: slidein400 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -29,6 +31,17 @@
   position: absolute;
   bottom: 0;
   left: 50px;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-animation: pop-in 0.2s 0.6s cubic-bezier(0.175, 0.885, 0.32, 2.275) forwards;
+          animation: pop-in 0.2s 0.6s cubic-bezier(0.175, 0.885, 0.32, 2.275) forwards;
+}
+
+.member-card__icon__user {
+  width: 0;
+  height: 100%;
+  -webkit-animation: slidein 0.2s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+          animation: slidein 0.2s 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
 }
 
 .member-card__details {
@@ -36,6 +49,7 @@
   padding: 20px 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  opacity: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -46,6 +60,8 @@
   -ms-flex-pack: distribute;
       justify-content: space-around;
   margin-right: auto;
+  -webkit-animation: fadein 0.2s 0.4s ease-out forwards;
+          animation: fadein 0.2s 0.4s ease-out forwards;
 }
 
 .member-card__details__name {
@@ -58,5 +74,93 @@
 
 .member-card--user {
   background-color: #111115;
+}
+
+@-webkit-keyframes slidein {
+  from {
+    height: 100%;
+    width: 0;
+  }
+  to {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@keyframes slidein {
+  from {
+    height: 100%;
+    width: 0;
+  }
+  to {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes pop-in {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes pop-in {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@-webkit-keyframes slidein400 {
+  from {
+    opacity: 0;
+    height: 100%;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    height: 100%;
+    width: 400px;
+  }
+}
+
+@keyframes slidein400 {
+  from {
+    opacity: 0;
+    height: 100%;
+    width: 0;
+  }
+  to {
+    opacity: 1;
+    height: 100%;
+    width: 400px;
+  }
 }
 /*# sourceMappingURL=member-card.css.map */

@@ -30,7 +30,7 @@ const MemberCard = ({
             alt="admin"
           />
         )}{" "}
-        <img src={memberIcon} alt="user" />
+        <img className="member-card__icon__user" src={memberIcon} alt="user" />
       </div>
       <div className="member-card__details">
         <div className="member-card__details__name">{name}</div>

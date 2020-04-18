@@ -6,6 +6,18 @@
   border: solid 2px rgba(29, 29, 35, 0.01);
   -webkit-transition: all 0.5s cubic-bezier(0, 2, 0, 2);
   transition: all 0.5s cubic-bezier(0, 2, 0, 2);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-animation: card-animation 0.2s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+          animation: card-animation 0.2s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.task-card > div {
+  opacity: 0;
+  -webkit-animation: fadein 1s 0.2s ease-out forwards;
+          animation: fadein 1s 0.2s ease-out forwards;
 }
 
 .task-card--dragging {
@@ -20,7 +32,9 @@
 }
 
 .task-card--not-created {
-  opacity: 0.5;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  opacity: 0.3;
 }
 
 .task-card:hover {
@@ -96,5 +110,27 @@
 .task-card__description {
   padding: 0 20px 20px;
   opacity: 0.5;
+}
+
+@-webkit-keyframes card-animation {
+  from {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  to {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
+}
+
+@keyframes card-animation {
+  from {
+    -webkit-transform: scaleY(0);
+            transform: scaleY(0);
+  }
+  to {
+    -webkit-transform: scaleY(1);
+            transform: scaleY(1);
+  }
 }
 /*# sourceMappingURL=task-card.css.map */
