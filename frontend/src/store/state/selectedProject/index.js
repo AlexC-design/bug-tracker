@@ -14,11 +14,13 @@ export const COLUMN_LOADING = "COLUMN_LOADING";
 export const ADD_USER = "ADD_USER";
 export const REMOVE_USER = "REMOVE_USER";
 export const CLEAR_TASKS = "CLEAR_TASKS";
+export const CLEAR_SELECTED_PROJECT = "CLEAR_SELECTED_PROJECT";
 export const SET_FILTER = "SET_FILTER";
 
 // ------ PROJECT ------
 
 export const selectProject = id => dispatch => {
+  console.log("selecting");
   axios.get(`api/projects/${id}`).then(res => {
     dispatch({
       type: SELECT_PROJECT,
@@ -115,6 +117,12 @@ export const changeColumn = (
 export const clearTasks = () => dispatch => {
   dispatch({
     type: CLEAR_TASKS
+  });
+};
+
+export const clearSelectedProject = () => dispatch => {
+  dispatch({
+    type: CLEAR_SELECTED_PROJECT
   });
 };
 

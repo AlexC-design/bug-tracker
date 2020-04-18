@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import SimpleBarReact from "simplebar-react";
 import ExtendingButton from "../ProjectsPage/ExtendingButton/ExtendingButton";
@@ -22,8 +22,8 @@ const MembersPage = ({
   emailNotFoundOff
 }) => {
   useEffect(() => {
-    getUsers(project._id);
-  }, [getUsers, project]);
+    project.projectMembers.length !== users.length && getUsers(project._id);
+  }, [getUsers, project, users.length]);
 
   const hidePopup = () => {
     emailNotFoundOff();

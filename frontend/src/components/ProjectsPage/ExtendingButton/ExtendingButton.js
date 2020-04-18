@@ -1,8 +1,7 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { connect } from "react-redux";
 import { createProject } from "../../../store/state/projects/index";
 import { addUserToProject } from "../../../store/state/selectedProject/index";
-import { emailNotFoundOn } from "../../../store/state/notifications/index";
 import { DeleteButton } from "../../DeleteButton/DeleteButton";
 
 import "./css/extending-button.css";

@@ -6,6 +6,7 @@ import { setFilter } from "../../../store/state/selectedProject/index";
 import "./css/navbar-options.css";
 
 const NavbarOptions = ({
+  location,
   history,
   isAdmin,
   projectId,
@@ -16,7 +17,14 @@ const NavbarOptions = ({
   const [currentPage, setCurrentPage] = useState("other");
 
   useEffect(() => {
-    let match;
+    let match = matchPath(location.pathname, {
+      path: "/project/:id/:page",
+      exact: true
+    });
+    match !== null
+      ? setCurrentPage(match.params.page)
+      : setCurrentPage("other");
+
     const unlisten = history.listen(location => {
       match = matchPath(location.pathname, {
         path: "/project/:id/:page",
@@ -29,7 +37,14 @@ const NavbarOptions = ({
     return () => {
       unlisten();
     };
-  });
+  }, [setCurrentPage, history, location.pathname]);
+
+  const hideFilters = () => {
+    return (
+      location.pathname.includes("members") ||
+      location.pathname.includes("task")
+    );
+  };
 
   const switchPage = page => {
     history.replace(`/project/${projectId}/${page}`);
@@ -37,6 +52,37 @@ const NavbarOptions = ({
 
   return (
     <div className="navbar-options">
+      <div
+        className={`filters-container filters-container${
+          hideFilters() ? "--hidden" : ""
+        }`}
+      >
+        <div
+          onClick={() => setFilter("created", filter.created ? false : true)}
+          className={`navbar-options__created navbar-options__created${
+            filter.created ? "--active" : ""
+          }`}
+        >
+          Created by me
+        </div>
+        {isAdmin && (
+          <div className="unassigned-container">
+            {unassignedTasksNo !== 0 && (
+              <div className="unassigned-notification" />
+            )}
+            <div
+              onClick={() =>
+                setFilter("unassigned", filter.unassigned ? false : true)
+              }
+              className={`navbar-options__unassigned--text navbar-options__unassigned${
+                filter.unassigned ? "--active" : ""
+              }`}
+            >
+              Unassigned
+            </div>
+          </div>
+        )}
+      </div>
       {
         <div
           onClick={() => switchPage("members")}
@@ -47,31 +93,6 @@ const NavbarOptions = ({
           Members
         </div>
       }
-      <div
-        onClick={() => setFilter("created", filter.created ? false : true)}
-        className={`navbar-options__created navbar-options__created${
-          filter.created ? "--active" : ""
-        }`}
-      >
-        Created by me
-      </div>
-      {isAdmin && (
-        <div className="unassigned-container">
-          {unassignedTasksNo !== 0 && (
-            <div className="unassigned-notification" />
-          )}
-          <div
-            onClick={() =>
-              setFilter("unassigned", filter.unassigned ? false : true)
-            }
-            className={`navbar-options__unassigned--text navbar-options__unassigned${
-              filter.unassigned ? "--active" : ""
-            }`}
-          >
-            Unassigned
-          </div>
-        </div>
-      )}
     </div>
   );
 };

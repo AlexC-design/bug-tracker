@@ -9,6 +9,26 @@
   margin-right: 2vw;
 }
 
+.navbar-options .filters-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin-right: 2vw;
+  width: 100%;
+  margin: 0;
+  -webkit-transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.navbar-options .filters-container--hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .navbar-options__created, .navbar-options__members, .navbar-options__unassigned--text {
   margin-right: 3vw;
   opacity: 0.5;

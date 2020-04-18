@@ -11,15 +11,11 @@ import { buildTaskDetails } from "./buildTaskDetails";
 
 import "./css/task-button.css";
 
-const findTaskById = (project, taskId) => {
-  let result = '';
+const findTaskById = (tasks, taskId) => {
+  let result = "";
 
-  for (let taskPriority in project.tasks) {
-    project.tasks[taskPriority].forEach(task => {
-      if (task._id === taskId) {
-        result = task;
-      }
-    });
+  for (let taskPriority in tasks) {
+    result = tasks[taskPriority].find(task => task._id === taskId) || result;
   }
 
   return result;
@@ -62,7 +58,7 @@ const TaskButton = ({
       case "Save":
         taskEdit(
           projectId,
-          findTaskById(selectedProject, taskId).taskPriority,
+          findTaskById(selectedProject.tasks, taskId).taskPriority,
           taskId,
           taskDetails
         );

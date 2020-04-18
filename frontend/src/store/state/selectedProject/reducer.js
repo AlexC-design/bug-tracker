@@ -11,6 +11,7 @@ import {
   COLUMN_LOADING,
   ADD_USER,
   REMOVE_USER,
+  CLEAR_SELECTED_PROJECT,
   CLEAR_TASKS,
   SET_FILTER
 } from "./index";
@@ -113,6 +114,9 @@ export default (state = initialState, action) => {
           Unassigned: []
         }
       };
+
+    case CLEAR_SELECTED_PROJECT:
+      return initialState;
 
     case SET_FILTER:
       const newFilter = { ...state.filter };

@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import TaskColumn from "./TaskColumn/TaskColumn";
 import { selectProject, setFilter } from "../../store/state/selectedProject";
 import CreateTaskButton from "./CreateTaskButton/CreateTaskButton";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import { withRouter } from "react-router";
+import { isUserAdmin } from "../../utils/isUserAdmin";
 import { priorities } from "../../utils/priorities";
 
 import "./css/project-page.css";
@@ -15,17 +16,38 @@ const ProjectPage = ({
   unassignedFilter,
   selectedProject,
   match,
-  setFilter
+  setFilter,
+  userId
 }) => {
-  useEffect(() => {
-    selectProject(match.params.id);
-  }, [match.params.id, selectProject]);
+  const [unassignedTasksNo, setUnassignedTasksNo] = useState(0);
 
   useEffect(() => {
-    if (selectedProject.tasks.Unassigned.length > 0) {
-      setFilter("unassigned", true);
+    setFilter("unassigned", false);
+    setFilter("created", false);
+    if (selectedProject._id !== match.params.id) {
+      selectProject(match.params.id);
     }
-  }, [selectedProject.tasks.Unassigned.length]);
+  }, [match.params.id, selectProject, selectedProject._id, setFilter]);
+
+  useEffect(() => {
+    if (selectedProject.tasks) {
+      setUnassignedTasksNo(selectedProject.tasks.Unassigned.length);
+      if (
+        selectedProject.tasks.Unassigned.length > 0 &&
+        isUserAdmin(userId, selectedProject.projectMembers)
+      ) {
+        setFilter("unassigned", true);
+      } else {
+        setFilter("unassigned", false);
+      }
+    }
+  }, [
+    unassignedTasksNo,
+    setFilter,
+    selectedProject.tasks,
+    selectedProject.projectMembers,
+    userId
+  ]);
 
   if (selectedProject._id) {
     return (
@@ -64,7 +86,8 @@ const ProjectPage = ({
 
 const mapStateToProps = state => ({
   selectedProject: state.selectedProject,
-  unassignedFilter: state.selectedProject.filter.unassigned
+  unassignedFilter: state.selectedProject.filter.unassigned,
+  userId: state.userDetails._id
 });
 
 const wrappedComponent = connect(mapStateToProps, { selectProject, setFilter })(

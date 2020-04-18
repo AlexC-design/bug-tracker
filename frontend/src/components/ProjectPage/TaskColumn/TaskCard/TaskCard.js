@@ -71,8 +71,7 @@ const mapStateToProps = state => ({
   projectId: state.selectedProject._id,
   userId: state.userDetails._id,
   columnLoading: state.selectedProject.columnLoading,
-  createdFilter: state.selectedProject.filter.created,
-  userId: state.userDetails._id
+  createdFilter: state.selectedProject.filter.created
 });
 
 export default connect(mapStateToProps)(TaskCard);

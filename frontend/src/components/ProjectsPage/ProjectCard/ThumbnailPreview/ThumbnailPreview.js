@@ -9,7 +9,7 @@ export const ThumbnailPreview = ({ taskColumns }) => {
       {taskColumns.map((column, index) => {
         if (index <= 3) {
           return <PreviewColumn tasks={column} key={index} columnNo={index} />;
-        }
+        } else return null;
       })}
     </div>
   );
