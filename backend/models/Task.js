@@ -31,8 +31,8 @@ const TaskSchema = new Schema({
     default: false
   },
   taskCreator: {
-    _id: { type: String, required: true },
-    name: { type: String, required: true }
+    _id: { type: String, default: "error, check create user on backend maybe" },
+    name: { type: String, default: "error, check create user on backend maybe" }
   },
   creationDate: {
     type: Date,

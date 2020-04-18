@@ -24,13 +24,24 @@ router.post("/", async (req, res) => {
         const newProject = new Project({
           projectName: project.projectName
         });
+        newProject.tasks = project.tasks;
 
+        ["High", "Medium", "Low", "Trivial", "Unassigned"].forEach(priority => {
+          newProject.tasks[priority].forEach(task => {
+            if (task.taskCreator.name === "AllexC") {
+              task.taskCreator._id = user._id;
+              task.taskCreator.name = user.name;
+            }
+          });
+        });
+
+        //add users
         newProject.projectMembers = project.projectMembers.map(user => ({
           userId: user.userId,
           isAdmin: false
         }));
+        //make new user admin
         newProject.projectMembers.push({ userId: user._id, isAdmin: true });
-        newProject.tasks = project.tasks;
 
         //add new project to user
         newProject.save().then(project => {
