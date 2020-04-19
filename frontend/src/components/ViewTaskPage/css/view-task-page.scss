@@ -10,6 +10,8 @@
   flex-direction: column;
   justify-content: space-around;
 
+  animation: fadein 0.5s ease-out forwards;
+
   &__top {
     display: flex;
     flex-direction: row;

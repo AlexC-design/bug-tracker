@@ -25,12 +25,11 @@ router.get("/:id", (req, res) => {
 //descr   Get a user's projects
 router.get("/user/:userId", (req, res) => {
   User.findById(req.params.userId).then(user => {
-    Project.find(
-      {
-        _id: { $in: user.projects }
-      },
-      (err, projects) => res.json(projects)
-    );
+    Project.find({
+      _id: { $in: user.projects }
+    })
+      .sort({ creationDate: -1 })
+      .then(projects => res.json(projects));
   });
 });
 

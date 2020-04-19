@@ -40,7 +40,7 @@ const MembersPage = ({
       <div className="members-page">
         {emailNotFound !== null && (
           <Popup
-            action={hidePopup}
+            buttons={[{ text: "OK", action: hidePopup }]}
             text={[
               "No registered user found with email ",
               <b>"{emailNotFound}"</b>

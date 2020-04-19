@@ -1,7 +1,13 @@
-import { EMAIL_NOT_FOUND_ON, EMAIL_NOT_FOUND_OFF } from "./index";
+import {
+  EMAIL_NOT_FOUND_ON,
+  EMAIL_NOT_FOUND_OFF,
+  DELETE_PROJECT_ON,
+  DELETE_PROJECT_OFF
+} from "./index";
 
 const initialState = {
-  emailNotFound: null
+  emailNotFound: null,
+  deleteProject: {}
 };
 
 export default (state = initialState, action) => {
@@ -15,6 +21,16 @@ export default (state = initialState, action) => {
       return {
         ...state,
         emailNotFound: null
+      };
+    case DELETE_PROJECT_ON:
+      return {
+        ...state,
+        deleteProject: action.payload
+      };
+    case DELETE_PROJECT_OFF:
+      return {
+        ...state,
+        deleteProject: {}
       };
 
     default:

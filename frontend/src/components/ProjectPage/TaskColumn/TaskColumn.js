@@ -71,6 +71,7 @@ const TaskColumn = ({
               })}
             </div>
           )}
+          {priority === 'Unassigned' && <div className="task-column__info">Drag to assign priority</div>}
           {tasks.length && <div className="task-column__spacing" />}
         </SimpleBarReact>
       ) : (

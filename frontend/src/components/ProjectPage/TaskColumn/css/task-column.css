@@ -37,6 +37,14 @@
   padding-top: 20px;
 }
 
+.task-column__info {
+  text-align: center;
+  opacity: 0;
+  padding: 0 20px;
+  -webkit-animation: fadein 1s 0.6s ease-out forwards;
+          animation: fadein 1s 0.6s ease-out forwards;
+}
+
 .task-column__spacing {
   min-height: 200px;
 }
