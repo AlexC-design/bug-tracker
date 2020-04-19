@@ -1,5 +1,6 @@
 import {
   GET_PROJECTS,
+  GET_ALL_PROJECTS,
   CREATE_PROJECT,
   DELETE_PROJECT,
   PROJECTS_LOADING,
@@ -14,6 +15,13 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case GET_PROJECTS:
+      return {
+        ...state,
+        projects: action.payload,
+        loading: false
+      };
+
+    case GET_ALL_PROJECTS:
       return {
         ...state,
         projects: action.payload,
