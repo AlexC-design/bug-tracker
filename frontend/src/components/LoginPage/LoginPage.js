@@ -8,6 +8,7 @@ import "./css/login-page.css";
 import { connect } from "react-redux";
 // import { DeleteAllUsers } from "./DeleteAllUsers/DeleteAllUsers";
 // import { DeleteAllGuests } from "./DeleteAllUsers/DeleteAllGuests";
+// import { DeleteAllProjects } from "./DeleteAllUsers/DeleteAllProjects";
 
 class LoginPage extends Component {
   componentDidMount() {
@@ -24,6 +25,7 @@ class LoginPage extends Component {
         <GoogleAuth />
         {/* <DeleteAllUsers /> */}
         {/* <DeleteAllGuests /> */}
+        {/* <DeleteAllProjects /> */}
       </div>
     );
   }

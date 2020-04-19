@@ -7,8 +7,9 @@
   align-items: center;
   height: 100vh;
 
-  // ---- or ----
+  animation: fadein 0.2s ease-out forwards;
 
+  // ---- or ----
   p {
     margin-bottom: 5em;
 

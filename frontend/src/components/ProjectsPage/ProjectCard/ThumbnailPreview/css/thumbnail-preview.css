@@ -13,5 +13,7 @@
           justify-content: space-evenly;
   height: calc(80% - 10px);
   border-radius: 10px 10px 0 0;
+  -webkit-animation: fadein 0.4s ease-out forwards;
+          animation: fadein 0.4s ease-out forwards;
 }
 /*# sourceMappingURL=thumbnail-preview.css.map */

@@ -42,6 +42,9 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  opacity: 0;
+  -webkit-animation: card-popin 0.2s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+          animation: card-popin 0.2s 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 .popup__card__text {
@@ -113,7 +116,53 @@
   height: 100%;
   background: -webkit-gradient(linear, left top, left bottom, from(#44454d), to(#1d1d23));
   background: linear-gradient(#44454d, #1d1d23);
-  opacity: 0.9;
+  opacity: 0;
   z-index: 0;
+  -webkit-animation: fadein90 0.4s ease-out forwards;
+          animation: fadein90 0.4s ease-out forwards;
+}
+
+@-webkit-keyframes fadein90 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+@keyframes fadein90 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.9;
+  }
+}
+
+@-webkit-keyframes card-popin {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes card-popin {
+  from {
+    opacity: 0;
+    -webkit-transform: scale(0.9);
+            transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
 }
 /*# sourceMappingURL=popup.css.map */

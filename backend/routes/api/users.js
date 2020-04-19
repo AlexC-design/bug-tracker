@@ -53,7 +53,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-//descr   Get project's users
+//descr   Get the users of a project
 router.get("/project:projectId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
     User.find({
@@ -69,7 +69,7 @@ router.get("/", (req, res) => {
   User.find().then(users => res.json(users));
 });
 
-//descr   Delete all guests
+//descr   Get all guests
 router.get("/guests", (req, res) => {
   User.find({ googleId: "guest" }).then(users => res.json(users));
 });

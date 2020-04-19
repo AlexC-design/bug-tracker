@@ -1,6 +1,6 @@
 {
     "version": 3,
-    "mappings": "AAEA,AAAA,QAAQ,CAAC;EACP,WAAW,EAAE,IAAI;EACjB,QAAQ,EAAE,MAAM;EAChB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,YAAY;EAC7B,MAAM,EAAE,gBAAgB;EACxB,aAAa,EAAE,aAAa;CAC7B",
+    "mappings": "AAEA,AAAA,QAAQ,CAAC;EACP,WAAW,EAAE,IAAI;EACjB,QAAQ,EAAE,MAAM;EAChB,OAAO,EAAE,IAAI;EACb,cAAc,EAAE,GAAG;EACnB,eAAe,EAAE,YAAY;EAC7B,MAAM,EAAE,gBAAgB;EACxB,aAAa,EAAE,aAAa;EAE5B,SAAS,EAAE,6BAA6B;CACzC",
     "sources": [
         "thumbnail-preview.scss",
         "../../../../../sass/variables/variables.scss"

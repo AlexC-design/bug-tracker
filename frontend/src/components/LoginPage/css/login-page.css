@@ -13,6 +13,8 @@
       -ms-flex-align: center;
           align-items: center;
   height: 100vh;
+  -webkit-animation: fadein 0.2s ease-out forwards;
+          animation: fadein 0.2s ease-out forwards;
 }
 
 .login-page-container p {

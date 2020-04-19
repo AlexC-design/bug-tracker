@@ -42,16 +42,19 @@
 }
 
 .task-button--Delete {
-  background-color: #eb483a;
+  background-color: #44454d;
+  opacity: 0.8;
   margin-right: 100px;
 }
 
 .task-button--Delete:hover {
-  background-color: #c52114;
+  background-color: #e93223;
+  opacity: 1;
 }
 
 .task-button--Delete:active {
   cursor: pointer;
   background-color: #ee5d51;
+  opacity: 1;
 }
 /*# sourceMappingURL=task-button.css.map */
