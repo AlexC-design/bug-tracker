@@ -20,6 +20,7 @@ class LoginPage extends Component {
     return (
       <div className="login-page-container">
         <Logo />
+        <p>test</p>
         <GuestLogin />
         <p>or</p>
         <GoogleAuth />
