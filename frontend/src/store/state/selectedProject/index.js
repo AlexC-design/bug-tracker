@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../../axios";
 import { emailNotFoundOn } from "../notifications/index";
 
 export const SELECT_PROJECT = "SELECT_PROJECT";

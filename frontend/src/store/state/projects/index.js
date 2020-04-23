@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../../axios";
 
 export const GET_PROJECTS = "GET_PROJECTS";
 export const GET_ALL_PROJECTS = "GET_ALL_PROJECTS";

@@ -1,7 +1,7 @@
 import { eventChannel } from "redux-saga";
 import { all, takeLeading, put, call, take } from "redux-saga/effects";
 import { ACTIONS, loadUserDetails } from "./index";
-import axios from "axios";
+import axios from "../../../axios";
 
 const { SIGN_IN, GET_USER_DETAILS } = ACTIONS;
 
