@@ -65,23 +65,22 @@ const NavbarOptions = ({
         >
           Created by me
         </div>
-        {isAdmin && (
-          <div className="unassigned-container">
-            {unassignedTasksNo !== 0 && (
-              <div className="unassigned-notification" />
-            )}
-            <div
-              onClick={() =>
-                setFilter("unassigned", filter.unassigned ? false : true)
-              }
-              className={`navbar-options__unassigned--text navbar-options__unassigned${
-                filter.unassigned ? "--active" : ""
-              }`}
-            >
-              Unassigned
-            </div>
+
+        <div className="unassigned-container">
+          {unassignedTasksNo !== 0 && (
+            <div className="unassigned-notification" />
+          )}
+          <div
+            onClick={() =>
+              setFilter("unassigned", filter.unassigned ? false : true)
+            }
+            className={`navbar-options__unassigned--text navbar-options__unassigned${
+              filter.unassigned ? "--active" : ""
+            }`}
+          >
+            Unassigned
           </div>
-        )}
+        </div>
       </div>
       {
         <div
