@@ -46,15 +46,15 @@ router.post("/", async (req, res) => {
         //add new project to user
         newProject.save().then(project => {
           user.projects.push(project._id.toString());
-          user.save().then(user => {
-            res.setHeader("Access-Control-Allow-Origin", "*");
-            return res.json(user);
-          });
+          user.save().then(user => res.json(user));
         });
       });
     });
   }
 });
+
+//             res.setHeader("Access-Control-Allow-Origin", "*");
+
 
 //descr   Get the users of a project
 router.get("/project:projectId", (req, res) => {
