@@ -53,9 +53,6 @@ router.post("/", async (req, res) => {
   }
 });
 
-//             res.setHeader("Access-Control-Allow-Origin", "*");
-
-
 //descr   Get the users of a project
 router.get("/project:projectId", (req, res) => {
   Project.findById(req.params.projectId).then(project => {
