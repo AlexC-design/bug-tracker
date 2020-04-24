@@ -1,5 +1,8 @@
 import { connect } from "react-redux";
-import { loadUserDetails } from "../../../store/state/userDetails";
+import {
+  loadUserDetails,
+  userDetailsLoading
+} from "../../../store/state/userDetails";
 
 import GuestLogin from "./GuestLogin";
 
@@ -7,4 +10,9 @@ const mapStateToProps = state => {
   return { userDetails: state.userDetails };
 };
 
-export default connect(mapStateToProps, { loadUserDetails })(GuestLogin);
+const mapDispatchToProps = dispatch => ({
+  userDetailsLoading: () => dispatch(userDetailsLoading()),
+  loadUserDetails: payload => dispatch(loadUserDetails(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GuestLogin);

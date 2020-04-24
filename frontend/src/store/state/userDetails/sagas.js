@@ -1,6 +1,7 @@
 import { eventChannel } from "redux-saga";
 import { all, takeLeading, put, call, take } from "redux-saga/effects";
 import { ACTIONS, loadUserDetails } from "./index";
+import { performClientInit } from "../../../components/LoginPage/GoogleAuth/performClientInit";
 import axios from "../../../axios";
 
 const { SIGN_IN, GET_USER_DETAILS } = ACTIONS;
@@ -8,13 +9,26 @@ const { SIGN_IN, GET_USER_DETAILS } = ACTIONS;
 //
 
 export function* signIn() {
+  console.log("1");
   const auth = window.gapi.auth2.getAuthInstance();
 
   const authChannel = yield call(onAuthChange, auth);
+  console.log("2");
 
-  auth.signIn();
+  auth.signIn().then(
+    user => {
+      console.log(user);
+    },
+    err => {
+      // performClientInit();
+    }
+  );
+  console.log("3");
   yield take(authChannel);
+  console.log("4");
+
   yield call(getUserDetails, auth);
+  console.log("5");
 }
 
 function onAuthChange(auth) {
@@ -29,7 +43,6 @@ function onAuthChange(auth) {
 
 export function* getUserDetails() {
   const auth = window.gapi.auth2.getAuthInstance();
-
   const basicProfile = auth.currentUser.get().getBasicProfile();
 
   const userDetails = {

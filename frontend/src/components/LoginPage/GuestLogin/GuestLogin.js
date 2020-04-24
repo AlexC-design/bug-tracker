@@ -16,6 +16,7 @@ export default class GuestLogin extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    this.props.userDetailsLoading();
 
     //creating guest name
     let guestName =

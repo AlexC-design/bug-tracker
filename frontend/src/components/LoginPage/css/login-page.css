@@ -13,8 +13,24 @@
       -ms-flex-align: center;
           align-items: center;
   height: 100vh;
+}
+
+.login-page-container--not-loading {
   -webkit-animation: fadein 0.2s ease-out forwards;
           animation: fadein 0.2s ease-out forwards;
+}
+
+.login-page-container--loading {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.login-page-container--loading .guest-login__input {
+  -webkit-transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  opacity: 0;
+  width: 0;
+  padding: 0;
 }
 
 .login-page-container p {

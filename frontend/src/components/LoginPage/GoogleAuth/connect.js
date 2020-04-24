@@ -10,8 +10,6 @@ const mapDispatchToProps = dispatch => ({
   performClientInit: () => performClientInit(dispatch)
 });
 
-const mapStateToProps = state => {
-  return { userDetails: state.userDetails };
-};
+const mapStateToProps = state => ({ userDetails: state.userDetails });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GoogleAuth);

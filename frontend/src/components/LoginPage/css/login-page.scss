@@ -7,7 +7,22 @@
   align-items: center;
   height: 100vh;
 
-  animation: fadein 0.2s ease-out forwards;
+  &--not-loading {
+    animation: fadein 0.2s ease-out forwards;
+  }
+  &--loading {
+    opacity: 0.5;
+    pointer-events: none;
+
+    .guest-login {
+      &__input {
+        transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        opacity: 0;
+        width: 0;
+        padding: 0;
+      }
+    }
+  }
 
   // ---- or ----
   p {

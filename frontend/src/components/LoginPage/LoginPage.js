@@ -18,7 +18,11 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div className="login-page-container">
+      <div
+        className={`login-page-container login-page-container${
+          this.props.userDetailsLoading ? "--loading" : "--not-loading"
+        }`}
+      >
         <Logo />
         <GuestLogin />
         <p>or</p>
@@ -31,4 +35,10 @@ class LoginPage extends Component {
   }
 }
 
-export default connect(null, { clearProjects, clearUsers })(LoginPage);
+const mapStateToProps = state => ({
+  userDetailsLoading: state.userDetails.userDetailsLoading
+});
+
+export default connect(mapStateToProps, { clearProjects, clearUsers })(
+  LoginPage
+);
