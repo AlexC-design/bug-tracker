@@ -13,6 +13,7 @@ const MemberCard = ({
   name,
   date,
   id,
+  email,
   userId,
   projectId,
   removeUserFromProject,
@@ -35,7 +36,7 @@ const MemberCard = ({
       <div className="member-card__details">
         <div className="member-card__details__name">{name}</div>
         <div className="member-card__details__date">
-          Joined: {formattedDate}
+          {email ? email : `Joined: ${formattedDate}`}
         </div>
       </div>
       {isUserAdmin(userId, projectMembers) &&

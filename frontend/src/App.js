@@ -8,6 +8,7 @@ import Navbar from "./components/Navbar";
 import LoginPage from "./components/LoginPage/LoginPage";
 import ProjectsPage from "./components/ProjectsPage/ProjectsPage";
 import AllProjectsPage from "./components/AllProjectsPage/AllProjectsPage";
+import AllUsersPage from "./components/AllUsersPage/AllUsersPage";
 import ProjectPage from "./components/ProjectPage/ProjectPage";
 import CreateTaskPage from "./components/CreateTaskPage/CreateTaskPage";
 import MembersPage from "./components/MembersPage/MembersPage";
@@ -52,6 +53,11 @@ export default class App extends React.Component {
                 path="/see-all-projects"
                 exact
                 component={AllProjectsPage}
+              />
+              <Route
+                path="/see-all-users"
+                exact
+                component={AllUsersPage}
               />
               <div className="app-background" />
             </HashRouter>

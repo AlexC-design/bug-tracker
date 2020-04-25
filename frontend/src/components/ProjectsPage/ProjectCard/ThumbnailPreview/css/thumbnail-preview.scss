@@ -10,4 +10,17 @@
   border-radius: 10px 10px 0 0;
 
   animation: fadein 0.4s ease-out forwards;
+
+  &--test {
+    .preview-column {
+      opacity: 0.2;
+      .preview-task {
+        background-color: color(primary-light);
+
+        &--completed {
+          background-color: color(accent4);
+        }
+      }
+    }
+  }
 }

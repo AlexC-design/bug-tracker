@@ -17,7 +17,7 @@ $cardHeight: 350px;
 
   border: solid 2px rgba(255, 255, 255, 0.2);
   border-radius: 10px;
-  
+
   &:hover {
     border: solid 2px rgba(255, 255, 255, 0.4);
 
@@ -26,5 +26,36 @@ $cardHeight: 350px;
 
   &:active {
     border: solid 2px rgba(255, 255, 255, 0.8);
+  }
+
+  &--test {
+    background-color: color(secondary-dark);
+
+    &__users {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 20px;
+
+      &__name {
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      &__email {
+        opacity: 0.5;
+        margin-bottom: 10px;
+        margin-top: -10px;
+      }
+
+      .test {
+        width: 20px;
+        height: 7px;
+        margin-bottom: 10px;
+        background-color: color(accent3);
+        font-size: 0.2em;
+        text-align: center;
+        color: black;
+      }
+    }
   }
 }

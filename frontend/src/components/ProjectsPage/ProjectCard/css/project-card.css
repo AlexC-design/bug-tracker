@@ -25,4 +25,36 @@
 .project-card:active {
   border: solid 2px rgba(255, 255, 255, 0.8);
 }
+
+.project-card--test {
+  background-color: #1b1c20;
+}
+
+.project-card--test__users {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 20px;
+}
+
+.project-card--test__users__name {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.project-card--test__users__email {
+  opacity: 0.5;
+  margin-bottom: 10px;
+  margin-top: -10px;
+}
+
+.project-card--test__users .test {
+  width: 20px;
+  height: 7px;
+  margin-bottom: 10px;
+  background-color: #00e0ff;
+  font-size: 0.2em;
+  text-align: center;
+  color: black;
+}
 /*# sourceMappingURL=project-card.css.map */

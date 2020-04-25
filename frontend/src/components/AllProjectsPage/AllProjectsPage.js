@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getAllProjects, deleteProject } from "../../store/state/projects/";
-import ProjectCard from "../ProjectsPage/ProjectCard/ProjectCard";
+import ProjectCardTest from "../ProjectsPage/ProjectCard/ProjectCardTest";
 import ExtendingButton from "../ProjectsPage/ExtendingButton/ExtendingButton";
 import LoadingAnimation from "../LoadingAnimation/LoadingAnimation";
 import SimpleBarReact from "simplebar-react";
@@ -48,7 +48,7 @@ const ProjectsPage = ({
         <SimpleBarReact autoHide={false}>
           <div className="projects-container">
             {projects.projects.map(project => (
-              <ProjectCard project={project} key={project._id} />
+              <ProjectCardTest project={project} key={project._id} />
             ))}
           </div>
         </SimpleBarReact>
