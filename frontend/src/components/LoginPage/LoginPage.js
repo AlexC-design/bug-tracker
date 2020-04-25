@@ -7,8 +7,8 @@ import GoogleAuth from "./GoogleAuth";
 import "./css/login-page.css";
 import { connect } from "react-redux";
 // import { DeleteAllUsers } from "./DeleteAllUsers/DeleteAllUsers";
-import { DeleteAllGuests } from "./DeleteAllUsers/DeleteAllGuests";
-import { DeleteAllProjects } from "./DeleteAllUsers/DeleteAllProjects";
+// import { DeleteAllGuests } from "./DeleteAllUsers/DeleteAllGuests";
+// import { DeleteAllProjects } from "./DeleteAllUsers/DeleteAllProjects";
 
 class LoginPage extends Component {
   componentDidMount() {
@@ -24,6 +24,9 @@ class LoginPage extends Component {
         }`}
       >
         <Logo />
+        <div className="not-optimized">
+          ! Website not fully optimized for mobile yet !
+        </div>
         <GuestLogin />
         <p>or</p>
         <GoogleAuth />

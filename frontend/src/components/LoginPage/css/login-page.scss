@@ -32,4 +32,13 @@
       margin-bottom: 3em;
     }
   }
+
+  .not-optimized {
+    display: none;
+    color: color(accent2);
+
+    @include width768 {
+      display: block;
+    }
+  }
 }

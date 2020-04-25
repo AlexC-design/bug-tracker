@@ -162,6 +162,7 @@
 
 .extending-button-container--contracted input {
   width: 0;
+  opacity: 0;
 }
 
 .extending-button-container--contracted .delete-button {

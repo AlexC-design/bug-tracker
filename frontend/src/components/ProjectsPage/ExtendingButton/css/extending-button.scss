@@ -164,6 +164,7 @@ $line-long: calc(#{$button-size} * 0.55); //width for horizontal
 
     input {
       width: 0;
+      opacity: 0;
     }
 
     .delete-button {

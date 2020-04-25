@@ -42,4 +42,15 @@
     margin-bottom: 3em;
   }
 }
+
+.login-page-container .not-optimized {
+  display: none;
+  color: #faff00;
+}
+
+@media (max-width: 768px) {
+  .login-page-container .not-optimized {
+    display: block;
+  }
+}
 /*# sourceMappingURL=login-page.css.map */

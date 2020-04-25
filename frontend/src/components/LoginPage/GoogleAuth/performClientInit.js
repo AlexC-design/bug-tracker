@@ -5,7 +5,7 @@ export const performClientInit = dispatch => {
   window.gapi.load("client:auth2", () => {
     window.gapi.client
       .init({
-        clientId: key,
+        clientId: nowKey,
         scope: "email profile"
       })
       .then(() => {
