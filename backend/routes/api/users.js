@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
           newProject.tasks[priority].forEach(task => {
             if (task.taskCreator.name === "AllexC") {
               task.taskCreator._id = user._id;
-              task.taskCreator.name = user.name;
+              task.taskCreator.name = user.userName;
             }
           });
         });
