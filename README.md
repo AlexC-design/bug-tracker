@@ -1,4 +1,4 @@
 # bug-tracker
-Bug Tracking App using React/Express/Mongo.
+Full stack SPA using the MERN stack.
 
-Work in progress...
+Live link: https://bug-tracker-client.now.sh/
